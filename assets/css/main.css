@@ -95,7 +95,9 @@ a { text-decoration:none; color:inherit; }
   transform:translateY(-0.25rem);
   transition:opacity var(--duration-ui) var(--ease-standard), transform var(--duration-ui) var(--ease-standard);
 }
-.nav__lang:hover .nav__lang-panel,
+@media (hover: hover) {
+  .nav__lang:hover .nav__lang-panel { opacity:1; pointer-events:auto; transform:translateY(0); }
+}
 .nav__lang--panel-open .nav__lang-panel { opacity:1; pointer-events:auto; transform:translateY(0); }
 .nav__lang-option {
   display:block; width:100%; background:transparent; border:none; cursor:pointer;

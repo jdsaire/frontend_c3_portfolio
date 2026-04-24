@@ -130,6 +130,7 @@ document.getElementById('langBtn').addEventListener('click', (e) => {
   langSelector.classList.toggle('nav__lang--panel-open');
 });
 document.addEventListener('click', () => langSelector.classList.remove('nav__lang--panel-open'));
+langPanel.addEventListener('click', e => e.stopPropagation());
 
 langPanel.querySelectorAll('.nav__lang-option').forEach(btn => {
   btn.addEventListener('click', () => {
