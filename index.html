@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="EN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JDigital — Personal Portfolio</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR — v9 · EN/ES bilingual
+       i18n: data-i18n attribute maps to COPY object key
+       Lang trigger: globe selector → swapLang() updates all nodes
+       ============================================================ -->
+  <header class="nav" id="navbar">
+    <nav class="nav__inner" role="navigation" aria-label="Primary">
+
+      <button class="nav__hamburger" id="hamburger" type="button"
+              aria-label="Open menu" aria-expanded="false" aria-controls="navOverlay">
+        <span></span><span></span><span></span>
+      </button>
+
+      <a href="#top" class="nav__logo" aria-label="JDigital — Home">
+        <span class="nav__logo-jd">JD</span><span class="nav__logo-igital">igital</span>
+      </a>
+
+      <!-- CENTER nav links -->
+      <div class="nav__center">
+        <a href="#work"         class="nav__link" data-i18n="nav_work">Work</a>
+        <a href="#services"     class="nav__link" data-i18n="nav_services">Services</a>
+        <a href="#capabilities" class="nav__link" data-i18n="nav_capabilities">Capabilities</a>
+        <a href="#about"        class="nav__link" data-i18n="nav_about">Mindset</a>
+      </div>
+
+      <!-- RIGHT utility -->
+      <div class="nav__utility">
+        <div class="nav__lang" id="langSelector">
+          <button class="nav__lang-btn" id="langBtn" type="button"
+                  aria-label="Select language" aria-haspopup="listbox">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span id="langLabel">EN</span>
+          </button>
+          <div class="nav__lang-panel" id="langPanel" role="listbox" aria-label="Language">
+            <button class="nav__lang-option nav__lang-option--active"
+                    role="option" aria-selected="true" data-lang="EN">EN</button>
+            <button class="nav__lang-option"
+                    role="option" aria-selected="false" data-lang="ES">ES</button>
+          </div>
+        </div>
+
+        <button class="nav__mobile-close" id="mobileClose" type="button" aria-label="Close menu">&#215;</button>
+
+        <a href="#contact" class="nav__cta" data-i18n="nav_cta">Connect</a>
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- MOBILE OVERLAY -->
+  <div class="nav__overlay" id="navOverlay" aria-hidden="true" role="dialog" aria-label="Navigation menu">
+
+    <div class="nav__overlay-header">
+      <button class="nav__overlay-close" id="overlayClose" aria-label="Close menu">&#215;</button>
+      <a href="#top" class="nav__overlay-logo" aria-label="JDigital — Home">
+        <span class="nav__logo-jd">JD</span><span class="nav__logo-igital">igital</span>
+      </a>
+    </div>
+
+    <nav class="nav__overlay-links" aria-label="Mobile navigation">
+      <a href="#work"         class="nav__overlay-link">
+        <span data-i18n="nav_work">Work</span>
+        <span class="nav__overlay-link-chevron">&#8250;</span>
+      </a>
+      <a href="#services"     class="nav__overlay-link">
+        <span data-i18n="nav_services">Services</span>
+        <span class="nav__overlay-link-chevron">&#8250;</span>
+      </a>
+      <a href="#capabilities" class="nav__overlay-link">
+        <span data-i18n="nav_capabilities">Capabilities</span>
+        <span class="nav__overlay-link-chevron">&#8250;</span>
+      </a>
+      <a href="#about"        class="nav__overlay-link">
+        <span data-i18n="nav_about">Mindset</span>
+        <span class="nav__overlay-link-chevron">&#8250;</span>
+      </a>
+      <a href="#contact"      class="nav__overlay-link">
+        <span data-i18n="nav_cta">Connect</span>
+        <span class="nav__overlay-link-chevron">&#8250;</span>
+      </a>
+    </nav>
+
+  </div>
+
+
+  <!-- ============================================================
+       HERO — v9 · EN/ES bilingual
+       H1 locked: EN option A / ES option A (per principal)
+       ============================================================ -->
+  <section class="hero" id="top" aria-label="Introduction">
+
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__gradient"></div>
+      <div class="hero__scrim"></div>
+    </div>
+
+    <div class="hero__inner">
+
+      <!-- LEFT 62% -->
+      <div class="hero__left">
+
+        <span class="hero__badge">
+          <span class="hero__badge-dot" aria-hidden="true"></span>
+          <span data-i18n="hero_badge">Building in Lima, Peru</span>
+        </span>
+
+        <h1 class="hero__h1">
+          <span class="hero__h1-line" data-i18n="hero_h1_line1">Your digital</span>
+          <span class="hero__h1-line" data-i18n="hero_h1_line2">ambitions</span>
+          <span class="hero__h1-line"><span class="purple" data-i18n="hero_h1_line3">live here</span></span>
+        </h1>
+
+        <div class="hero__tags" role="list">
+          <span class="hero__tag" role="listitem" data-i18n="hero_tag1">Frontend</span>
+          <span class="hero__tag" role="listitem" data-i18n="hero_tag2">UX/UI</span>
+          <span class="hero__tag" role="listitem" data-i18n="hero_tag3">Growth Hacking</span>
+          <span class="hero__tag" role="listitem" data-i18n="hero_tag4">Agile/Scrum</span>
+          <span class="hero__tag" role="listitem" data-i18n="hero_tag5">Analytics</span>
+        </div>
+      </div>
+
+      <!-- RIGHT 38% -->
+      <div class="hero__right">
+
+        <p class="hero__eyebrow">
+          <span class="hero__eyebrow-bar" aria-hidden="true"></span>
+          <span data-i18n="hero_eyebrow">Proven impact</span>
+        </p>
+
+        <div class="hero__stats">
+          <div>
+            <div class="stat__number" data-target="10" data-suffix="+">0+</div>
+            <div class="stat__label" data-i18n="hero_stat1">A decade across three disciplines</div>
+          </div>
+          <div>
+            <div class="stat__number" data-target="150" data-suffix="K+">0K+</div>
+            <div class="stat__label" data-i18n="hero_stat2">Students and users shaped by the work</div>
+          </div>
+          <div>
+            <div class="stat__number" data-target="50" data-suffix="+">0+</div>
+            <div class="stat__label" data-i18n="hero_stat3">Projects shipped across 5 industries</div>
+          </div>
+          <div>
+            <div class="stat__number" data-target="3" data-suffix="×">0×</div>
+            <div class="stat__label" data-i18n="hero_stat4">Faster builds with AI in the loop</div>
+          </div>
+        </div>
+
+        <a href="#work" class="cta" aria-label="See the work — case studies" data-i18n-aria="hero_cta_aria">
+          <span class="cta__label" data-i18n="hero_cta">See the work</span>
+          <span class="cta__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
