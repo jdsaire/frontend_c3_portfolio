@@ -256,7 +256,8 @@ a { text-decoration:none; color:inherit; }
 .hero__h1 .purple { color:var(--color-brand-purple); }
 
 .hero__tags {
-  display:flex; flex-wrap:wrap; gap:0.5rem;
+  display:none; /* hidden — reserved for future pillar overlay iteration */
+  flex-wrap:wrap; gap:0.5rem;
   opacity:0; animation:fadeUp 600ms var(--ease-decelerate) 700ms forwards;
 }
 .hero__tag {
