@@ -26,6 +26,21 @@ const COPY = {
     hero_stat4:       'Faster builds with AI in the loop',
     hero_cta:         'See the work',
     hero_cta_aria:    'See the work — case studies',
+    work_eyebrow:     'SELECTED WORK',
+    work_cta:         'Explore',
+    work_card1_label:   'Build',
+    work_card1_heading: 'Built a revenue-first app for 40M+ passengers',
+    work_card1_body:    'Lima Airport\'s new terminal needed a mobile experience to unlock non-aeronautical revenue. We prototyped LimaFly in high fidelity — a full passenger journey for 40M+ annual arrivals and departures.',
+    work_card2_label:   'Scale',
+    work_card2_heading: 'Aligned airport staff in modern Agile with top-rated workshop',
+    work_card2_body:    'Lima Airport\'s cultural shift to Agile needed real traction, fast. We ran three hybrid workshops — 70 employees across all divisions walked away ready to apply it in their teams.',
+    work_card3_label:   'Execute',
+    work_card3_heading: 'Reset playbook of major airport program',
+    work_card3_body:    'Designing an unprecedented aeronautical fee meant making high-stakes calls without a playbook. We codified lessons from the TUUA Transfer to shape Lima Airport\'s next major programs.',
+    work_card4_label:   'Build · In progress',
+    work_card4_heading: 'Building JDigital v1 with modern Microsoft Front-End',
+    work_card4_body:    'This site is the first version of a full-stack boutique practice. Midway through a Microsoft front-end specialization, every technique gets pressure-tested here before it ships to partners.',
+    work_card4_status:  'Shipping across Q2 2026',
   },
   ES: {
     nav_work:         'Proyectos',
@@ -49,6 +64,21 @@ const COPY = {
     hero_stat4:       'Builds más rápidos con IA integrada',
     hero_cta:         'Explorar',
     hero_cta_aria:    'Explorar proyectos — casos de estudio',
+    work_eyebrow:     'PROYECTOS DESTACADOS',
+    work_cta:         'Explorar',
+    work_card1_label:   'Build',
+    work_card1_heading: 'LimaFly: del brief al prototipo en alta fidelidad',
+    work_card1_body:    'El nuevo terminal de Lima Airport necesitaba una experiencia móvil que generara ingresos fuera de la aeronáutica. Construimos LimaFly App en alta fidelidad — el journey completo para 40M+ viajeros al año.',
+    work_card2_label:   'Scale',
+    work_card2_heading: 'La transición Agile que sí tuvo tracción',
+    work_card2_body:    'Lima Airport necesitaba que su gente adoptara Agile — no solo lo entendiera. Facilitamos tres workshops híbridos con 70 colaboradores de todas las divisiones: salieron listos para aplicarlo en sus equipos.',
+    work_card3_label:   'Execute',
+    work_card3_heading: 'Reseteamos el playbook del programa más crítico del terminal',
+    work_card3_body:    'Diseñar el cobro de una nueva tasa aeronáutica sin precedente mundial exigió decidir sin manual. Ejecutamos el post-mortem del TUUA Transfer y codificamos las lecciones para programas de Lima Airport.',
+    work_card4_label:   'Build · En progreso',
+    work_card4_heading: 'Construyendo JDigital v1 con stack Microsoft moderno',
+    work_card4_body:    'JDigital no es solo un portafolio — es el primer producto de nuestra agencia. Lo construimos con el último stack front-end de Microsoft, probando aquí cada decisión técnica antes de escalar.',
+    work_card4_status:  'Culminando en Q2 2026',
   }
 };
 
@@ -176,3 +206,72 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
   }, { threshold: 0.3 });
   counters.forEach(el => io.observe(el));
 }
+
+/* ============================================================
+   WORK v5 — Touch interaction (mobile + tablet)
+   ============================================================ */
+(function () {
+  var workCards = document.querySelectorAll('.work-card');
+  var workTrack = document.querySelector('.work__track');
+  var workDots  = document.querySelectorAll('.work__dot');
+  var isTouch   = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+  if (isTouch) {
+    workCards.forEach(function (card) {
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('.work-card__close')) {
+          card.classList.remove('is-active');
+          return;
+        }
+        if (e.target.closest('.work-card__cta')) return;
+        workCards.forEach(function (c) {
+          if (c !== card) c.classList.remove('is-active');
+        });
+        card.classList.toggle('is-active');
+      });
+
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.classList.toggle('is-active');
+        }
+        if (e.key === 'Escape') {
+          card.classList.remove('is-active');
+        }
+      });
+    });
+  }
+
+  /* Dot pagination */
+  if (workTrack && workDots.length) {
+    function updateDots () {
+      var first = workTrack.firstElementChild;
+      if (!first) return;
+      var cardWidth = first.getBoundingClientRect().width;
+      var gap = parseFloat(getComputedStyle(workTrack).gap) || 12;
+      var idx = Math.round(workTrack.scrollLeft / (cardWidth + gap));
+      workDots.forEach(function (d, i) {
+        d.classList.toggle('work__dot--active', i === idx);
+      });
+    }
+
+    var ticking = false;
+    workTrack.addEventListener('scroll', function () {
+      if (!ticking) {
+        requestAnimationFrame(function () { updateDots(); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    workDots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        var idx = parseInt(dot.dataset.cardIndex, 10);
+        var first = workTrack.firstElementChild;
+        if (!first) return;
+        var cardWidth = first.getBoundingClientRect().width;
+        var gap = parseFloat(getComputedStyle(workTrack).gap) || 12;
+        workTrack.scrollTo({ left: idx * (cardWidth + gap), behavior: 'smooth' });
+      });
+    });
+  }
+})();
