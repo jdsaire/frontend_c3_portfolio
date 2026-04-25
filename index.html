@@ -308,6 +308,218 @@
     </div>
   </section>
 
+  <!-- ============================================================
+       ABOUT — v5 · EN/ES bilingual
+       Anchor: #about
+       Copy locked: about-en.json + about-es.json
+       ============================================================ -->
+  <section class="section section--alt" id="about" aria-labelledby="about-heading">
+    <div class="section__inner">
+
+      <div class="section__eyebrow">
+        <span class="section__eyebrow-bar" aria-hidden="true"></span>
+        <p class="section__eyebrow-text" data-i18n="about_eyebrow">Guiding principles</p>
+      </div>
+
+      <div class="about-sticky-scene" id="about-sticky-scene">
+        <div class="about-cards-track" id="about-cards-track">
+
+          <article class="about-card about-card--blue" role="article" aria-label="Adoption is the work.">
+            <div class="about-card__content">
+              <p class="about-card__principle" id="about-heading" data-i18n="about_card1_principle">Adoption is the work.</p>
+              <p class="about-card__body" data-i18n="about_card1_body">Pixel-perfect design and clean engineering are table stakes. The real work is the adoption curve — building products people actually want and use.</p>
+            </div>
+          </article>
+
+          <article class="about-card about-card--red" role="article" aria-label="The table stays small.">
+            <div class="about-card__content">
+              <p class="about-card__principle" data-i18n="about_card2_principle">The table stays small.</p>
+              <p class="about-card__body" data-i18n="about_card2_body">Two engagements a quarter, principal at the table. English or Spanish, engineer to manager to designer, without leaving the room.</p>
+            </div>
+          </article>
+
+          <article class="about-card about-card--indigo" role="article" aria-label="Reinvention as practice.">
+            <div class="about-card__content">
+              <p class="about-card__principle" data-i18n="about_card3_principle">Reinvention as practice.</p>
+              <p class="about-card__body" data-i18n="about_card3_body">Reinvention isn't an event or a new logo. It's time spent rebuilding the skill stack and earning the right to bring genuinely new capabilities to the table.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CONTACT — v4 · EN/ES bilingual
+       Anchor: #contact
+       Copy locked: contact-en.json + contact-es.json
+       ============================================================ -->
+  <section class="section" id="contact" aria-labelledby="contact-heading">
+    <div class="section__inner">
+
+      <div class="section__eyebrow">
+        <span class="section__eyebrow-bar" aria-hidden="true"></span>
+        <p class="section__eyebrow-text" data-i18n="contact_eyebrow">Let's connect</p>
+      </div>
+
+      <div class="contact__grid">
+
+        <!-- LEFT: 41% — Editorial anchor -->
+        <div class="contact__editorial">
+
+          <h2 class="section__headline" id="contact-heading" data-i18n="contact_headline">Open the conversation.</h2>
+          <p class="section__lede" data-i18n="contact_lede">Direct to Juan Diego — no intake queues between you and the work. If the fit is there, you'll know by the first exchange.</p>
+
+          <div class="contact__availability" aria-label="Current capacity">
+            <div class="contact__availability-dot" aria-hidden="true"></div>
+            <p class="contact__availability-text">
+              <strong data-i18n="contact_avail_strong">Q3 2026 · one slot open.</strong><br>
+              <span data-i18n="contact_avail_body">Two strategic engagements per quarter by design. Priority to roles and partnerships based in Lima, Peru.</span>
+            </p>
+          </div>
+
+          <a href="https://linkedin.com/in/jdsaire/" target="_blank" rel="noopener noreferrer"
+             class="contact__linkedin" aria-label="Connect with Juan Diego on LinkedIn">
+            <span class="contact__linkedin-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </span>
+            <span class="contact__linkedin-label" data-i18n="contact_linkedin">Connect on LinkedIn</span>
+          </a>
+
+        </div>
+
+        <!-- RIGHT: 59% — Form -->
+        <div class="contact__form-wrapper">
+
+          <div class="contact__success" id="formSuccess" role="status" aria-live="polite">
+            <div class="contact__success-bar" aria-hidden="true"></div>
+            <h3 class="contact__success-headline" data-i18n="contact_success_headline">Message received.</h3>
+            <p class="contact__success-body" data-i18n="contact_success_body">Responses go out within 24 hours. If there's a fit, we'll book a first conversation.</p>
+          </div>
+
+          <form class="contact__form" id="contactForm"
+                action="https://formspree.io/f/YOUR_FORM_ID"
+                method="POST" novalidate
+                aria-label="Strategic briefing form">
+
+            <!-- Engagement type -->
+            <div class="contact__field" id="field-type">
+              <label class="contact__label" for="engagementType" data-i18n="contact_dropdown_label">What's your next digital ambition?</label>
+              <div class="contact__select-wrapper">
+                <select class="contact__select is-placeholder" id="engagementType" name="engagementType"
+                        required aria-required="true">
+                  <option value="" disabled selected hidden data-i18n="contact_dropdown_placeholder">Select one</option>
+                  <option value="strategic-partnership"     data-i18n="contact_opt1">Strategic partnership — hiring, contract, or collaboration</option>
+                  <option value="education-opportunity"     data-i18n="contact_opt2">Education opportunity — university or corporate training</option>
+                  <option value="public-speaking-workshops" data-i18n="contact_opt3">Public speaking or workshops — events, panels, sessions</option>
+                  <option value="content-media-sponsorship" data-i18n="contact_opt4">Content, media, or sponsorship — interviews, publications, partnerships</option>
+                  <option value="other"                     data-i18n="contact_opt5">Other</option>
+                </select>
+              </div>
+              <span class="contact__hint" aria-live="polite" data-i18n="contact_err_type">Please select an engagement type.</span>
+            </div>
+
+            <!-- Name + Email -->
+            <div class="contact__form-row">
+              <div class="contact__field" id="field-name">
+                <label class="contact__label" for="fullName" data-i18n="contact_name_label">Full name</label>
+                <input class="contact__input" type="text" id="fullName" name="fullName"
+                       placeholder="Ana Torres" data-i18n-placeholder="contact_name_placeholder"
+                       autocomplete="name" required />
+                <span class="contact__hint" aria-live="polite" data-i18n="contact_err_name">Full name is required.</span>
+              </div>
+              <div class="contact__field" id="field-email">
+                <label class="contact__label" for="email" data-i18n="contact_email_label">Email</label>
+                <input class="contact__input" type="email" id="email" name="email"
+                       placeholder="ana@company.com" data-i18n-placeholder="contact_email_placeholder"
+                       autocomplete="email" required />
+                <span class="contact__hint" aria-live="polite" data-i18n="contact_err_email">A valid email is required.</span>
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div class="contact__field" id="field-message">
+              <label class="contact__label" for="message" data-i18n="contact_msg_label">Message</label>
+              <textarea class="contact__textarea" id="message" name="message"
+                        placeholder="Tell me about the context — a role, a project, a course, an idea. The more specific, the better."
+                        data-i18n-placeholder="contact_msg_placeholder"
+                        required aria-required="true"></textarea>
+              <span class="contact__hint" aria-live="polite" data-i18n="contact_err_msg">A message is required.</span>
+            </div>
+
+            <!-- Submit row -->
+            <div class="contact__submit-row">
+              <p class="contact__disclaimer" data-i18n="contact_disclaimer">Response within 24 business hours.</p>
+              <button type="submit" class="contact__submit" aria-label="Send your message">
+                <span class="contact__submit-label" data-i18n="contact_submit">Send the message</span>
+                <span class="contact__submit-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                  </svg>
+                </span>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER — v4 · EN/ES bilingual
+       Copy locked: footer-en.json + footer-es.json
+       ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+
+      <div class="footer__grid">
+        <div class="footer__content">
+
+          <p class="footer__tagline">
+            <span data-i18n="footer_tagline_pre">Let's build </span><span class="purple" data-i18n="footer_tagline_purple">together.</span>
+          </p>
+
+          <nav class="footer__columns" aria-label="Footer navigation">
+            <div>
+              <ul class="footer__links">
+                <li><a class="footer__link" href="#about"   data-i18n="footer_about">About Us</a></li>
+                <li><a class="footer__link" href="#contact" data-i18n="footer_contact_link">Contact Us</a></li>
+                <li><a class="footer__link" href="#"        data-i18n="footer_sitemap">Sitemap</a></li>
+              </ul>
+            </div>
+            <div>
+              <ul class="footer__links">
+                <li><a class="footer__link" href="#" data-i18n="footer_privacy">Privacy Statement</a></li>
+                <li><a class="footer__link" href="#" data-i18n="footer_terms">Terms &amp; Conditions</a></li>
+                <li><a class="footer__link" href="#" data-i18n="footer_accessibility">Accessibility Statement</a></li>
+              </ul>
+            </div>
+          </nav>
+
+        </div>
+      </div>
+
+      <div class="footer__strip">
+        <div class="footer__meta">
+          <span data-i18n="footer_copyright">© 2026 JDigital. All Rights Reserved.</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
   <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -39,6 +39,52 @@ const COPY = {
     work_card4_heading: 'Building JDigital v1 with modern Microsoft frontend',
     work_card4_body:    'This site is the first version of a full-stack boutique practice. Midway through a Microsoft front-end specialization, every technique gets pressure-tested here before it ships to partners.',
     work_card4_status:  'Shipping across Q2 2026',
+    /* About */
+    about_eyebrow:         'Guiding principles',
+    about_card1_principle: 'Adoption is the work.',
+    about_card1_body:      'Pixel-perfect design and clean engineering are table stakes. The real work is the adoption curve — building products people actually want and use.',
+    about_card2_principle: 'The table stays small.',
+    about_card2_body:      'Two engagements a quarter, principal at the table. English or Spanish, engineer to manager to designer, without leaving the room.',
+    about_card3_principle: 'Reinvention as practice.',
+    about_card3_body:      'Reinvention isn\'t an event or a new logo. It\'s time spent rebuilding the skill stack and earning the right to bring genuinely new capabilities to the table.',
+    /* Contact */
+    contact_eyebrow:               'Let\'s connect',
+    contact_headline:              'Open the conversation.',
+    contact_lede:                  'Direct to Juan Diego — no intake queues between you and the work. If the fit is there, you\'ll know by the first exchange.',
+    contact_avail_strong:          'Q3 2026 · one slot open.',
+    contact_avail_body:            'Two strategic engagements per quarter by design. Priority to roles and partnerships based in Lima, Peru.',
+    contact_linkedin:              'Connect on LinkedIn',
+    contact_dropdown_label:        'What\'s your next digital ambition?',
+    contact_dropdown_placeholder:  'Select one',
+    contact_opt1:                  'Strategic partnership — hiring, contract, or collaboration',
+    contact_opt2:                  'Education opportunity — university or corporate training',
+    contact_opt3:                  'Public speaking or workshops — events, panels, sessions',
+    contact_opt4:                  'Content, media, or sponsorship — interviews, publications, partnerships',
+    contact_opt5:                  'Other',
+    contact_name_label:            'Full name',
+    contact_name_placeholder:      'Ana Torres',
+    contact_email_label:           'Email',
+    contact_email_placeholder:     'ana@company.com',
+    contact_msg_label:             'Message',
+    contact_msg_placeholder:       'Tell me about the context — a role, a project, a course, an idea. The more specific, the better.',
+    contact_err_name:              'Full name is required.',
+    contact_err_email:             'A valid email is required.',
+    contact_err_type:              'Please select an engagement type.',
+    contact_err_msg:               'A message is required.',
+    contact_disclaimer:            'Response within 24 business hours.',
+    contact_submit:                'Send the message',
+    contact_success_headline:      'Message received.',
+    contact_success_body:          'Responses go out within 24 hours. If there\'s a fit, we\'ll book a first conversation.',
+    /* Footer */
+    footer_tagline_pre:    'Let\'s build ',
+    footer_tagline_purple: 'together.',
+    footer_about:          'About Us',
+    footer_contact_link:   'Contact Us',
+    footer_sitemap:        'Sitemap',
+    footer_privacy:        'Privacy Statement',
+    footer_terms:          'Terms & Conditions',
+    footer_accessibility:  'Accessibility Statement',
+    footer_copyright:      '© 2026 JDigital. All Rights Reserved.',
   },
   ES: {
     nav_work:         'Proyectos',
@@ -75,6 +121,52 @@ const COPY = {
     work_card4_heading: 'Construyendo JDigital v1 con Microsoft frontend',
     work_card4_body:    'JDigital no es solo un portafolio — es el primer producto de nuestra agencia. Lo construimos con el último stack front-end de Microsoft, probando aquí cada decisión técnica antes de escalar.',
     work_card4_status:  'Culminando en Q2 2026',
+    /* About */
+    about_eyebrow:         'PRINCIPIOS RECTORES',
+    about_card1_principle: 'Nadie adopta lo que no entiende.',
+    about_card1_body:      'Entregar código limpio y pantallas pulidas es el requisito mínimo. Lo que diferencia un proyecto exitoso es que la gente lo adopta sin que nadie se los pida.',
+    about_card2_principle: 'La mesa se mantiene pequeña.',
+    about_card2_body:      'Dos proyectos por trimestre: la capacidad disponible es lo que permite trabajar bien, no solo entregar. El mismo interlocutor habla con el ingeniero, el gerente y el diseñador — en inglés o en español.',
+    about_card3_principle: 'Reinventarse es la constante.',
+    about_card3_body:      'Reinventarse no es cambiar de marca ni anunciar un nuevo rumbo. Es invertir tiempo real en reconstruir lo que uno sabe hacer — y ganarse el derecho de traer capacidades genuinamente nuevas al trabajo.',
+    /* Contact */
+    contact_eyebrow:               'CONTACTO',
+    contact_headline:              'La conversación empieza aquí.',
+    contact_lede:                  'Sin formularios de pre-calificación, sin esperas. Si hay fit, lo confirma el primer intercambio.',
+    contact_avail_strong:          'Q3 2026 · un espacio abierto.',
+    contact_avail_body:            'Dos proyectos estratégicos por trimestre. Prioridad a roles y alianzas con base en Lima, Perú.',
+    contact_linkedin:              'Continuar en LinkedIn',
+    contact_dropdown_label:        '¿Cuál es su próxima ambición digital?',
+    contact_dropdown_placeholder:  'Seleccione una opción',
+    contact_opt1:                  'Alianza estratégica — hiring, proyecto o co-creación',
+    contact_opt2:                  'Educación — docencia universitaria o capacitación en empresa',
+    contact_opt3:                  'Keynote o taller — conferencia, panel o sesión abierta',
+    contact_opt4:                  'Medios y contenido — entrevistas, podcasts o publicaciones',
+    contact_opt5:                  'Otro',
+    contact_name_label:            'Nombre completo',
+    contact_name_placeholder:      'Ana Torres',
+    contact_email_label:           'Correo electrónico',
+    contact_email_placeholder:     'ana@empresa.com',
+    contact_msg_label:             'Mensaje',
+    contact_msg_placeholder:       'Describa el contexto — el rol, el proyecto o la iniciativa. Mientras más detalle, mejor la respuesta.',
+    contact_err_name:              'El nombre es requerido.',
+    contact_err_email:             'Ingrese un correo válido.',
+    contact_err_type:              'Seleccione el tipo de consulta.',
+    contact_err_msg:               'El mensaje es requerido.',
+    contact_disclaimer:            'Respondemos en 24 horas.',
+    contact_submit:                'Enviar mensaje',
+    contact_success_headline:      'Mensaje recibido.',
+    contact_success_body:          'Respondemos en 24 horas. Si hay fit, agendamos la primera conversación.',
+    /* Footer */
+    footer_tagline_pre:    'Construyamos ',
+    footer_tagline_purple: 'juntos.',
+    footer_about:          'Sobre mí',
+    footer_contact_link:   'Contacto',
+    footer_sitemap:        'Mapa del sitio',
+    footer_privacy:        'Aviso de privacidad',
+    footer_terms:          'Términos y condiciones',
+    footer_accessibility:  'Declaración de accesibilidad',
+    footer_copyright:      '© 2026 JDigital. Todos los derechos reservados.',
   }
 };
 
@@ -98,6 +190,12 @@ function swapLang(lang) {
   document.querySelectorAll('[data-i18n-aria]').forEach(el => {
     const key = el.dataset.i18nAria;
     if (dict[key] !== undefined) el.setAttribute('aria-label', dict[key]);
+  });
+
+  /* placeholder swap for form inputs/textarea */
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.dataset.i18nPlaceholder;
+    if (dict[key] !== undefined) el.placeholder = dict[key];
   });
 }
 
@@ -268,6 +366,77 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
         var gap = parseFloat(getComputedStyle(workTrack).gap) || 12;
         workTrack.scrollTo({ left: idx * (cardWidth + gap), behavior: 'smooth' });
       });
+    });
+  }
+})();
+
+/* ============================================================
+   CONTACT — Form validation + Formspree submit
+   ============================================================ */
+(function () {
+  'use strict';
+
+  const contactForm      = document.getElementById('contactForm');
+  const contactSuccess   = document.getElementById('formSuccess');
+  const engagementSelect = document.getElementById('engagementType');
+
+  if (engagementSelect) {
+    engagementSelect.addEventListener('change', function () {
+      engagementSelect.classList.toggle('is-placeholder', engagementSelect.value === '');
+    });
+  }
+
+  if (contactForm) {
+    const contactFields = [
+      { id: 'field-name',    input: 'fullName',       test: function (v) { return v.trim().length >= 2; } },
+      { id: 'field-email',   input: 'email',          test: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); } },
+      { id: 'field-type',    input: 'engagementType', test: function (v) { return v !== ''; } },
+      { id: 'field-message', input: 'message',        test: function (v) { return v.trim().length >= 10; } }
+    ];
+
+    function validateContactField(field) {
+      const wrapper = document.getElementById(field.id);
+      const input   = document.getElementById(field.input);
+      if (!wrapper || !input) return true;
+      const valid = field.test(input.value);
+      wrapper.classList.toggle('has-error', !valid);
+      return valid;
+    }
+
+    contactFields.forEach(function (field) {
+      const input = document.getElementById(field.input);
+      if (input) {
+        input.addEventListener('blur', function () { validateContactField(field); });
+      }
+    });
+
+    contactForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const allValid = contactFields.map(validateContactField).every(Boolean);
+      if (!allValid) {
+        const firstError = contactForm.querySelector('.has-error input, .has-error select, .has-error textarea');
+        if (firstError) firstError.focus();
+        return;
+      }
+      try {
+        const data     = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body:   data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          contactForm.classList.add('is-submitted');
+          if (contactSuccess) {
+            contactSuccess.classList.add('is-visible');
+            contactSuccess.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        } else {
+          console.warn('Formspree returned non-OK status:', response.status);
+        }
+      } catch (err) {
+        console.error('Form submission error:', err);
+      }
     });
   }
 })();
