@@ -39,6 +39,21 @@ const COPY = {
     work_card4_heading: 'Building JDigital v1 with modern Microsoft frontend',
     work_card4_body:    'This site is the first version of a full-stack boutique practice. Midway through a Microsoft front-end specialization, every technique gets pressure-tested here before it ships to partners.',
     work_card4_status:  'Shipping across Q2 2026',
+    /* Services */
+    services_eyebrow:  'CORE SERVICES',
+    services_cta:      'Read more',
+    services_s1_label: 'Label 01',
+    services_s1_title: 'Lorem ipsum dolor sit amet consectetur.',
+    services_s1_body:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    services_s2_label: 'Label 02',
+    services_s2_title: 'Duis aute irure dolor in reprehenderit.',
+    services_s2_body:  'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    services_s3_label: 'Label 03',
+    services_s3_title: 'Sed ut perspiciatis unde omnis iste natus.',
+    services_s3_body:  'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.',
+    services_s4_label: 'Label 04',
+    services_s4_title: 'Nemo enim ipsam voluptatem quia voluptas.',
+    services_s4_body:  'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia consequuntur magni dolores eos.',
     /* About */
     about_eyebrow:         'Guiding principles',
     about_card1_principle: 'Adoption is the work.',
@@ -124,6 +139,21 @@ const COPY = {
     work_card4_heading: 'Construyendo JDigital v1 con Microsoft frontend',
     work_card4_body:    'JDigital no es solo un portafolio — es el primer producto de nuestra agencia. Lo construimos con el último stack front-end de Microsoft, probando aquí cada decisión técnica antes de escalar.',
     work_card4_status:  'Culminando en Q2 2026',
+    /* Services */
+    services_eyebrow:  'SERVICIOS PRINCIPALES',
+    services_cta:      'Leer más',
+    services_s1_label: 'Etiqueta 01',
+    services_s1_title: 'Lorem ipsum dolor sit amet consectetur.',
+    services_s1_body:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    services_s2_label: 'Etiqueta 02',
+    services_s2_title: 'Duis aute irure dolor in reprehenderit.',
+    services_s2_body:  'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    services_s3_label: 'Etiqueta 03',
+    services_s3_title: 'Sed ut perspiciatis unde omnis iste natus.',
+    services_s3_body:  'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.',
+    services_s4_label: 'Etiqueta 04',
+    services_s4_title: 'Nemo enim ipsam voluptatem quia voluptas.',
+    services_s4_body:  'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia consequuntur magni dolores eos.',
     /* About */
     about_eyebrow:         'PRINCIPIOS RECTORES',
     about_card1_principle: 'Nadie adopta lo que no entiende.',
@@ -447,4 +477,80 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
       }
     });
   }
+})();
+
+/* ============================================================
+   SERVICES — Carousel IIFE
+   ============================================================ */
+(function () {
+  'use strict';
+
+  const track   = document.getElementById('servicesTrack');
+  if (!track) return;
+  const slides  = document.querySelectorAll('.services__slide');
+  const prevBtn = document.querySelector('.services__controls .services__nav--prev');
+  const nextBtn = document.querySelector('.services__controls .services__nav--next');
+  const counter = document.querySelector('.services__counter-current');
+  const total   = slides.length;
+  let   index   = 0;
+
+  function getSlideStep() {
+    if (!slides[0]) return 0;
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    return slides[0].offsetWidth + gap;
+  }
+
+  function goTo(newIndex) {
+    if (newIndex < 0)      newIndex = total - 1;
+    if (newIndex >= total) newIndex = 0;
+    index = newIndex;
+    track.style.transform = 'translateX(-' + (index * getSlideStep()) + 'px)';
+
+    slides.forEach(function (s, i) {
+      s.classList.toggle('services__slide--active', i === index);
+      s.setAttribute('aria-hidden', i !== index ? 'true' : 'false');
+    });
+
+    if (counter) counter.textContent = (index + 1).toString();
+
+    document.querySelectorAll('.services__counter-current-mobile')
+      .forEach(function (el) { el.textContent = (index + 1).toString(); });
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', function () { goTo(index - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { goTo(index + 1); });
+
+  document.querySelectorAll('.services__mobile-controls .services__nav--prev')
+    .forEach(function (btn) { btn.addEventListener('click', function () { goTo(index - 1); }); });
+  document.querySelectorAll('.services__mobile-controls .services__nav--next')
+    .forEach(function (btn) { btn.addEventListener('click', function () { goTo(index + 1); }); });
+
+  var carousel = document.querySelector('.services__carousel');
+  if (carousel) {
+    carousel.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(index - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index + 1); }
+    });
+
+    var touchStartX = 0, touchStartY = 0;
+    carousel.addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+    carousel.addEventListener('touchend', function (e) {
+      var dx = e.changedTouches[0].screenX - touchStartX;
+      var dy = e.changedTouches[0].screenY - touchStartY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        goTo(dx < 0 ? index + 1 : index - 1);
+      }
+    }, { passive: true });
+  }
+
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () { goTo(index); }, 120);
+  });
+
+  goTo(0);
 })();
