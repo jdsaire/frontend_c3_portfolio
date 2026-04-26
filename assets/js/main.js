@@ -524,14 +524,14 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
 (function () {
   'use strict';
 
-  const track   = document.getElementById('servicesTrack');
+  const track        = document.getElementById('servicesTrack');
   if (!track) return;
-  const slides  = document.querySelectorAll('.services__slide');
-  const prevBtn = document.querySelector('.services__controls .services__nav--prev');
-  const nextBtn = document.querySelector('.services__controls .services__nav--next');
-  const counter = document.querySelector('.services__counter-current');
-  const total   = slides.length;
-  let   index   = 0;
+  const slides       = document.querySelectorAll('.services__slide');
+  const prevBtn      = document.querySelector('.services__controls .services__nav--prev');
+  const nextBtn      = document.querySelector('.services__controls .services__nav--next');
+  const servicesDots = document.querySelectorAll('.services__dot');
+  const total        = slides.length;
+  let   index        = 0;
 
   function getSlideStep() {
     if (!slides[0]) return 0;
@@ -550,10 +550,9 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
       s.setAttribute('aria-hidden', i !== index ? 'true' : 'false');
     });
 
-    if (counter) counter.textContent = (index + 1).toString();
-
-    document.querySelectorAll('.services__counter-current-mobile')
-      .forEach(function (el) { el.textContent = (index + 1).toString(); });
+    servicesDots.forEach(function (d, i) {
+      d.classList.toggle('services__dot--active', i === index);
+    });
   }
 
   if (prevBtn) prevBtn.addEventListener('click', function () { goTo(index - 1); });
@@ -563,6 +562,12 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     .forEach(function (btn) { btn.addEventListener('click', function () { goTo(index - 1); }); });
   document.querySelectorAll('.services__mobile-controls .services__nav--next')
     .forEach(function (btn) { btn.addEventListener('click', function () { goTo(index + 1); }); });
+
+  servicesDots.forEach(function (dot) {
+    dot.addEventListener('click', function () {
+      goTo(parseInt(dot.dataset.slideIndex, 10));
+    });
+  });
 
   var carousel = document.querySelector('.services__carousel');
   if (carousel) {

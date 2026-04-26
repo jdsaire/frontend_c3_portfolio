@@ -588,7 +588,6 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   }
   .work__track::-webkit-scrollbar { display: none; }
   .work-card { flex: 0 0 42vw; max-width: 380px; scroll-snap-align: start; }
-  .work__dots { display: flex; }
 }
 
 .work__dots {
@@ -751,21 +750,24 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   gap: 0.75rem;
 }
 
-/* Counter */
-.services__counter {
-  font-size: 0.875rem;
-  font-weight: var(--fw-bold);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.05em;
-  color: var(--color-text-muted);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  min-width: 3rem;
+/* Pagination dots — all breakpoints */
+.services__dots {
+  display: flex;
   justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
 }
-.services__counter-current { color: var(--color-brand-white); font-size: inherit; }
-.services__counter-separator { color: var(--color-text-dim); }
+.services__dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  background: rgba(255,255,255,0.22);
+  border: none;
+  cursor: pointer;
+  transition:
+    background var(--duration-ui) var(--ease-standard),
+    width      var(--duration-ui) var(--ease-standard);
+}
+.services__dot--active { background: var(--color-brand-purple); width: 1.25rem; }
 
 /* Arrow buttons */
 .services__nav {
@@ -831,7 +833,6 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
     gap: 0.5rem;
     flex-shrink: 0;
   }
-  .services__mobile-controls .services__counter { font-size: 0.85rem; min-width: 2.5rem; }
   .services__mobile-controls .services__nav { width: 2.75rem; height: 2.75rem; }
   .services__cta--desktop { display: none; }
   .services__controls     { display: none; }
