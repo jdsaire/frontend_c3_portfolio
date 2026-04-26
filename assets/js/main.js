@@ -203,6 +203,8 @@ function swapLang(lang) {
   });
 }
 
+document.addEventListener('DOMContentLoaded', function () { swapLang('EN'); });
+
 /* ============================================================
    NAV scroll hide/show
    ============================================================ */

@@ -360,24 +360,24 @@
   <section class="section" id="contact" aria-labelledby="contact-heading">
     <div class="section__inner">
 
-      <div class="section__eyebrow">
-        <span class="section__eyebrow-bar" aria-hidden="true"></span>
-        <p class="section__eyebrow-text" data-i18n="contact_eyebrow">Let's connect</p>
-      </div>
-
       <div class="contact__grid">
 
         <!-- LEFT: 41% — Editorial anchor -->
         <div class="contact__editorial">
 
+          <div class="section__eyebrow">
+            <span class="section__eyebrow-bar" aria-hidden="true"></span>
+            <p class="section__eyebrow-text" data-i18n="contact_eyebrow">Let's connect</p>
+          </div>
+
           <h2 class="section__headline" id="contact-heading" data-i18n="contact_headline">Open the conversation.</h2>
-          <p class="section__lede" data-i18n="contact_lede">Direct to Juan Diego — no intake queues between you and the work. If the fit is there, you'll know by the first exchange.</p>
+          <p class="section__lede" data-i18n="contact_lede">Direct to Juan Diego — no intake queues.</p>
 
           <div class="contact__availability" aria-label="Current capacity">
             <div class="contact__availability-dot" aria-hidden="true"></div>
             <p class="contact__availability-text">
-              <strong data-i18n="contact_avail_strong">Q3 2026 · one slot open.</strong><br>
-              <span data-i18n="contact_avail_body">Two strategic engagements per quarter by design. Priority to roles and partnerships based in Lima, Peru.</span>
+              <strong data-i18n="contact_avail_strong">Q3 2026 · limited slots.</strong><br>
+              <span data-i18n="contact_avail_body">Two executive engagements per quarter.</span>
             </p>
           </div>
 
@@ -412,10 +412,10 @@
                 <select class="contact__select is-placeholder" id="engagementType" name="engagementType"
                         required aria-required="true">
                   <option value="" disabled selected hidden data-i18n="contact_dropdown_placeholder">Select one</option>
-                  <option value="strategic-partnership"     data-i18n="contact_opt1">Strategic partnership — hiring, contract, or collaboration</option>
-                  <option value="education-opportunity"     data-i18n="contact_opt2">Education opportunity — university or corporate training</option>
-                  <option value="public-speaking-workshops" data-i18n="contact_opt3">Public speaking or workshops — events, panels, sessions</option>
-                  <option value="content-media-sponsorship" data-i18n="contact_opt4">Content, media, or sponsorship — interviews, publications, partnerships</option>
+                  <option value="strategic-partnership"     data-i18n="contact_opt1">Strategic partnership — hiring, project, or co-creation</option>
+                  <option value="education-opportunity"     data-i18n="contact_opt2">Education — university teaching or corporate training</option>
+                  <option value="public-speaking-workshops" data-i18n="contact_opt3">Keynote or workshop — conference, panel, or open session</option>
+                  <option value="content-media-sponsorship" data-i18n="contact_opt4">Media and content — interviews, podcasts, or publications</option>
                   <option value="other"                     data-i18n="contact_opt5">Other</option>
                 </select>
               </div>
@@ -441,7 +441,7 @@
             </div>
 
             <!-- WhatsApp (optional) -->
-            <div class="contact__form-row">
+            <div class="contact__form-row" style="display:none">
               <div class="contact__field" id="field-whatsapp">
                 <label class="contact__label" for="wa-number" data-i18n="contact_wa_label">WhatsApp (optional)</label>
                 <div class="contact__wa-wrapper">
@@ -501,7 +501,7 @@
         <div class="footer__content">
 
           <p class="footer__tagline">
-            <span data-i18n="footer_tagline_pre">Let's build </span><span class="purple" data-i18n="footer_tagline_purple">together.</span>
+            <span data-i18n="footer_tagline_pre">Let's build </span><span class="purple" data-i18n="footer_tagline_purple">together</span>
           </p>
 
         </div>
