@@ -164,7 +164,7 @@ const COPY = {
     contact_wa_placeholder:        '+51 999 000 000',
     contact_form_bridge:           'O complete formulario:',
     /* Footer */
-    footer_tagline_pre:    'Construyamos ',
+    footer_tagline_pre:    'Aceleremos ',
     footer_tagline_purple: 'juntos',
     footer_about:          'Sobre mí',
     footer_contact_link:   'Contacto',
