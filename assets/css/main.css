@@ -892,9 +892,18 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   .contact__grid { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 
+.contact__form-bridge { display: none; }
+
 /* CONTACT — MOBILE ≤767px */
 @media (max-width: 767px) {
   .contact__grid { grid-template-columns: 1fr; gap: 2rem; }
+  .contact__form-bridge {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: var(--fw-light);
+    color: var(--color-text-muted);
+    margin-top: 1.5rem;
+  }
   .contact__form-wrapper {
     padding: 1.25rem;
     background: rgba(255, 255, 255, 0.04);
@@ -922,7 +931,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 .footer__grid {
   display: grid;
   grid-template-columns: 55fr 45fr;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 .footer__content {
   display: flex;

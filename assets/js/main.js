@@ -77,6 +77,7 @@ const COPY = {
     contact_success_body:          'Responses go out within 24 hours. If there\'s a fit, we\'ll book a first conversation.',
     contact_wa_label:              'WhatsApp (optional)',
     contact_wa_placeholder:        '+51 999 000 000',
+    contact_form_bridge:           'Or fill out form:',
     /* Footer */
     footer_tagline_pre:    'Let\'s build ',
     footer_tagline_purple: 'together',
@@ -161,6 +162,7 @@ const COPY = {
     contact_success_body:          'Respondemos en 24 horas. Si hay fit, agendamos la primera conversación.',
     contact_wa_label:              'WhatsApp (opcional)',
     contact_wa_placeholder:        '+51 999 000 000',
+    contact_form_bridge:           'O complete formulario:',
     /* Footer */
     footer_tagline_pre:    'Construyamos ',
     footer_tagline_purple: 'juntos',
