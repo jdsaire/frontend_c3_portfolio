@@ -899,9 +899,11 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   .contact__grid { grid-template-columns: 1fr; gap: 2rem; }
   .contact__form-bridge {
     display: block;
-    font-size: 0.9rem;
-    font-weight: var(--fw-light);
-    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-brand-white);
     margin-top: 1.5rem;
   }
   .contact__form-wrapper {
@@ -931,7 +933,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 .footer__grid {
   display: grid;
   grid-template-columns: 55fr 45fr;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.1rem;
 }
 .footer__content {
   display: flex;
@@ -984,6 +986,6 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 
 /* FOOTER — MOBILE ≤767px */
 @media (max-width: 767px) {
-  .footer__grid { grid-template-columns: 1fr; }
+  .footer__grid { grid-template-columns: 1fr; margin-bottom: 0.5rem; }
   .footer__columns { grid-template-columns: 1fr; gap: 2rem; }
 }
