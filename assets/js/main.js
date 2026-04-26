@@ -409,6 +409,45 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
 })();
 
 /* ============================================================
+   ABOUT — Dot pagination (mobile + tablet)
+   ============================================================ */
+(function () {
+  var aboutTrack = document.querySelector('.about-cards-track');
+  var aboutDots  = document.querySelectorAll('.about__dot');
+  if (!aboutTrack || !aboutDots.length) return;
+
+  function updateAboutDots() {
+    var first = aboutTrack.firstElementChild;
+    if (!first) return;
+    var cardWidth = first.getBoundingClientRect().width;
+    var gap = parseFloat(getComputedStyle(aboutTrack).gap) || 12;
+    var idx = Math.round(aboutTrack.scrollLeft / (cardWidth + gap));
+    aboutDots.forEach(function (d, i) {
+      d.classList.toggle('about__dot--active', i === idx);
+    });
+  }
+
+  var ticking = false;
+  aboutTrack.addEventListener('scroll', function () {
+    if (!ticking) {
+      requestAnimationFrame(function () { updateAboutDots(); ticking = false; });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  aboutDots.forEach(function (dot) {
+    dot.addEventListener('click', function () {
+      var idx = parseInt(dot.dataset.cardIndex, 10);
+      var first = aboutTrack.firstElementChild;
+      if (!first) return;
+      var cardWidth = first.getBoundingClientRect().width;
+      var gap = parseFloat(getComputedStyle(aboutTrack).gap) || 12;
+      aboutTrack.scrollTo({ left: idx * (cardWidth + gap), behavior: 'smooth' });
+    });
+  });
+})();
+
+/* ============================================================
    CONTACT — Form validation + Formspree submit
    ============================================================ */
 (function () {
