@@ -856,7 +856,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
     gap: 1rem;
     margin-top: 1.25rem;
   }
-  .services__mobile-intro { display: block; margin-bottom: clamp(1.5rem, 2.5vw, 2.5rem); }
+  .services__mobile-intro { display: block; margin-top: 1.5rem; }
   .services__cta--desktop { display: none; }
   .services__controls     { display: none; }
 }
