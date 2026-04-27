@@ -533,6 +533,8 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
   const total        = slides.length;
   let   index        = 0;
 
+  function isMobile() { return window.innerWidth <= 767; }
+
   function getSlideStep() {
     if (!slides[0]) return 0;
     const gap = parseFloat(getComputedStyle(track).gap) || 0;
@@ -543,12 +545,25 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     if (newIndex < 0)      newIndex = total - 1;
     if (newIndex >= total) newIndex = 0;
     index = newIndex;
-    track.style.transform = 'translateX(-' + (index * getSlideStep()) + 'px)';
 
-    slides.forEach(function (s, i) {
-      s.classList.toggle('services__slide--active', i === index);
-      s.setAttribute('aria-hidden', i !== index ? 'true' : 'false');
-    });
+    if (!isMobile()) {
+      track.style.transform = 'translateX(-' + (index * getSlideStep()) + 'px)';
+      slides.forEach(function (s, i) {
+        s.classList.toggle('services__slide--active', i === index);
+        s.setAttribute('aria-hidden', i !== index ? 'true' : 'false');
+      });
+    } else {
+      track.style.transform = '';
+      slides.forEach(function (s, i) {
+        s.classList.toggle('services__slide--active', i === index);
+        s.removeAttribute('aria-hidden');
+      });
+      var targetSlide = slides[index];
+      if (targetSlide && carousel) {
+        var paddingLeft = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+        carousel.scrollTo({ left: targetSlide.offsetLeft - paddingLeft, behavior: 'smooth' });
+      }
+    }
 
     servicesDots.forEach(function (d, i) {
       d.classList.toggle('services__dot--active', i === index);
@@ -557,11 +572,6 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
 
   if (prevBtn) prevBtn.addEventListener('click', function () { goTo(index - 1); });
   if (nextBtn) nextBtn.addEventListener('click', function () { goTo(index + 1); });
-
-  document.querySelectorAll('.services__mobile-controls .services__nav--prev')
-    .forEach(function (btn) { btn.addEventListener('click', function () { goTo(index - 1); }); });
-  document.querySelectorAll('.services__mobile-controls .services__nav--next')
-    .forEach(function (btn) { btn.addEventListener('click', function () { goTo(index + 1); }); });
 
   servicesDots.forEach(function (dot) {
     dot.addEventListener('click', function () {
@@ -584,8 +594,20 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     carousel.addEventListener('touchend', function (e) {
       var dx = e.changedTouches[0].screenX - touchStartX;
       var dy = e.changedTouches[0].screenY - touchStartY;
-      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      if (!isMobile() && Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
         goTo(dx < 0 ? index + 1 : index - 1);
+      }
+    }, { passive: true });
+
+    carousel.addEventListener('scroll', function () {
+      if (!isMobile()) return;
+      var step = getSlideStep();
+      if (step === 0) return;
+      var nearest = Math.round(carousel.scrollLeft / step);
+      if (nearest !== index && nearest >= 0 && nearest < total) {
+        index = nearest;
+        slides.forEach(function (s, i) { s.classList.toggle('services__slide--active', i === index); });
+        servicesDots.forEach(function (d, i) { d.classList.toggle('services__dot--active', i === index); });
       }
     }, { passive: true });
   }

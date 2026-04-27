@@ -698,21 +698,21 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   margin-bottom: 1.75rem;
 }
 
-/* Read more CTA */
+/* Read more CTA — matches Hero .cta style */
 .services__cta {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
   cursor: pointer;
   width: fit-content;
+  padding: 0.125rem 0;
 }
 .services__cta-label {
   font-size: 1rem;
-  font-weight: var(--fw-medium);
+  font-weight: var(--fw-bold);
+  color: var(--color-brand-white);
   letter-spacing: 0.005em;
-  transition: font-weight var(--duration-ui) var(--ease-standard);
 }
-.services__cta:hover .services__cta-label { font-weight: var(--fw-bold); }
 .services__cta-icon {
   display: inline-flex;
   align-items: center;
@@ -723,7 +723,8 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   flex-shrink: 0;
   transition: background var(--duration-ui) var(--ease-standard);
 }
-.services__cta:hover .services__cta-icon { background: var(--color-purple-hover); }
+.services__cta:hover .services__cta-icon,
+.services__cta:focus-visible .services__cta-icon { background: var(--color-purple-hover); }
 .services__cta-icon svg {
   width: 0.9rem; height: 0.9rem;
   fill: none;
@@ -810,6 +811,34 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 /* SERVICES — MOBILE ≤767px */
 @media (max-width: 767px) {
   .section--services { padding: clamp(2.5rem, 8vw, 3.5rem) 0; }
+
+  /* Outer: allow carousel to bleed through gutter */
+  .section--services .services__carousel-outer { overflow: visible; }
+
+  /* Carousel becomes the scroll container — bleeds like About */
+  .section--services .services__carousel {
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-right: calc(-1 * var(--gutter));
+    margin-left: calc(-1 * var(--gutter));
+  }
+  .section--services .services__carousel::-webkit-scrollbar { display: none; }
+
+  /* Track: disable JS transform; add padding to align first card with gutter */
+  .section--services .services__slides {
+    transform: none !important;
+    transition: none;
+    padding: 0 var(--gutter);
+  }
+
+  /* Each card: 85vw shows peek of next card */
+  .section--services .services__slide {
+    flex: 0 0 85vw;
+    scroll-snap-align: start;
+  }
+
   .services__slide-inner {
     grid-template-columns: 1fr;
     gap: 1.25rem;
@@ -822,18 +851,10 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   .services__mobile-footer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 1rem;
     margin-top: 1.25rem;
   }
-  .services__mobile-footer .services__cta { flex-shrink: 0; }
-  .services__mobile-controls {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-shrink: 0;
-  }
-  .services__mobile-controls .services__nav { width: 2.75rem; height: 2.75rem; }
   .services__cta--desktop { display: none; }
   .services__controls     { display: none; }
 }
