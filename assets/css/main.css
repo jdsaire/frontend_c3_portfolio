@@ -824,7 +824,8 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    margin-right: 0;
+    padding: 0 var(--gutter);
+    margin: 0 calc(-1 * var(--gutter));
   }
   .section--services .services__carousel::-webkit-scrollbar { display: none; }
 
@@ -856,17 +857,23 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   .services__pillar-body  { font-size: 1rem; margin-bottom: 0; }
   .services__mobile-footer {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 1rem;
     margin-top: 1.25rem;
+  }
+  .services__mobile-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
   }
   .services__counter--mobile {
     font-size: 0.875rem;
     font-weight: var(--fw-bold);
     color: var(--color-brand-white);
     letter-spacing: 0.04em;
-    flex-shrink: 0;
+    min-width: 2.5rem;
+    text-align: center;
   }
   .services__mobile-intro { display: block; margin-top: 1.5rem; margin-bottom: clamp(1.5rem, 2.5vw, 2.5rem); }
   .services__cta--desktop { display: none; }

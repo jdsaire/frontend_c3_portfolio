@@ -535,7 +535,6 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
   const desktopCounter = document.querySelector('.services__counter');
   const total        = slides.length;
   let   index        = 0;
-  var   mobileClone  = null;
 
   function isMobile() { return window.innerWidth <= 767; }
 
@@ -543,21 +542,6 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     if (!slides[0]) return 0;
     const gap = parseFloat(getComputedStyle(track).gap) || 0;
     return slides[0].offsetWidth + gap;
-  }
-
-  function initMobileClone() {
-    if (mobileClone) return;
-    mobileClone = slides[0].cloneNode(true);
-    mobileClone.setAttribute('aria-hidden', 'true');
-    mobileClone.removeAttribute('data-slide-index');
-    track.appendChild(mobileClone);
-  }
-
-  function destroyMobileClone() {
-    if (mobileClone && mobileClone.parentNode) {
-      mobileClone.parentNode.removeChild(mobileClone);
-      mobileClone = null;
-    }
   }
 
   function goTo(newIndex) {
@@ -594,6 +578,13 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
   if (prevBtn) prevBtn.addEventListener('click', function () { goTo(index - 1); });
   if (nextBtn) nextBtn.addEventListener('click', function () { goTo(index + 1); });
 
+  track.addEventListener('click', function (e) {
+    var btn = e.target.closest('.services__nav--mobile');
+    if (!btn) return;
+    if (btn.classList.contains('services__nav--prev')) goTo(index - 1);
+    if (btn.classList.contains('services__nav--next')) goTo(index + 1);
+  });
+
   servicesDots.forEach(function (dot) {
     dot.addEventListener('click', function () {
       goTo(parseInt(dot.dataset.slideIndex, 10));
@@ -625,10 +616,6 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
       var step = getSlideStep();
       if (step === 0) return;
       var nearest = Math.round(carousel.scrollLeft / step);
-      if (nearest === total) {
-        carousel.scrollTo({ left: 0, behavior: 'instant' });
-        nearest = 0;
-      }
       if (nearest !== index && nearest >= 0 && nearest < total) {
         index = nearest;
         slides.forEach(function (s, i) { s.classList.toggle('services__slide--active', i === index); });
@@ -641,12 +628,8 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
   var resizeTimer;
   window.addEventListener('resize', function () {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () {
-      if (isMobile()) { initMobileClone(); } else { destroyMobileClone(); }
-      goTo(index);
-    }, 120);
+    resizeTimer = setTimeout(function () { goTo(index); }, 120);
   });
 
-  if (isMobile()) initMobileClone();
   goTo(0);
 })();
