@@ -648,7 +648,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 
 /* Image slot — 16:9 all breakpoints · dotted white border */
 .services__image-slot {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3 / 2;
   width: 100%;
   overflow: hidden;
   background: #0A0A0A;
@@ -823,14 +823,14 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
     scrollbar-width: none;
     margin-right: calc(-1 * var(--gutter));
     margin-left: calc(-1 * var(--gutter));
+    padding: 0 var(--gutter);
   }
   .section--services .services__carousel::-webkit-scrollbar { display: none; }
 
-  /* Track: disable JS transform; add padding to align first card with gutter */
+  /* Track: disable JS transform only */
   .section--services .services__slides {
     transform: none !important;
     transition: none;
-    padding: 0 var(--gutter);
   }
 
   /* Each card: 85vw shows peek of next card */
