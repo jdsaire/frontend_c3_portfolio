@@ -42,7 +42,6 @@ const COPY = {
     /* Services */
     services_eyebrow:  'HOW WE ENGAGE',
     services_h2:       'What\'s your ambition?',
-    services_lede:     'Scroll to see options',
     services_cta:      'Start conversation',
     services_s1_label: 'STRATEGIC PARTNERSHIP',
     services_s1_title: 'The architecture mind your team is missing',
@@ -144,7 +143,6 @@ const COPY = {
     /* Services */
     services_eyebrow:  'CÓMO COLABORAMOS',
     services_h2:       '¿Cuál es tu ambición?',
-    services_lede:     'Desliza para ver opciones',
     services_cta:      'Iniciar conversación',
     services_s1_label: 'ALIANZA ESTRATÉGICA',
     services_s1_title: 'La mente digital que tu equipo requiere hoy',
