@@ -858,7 +858,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   .services__mobile-footer {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
     gap: 1rem;
     margin-top: 1.25rem;
   }
