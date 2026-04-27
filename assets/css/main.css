@@ -812,18 +812,14 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 @media (max-width: 767px) {
   .section--services { padding: clamp(2.5rem, 8vw, 3.5rem) 0; }
 
-  /* Outer: allow carousel to bleed through gutter */
-  .section--services .services__carousel-outer { overflow: visible; }
-
-  /* Carousel becomes the scroll container — bleeds like About */
+  /* Scroll within natural section gutter — no bleed */
   .section--services .services__carousel {
     overflow-x: scroll;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    margin-right: calc(-1 * var(--gutter));
-    margin-left: calc(-1 * var(--gutter));
-    padding: 0 var(--gutter);
+    margin-right: 0;
   }
   .section--services .services__carousel::-webkit-scrollbar { display: none; }
 
@@ -833,10 +829,15 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
     transition: none;
   }
 
-  /* Each card: 85vw shows peek of next card */
+  /* Cards: leave ~2.5rem for peek of next card */
   .section--services .services__slide {
-    flex: 0 0 85vw;
+    flex: 0 0 calc(100% - 2.5rem);
     scroll-snap-align: start;
+  }
+
+  /* Image: 4:3 on mobile */
+  .section--services .services__image-slot {
+    aspect-ratio: 4 / 3;
   }
 
   .services__slide-inner {
