@@ -844,6 +844,11 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
     scroll-snap-align: start;
   }
 
+  /* Card 4: trailing margin closes the 2.5rem scroll-extent gap so it can snap to gutter-left */
+  .section--services .services__slide:last-child {
+    margin-right: 2.5rem;
+  }
+
   /* Image: 4:3 on mobile */
   .section--services .services__image-slot {
     aspect-ratio: 4 / 3;
@@ -864,6 +869,9 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
     align-items: flex-end;
     gap: 1rem;
     margin-top: 1.25rem;
+  }
+  .services__mobile-footer > .services__cta {
+    align-self: flex-start;   /* left-anchor CTA; nav stays flex-end */
   }
   .services__mobile-nav {
     display: flex;
