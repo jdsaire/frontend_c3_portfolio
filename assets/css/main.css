@@ -817,6 +817,9 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 @media (max-width: 767px) {
   .section--services { padding: clamp(2.5rem, 8vw, 3.5rem) 0; }
 
+  /* Allow bleed-restore technique to escape outer wrapper */
+  .section--services .services__carousel-outer { overflow: visible; }
+
   /* Scroll within natural section gutter — no bleed */
   .section--services .services__carousel {
     overflow-x: scroll;
