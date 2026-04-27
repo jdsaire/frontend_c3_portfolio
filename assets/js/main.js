@@ -44,16 +44,16 @@ const COPY = {
     services_h2:       'What\'s your ambition?',
     services_cta:      'Start conversation',
     services_s1_label: 'STRATEGIC PARTNERSHIP',
-    services_s1_title: 'The architecture mind your team is missing',
+    services_s1_title: 'The holistic mind your team needs',
     services_s1_body:  'Some products need more than advice — they need someone in the room making calls. JDigital operates on a maximum of two strategic engagements per quarter, which means the ones that make it get undivided architecture, roadmap, and delivery focus.',
     services_s2_label: 'EDUCATION OPPORTUNITY',
     services_s2_title: 'Six years building programs that stuck',
     services_s2_body:  'Organizations invest heavily in training, but rarely in learning experiences designed to actually change how people work. We design and deliver programs across the full modern tech spectrum, from university-level curricula to corporate upskilling programs',
     services_s3_label: 'PUBLIC SPEAKING',
-    services_s3_title: 'Talks that move the room and the sprint board',
+    services_s3_title: 'Talks that move the room and the sprint',
     services_s3_body:  'Most conference slots end the same way: applause, a photo, and no next step. We bring practitioner-grade perspectives to industry keynotes, panels, and innovation forums — real stories from live digital product builds.',
     services_s4_label: 'MEDIA & CONTENT',
-    services_s4_title: 'Practical disruption for modern decision-makers',
+    services_s4_title: 'Disruption pills for ambitious leaders',
     services_s4_body:  'Bridging the gap between technical and executive audiences, we co-create content using a decade of product design and filmmaking expertise. Partner with us to share the insights that your audience deserves — in podcast or TikTok.',
     /* About */
     about_eyebrow:         'Guiding principles',
@@ -145,16 +145,16 @@ const COPY = {
     services_h2:       '¿Cuál es tu ambición?',
     services_cta:      'Iniciar conversación',
     services_s1_label: 'ALIANZA ESTRATÉGICA',
-    services_s1_title: 'La mente digital que tu equipo requiere hoy',
+    services_s1_title: 'Mentalidad holística para tu equipo',
     services_s1_body:  'Contar con acceso al stack técnico más moderno es mandatorio — nosotros añadimos liderazgo estratégico y conexión auténtica. Trabajamos con un máximo de compromisos por trimestre: los partners elegidos reciben nuestro servicio premium de inicio a fin.',
     services_s2_label: 'EDUCACIÓN Y CAPACITACIÓN',
-    services_s2_title: 'Seis años diseñando cursos que perduran',
+    services_s2_title: 'Seis años creando cursos memorables',
     services_s2_body:  'Las organizaciones siguen invirtiendo en capacitaciones genéricas, pero pocas en experiencias diseñadas para cambiar cómo trabaja su personal clave. Diseñamos y facilitamos programas vanguardistas de Tech upskilling para universidades y corporaciones',
     services_s3_label: 'CONFERENCIAS Y TALLERES',
-    services_s3_title: 'Eventos que mueven el auditorio y el sprint.',
+    services_s3_title: 'Moviendo el auditorio y el sprint',
     services_s3_body:  'La mayoría de conferencias terminan igual: aplausos, fotos y ningún compromiso de acción. Transferimos los aprendizajes centrales de nuestros proyectos de desarrollo en keynotes, paneles y foros de innovación',
     services_s4_label: 'MEDIOS Y CONTENIDO',
-    services_s4_title: 'Disrupción práctica para inspirar tus decisiones',
+    services_s4_title: 'Cápsulas de disrupción para líderes',
     services_s4_body:  'Dominamos el lenguaje ejecutivo y técnico, coreando en base a nuestra década en diseño digital y producción audiovisual. Estaremos encantados compartir nuestro enfoque con su audiencia — desde podcasts hasta Tiktok.',
     /* About */
     about_eyebrow:         'PRINCIPIOS RECTORES',
@@ -532,8 +532,10 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
   const prevBtn      = document.querySelector('.services__controls .services__nav--prev');
   const nextBtn      = document.querySelector('.services__controls .services__nav--next');
   const servicesDots = document.querySelectorAll('.services__dot');
+  const desktopCounter = document.querySelector('.services__counter');
   const total        = slides.length;
   let   index        = 0;
+  var   mobileClone  = null;
 
   function isMobile() { return window.innerWidth <= 767; }
 
@@ -541,6 +543,21 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     if (!slides[0]) return 0;
     const gap = parseFloat(getComputedStyle(track).gap) || 0;
     return slides[0].offsetWidth + gap;
+  }
+
+  function initMobileClone() {
+    if (mobileClone) return;
+    mobileClone = slides[0].cloneNode(true);
+    mobileClone.setAttribute('aria-hidden', 'true');
+    mobileClone.removeAttribute('data-slide-index');
+    track.appendChild(mobileClone);
+  }
+
+  function destroyMobileClone() {
+    if (mobileClone && mobileClone.parentNode) {
+      mobileClone.parentNode.removeChild(mobileClone);
+      mobileClone = null;
+    }
   }
 
   function goTo(newIndex) {
@@ -570,6 +587,8 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     servicesDots.forEach(function (d, i) {
       d.classList.toggle('services__dot--active', i === index);
     });
+
+    if (desktopCounter) desktopCounter.textContent = (index + 1) + ' / ' + total;
   }
 
   if (prevBtn) prevBtn.addEventListener('click', function () { goTo(index - 1); });
@@ -606,10 +625,15 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
       var step = getSlideStep();
       if (step === 0) return;
       var nearest = Math.round(carousel.scrollLeft / step);
+      if (nearest === total) {
+        carousel.scrollTo({ left: 0, behavior: 'instant' });
+        nearest = 0;
+      }
       if (nearest !== index && nearest >= 0 && nearest < total) {
         index = nearest;
         slides.forEach(function (s, i) { s.classList.toggle('services__slide--active', i === index); });
         servicesDots.forEach(function (d, i) { d.classList.toggle('services__dot--active', i === index); });
+        if (desktopCounter) desktopCounter.textContent = (index + 1) + ' / ' + total;
       }
     }, { passive: true });
   }
@@ -617,8 +641,12 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
   var resizeTimer;
   window.addEventListener('resize', function () {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () { goTo(index); }, 120);
+    resizeTimer = setTimeout(function () {
+      if (isMobile()) { initMobileClone(); } else { destroyMobileClone(); }
+      goTo(index);
+    }, 120);
   });
 
+  if (isMobile()) initMobileClone();
   goTo(0);
 })();
