@@ -52,7 +52,7 @@ const COPY = {
     services_s3_title: 'Talks that move the room and the sprint board',
     services_s3_body:  'Most conference slots end the same way: applause, a photo, and no next step. We bring practitioner-grade perspectives to industry keynotes, panels, and innovation forums — real stories from live digital product builds.',
     services_s4_label: 'MEDIA & CONTENT',
-    services_s4_title: 'Practical disruption pills for modern decision-makers',
+    services_s4_title: 'Practical disruption for modern decision-makers',
     services_s4_body:  'Bridging the gap between technical and executive audiences, we co-create content using a decade of product design and filmmaking expertise. Partner with us to share the insights that your audience deserves — in podcast or TikTok.',
     /* About */
     about_eyebrow:         'Guiding principles',
