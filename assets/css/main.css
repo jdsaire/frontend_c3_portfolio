@@ -817,18 +817,13 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 @media (max-width: 767px) {
   .section--services { padding: clamp(2.5rem, 8vw, 3.5rem) 0; }
 
-  /* Allow bleed-restore technique to escape outer wrapper */
-  .section--services .services__carousel-outer { overflow: visible; }
-
-  /* Scroll within natural section gutter — no bleed */
+  /* Carousel contained within section__inner — no bleed */
   .section--services .services__carousel {
     overflow-x: scroll;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 0 var(--gutter);
-    margin: 0 calc(-1 * var(--gutter));
   }
   .section--services .services__carousel::-webkit-scrollbar { display: none; }
 
@@ -838,15 +833,15 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
     transition: none;
   }
 
-  /* Cards: leave ~2.5rem for peek of next card */
+  /* One card at a time — full carousel width */
   .section--services .services__slide {
-    flex: 0 0 calc(100% - 2.5rem);
+    flex: 0 0 100%;
     scroll-snap-align: start;
   }
 
-  /* Card 4: trailing margin closes the 2.5rem scroll-extent gap so it can snap to gutter-left */
+  /* Card 4: right gutter mirrors left; ensures scroll extent allows snap to gutter-left */
   .section--services .services__slide:last-child {
-    margin-right: 2.5rem;
+    margin-right: var(--gutter);
   }
 
   /* Image: 4:3 on mobile */
