@@ -856,6 +856,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
     gap: 1rem;
     margin-top: 1.25rem;
   }
+  .services__mobile-intro { display: block; margin-top: 1.5rem; }
   .services__cta--desktop { display: none; }
   .services__controls     { display: none; }
 }
@@ -871,6 +872,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 
 /* ============================================================ SHARED SECTION EXTRAS ============================================================ */
 .section--alt { background: #050505; }
+.services__mobile-intro { display: none; }
 .section__headline {
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: var(--fw-bold);
