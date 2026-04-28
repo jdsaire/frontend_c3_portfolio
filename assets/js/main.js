@@ -166,7 +166,7 @@ const COPY = {
     about_card3_body:      'Reinventarse no es cambiar de marca ni anunciar un nuevo rumbo. Es invertir tiempo real en reconstruir lo que uno sabe hacer — y ganarse el derecho de traer capacidades genuinamente nuevas al trabajo.',
     /* Contact */
     contact_eyebrow:               'CONTACTO',
-    contact_headline:              'La conversación empieza aquí.',
+    contact_headline:              'Inicia la conversación.',
     contact_lede:                  'Hable con Juan Diego sin fricciones.',
     contact_avail_strong:          'Q3 2026 · cupos limitados.',
     contact_avail_body:            'Dos proyectos ejecutivos por trimestre.',
