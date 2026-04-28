@@ -1275,8 +1275,8 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 /* CONTACT — MOBILE ≤767px */
 @media (max-width: 767px) {
   .contact__grid { grid-template-columns: 1fr; gap: 2rem; }
-  .contact__form-bridge { display: none; }
-  .contact__form-wrapper { display: none; }
+  .contact__form-bridge { display: block; }
+  .contact__form-wrapper { display: block; }
   .contact__form-row { grid-template-columns: 1fr; gap: 1rem; }
   .contact__submit-row { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
   .contact__disclaimer { max-width: 100%; }
