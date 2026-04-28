@@ -817,6 +817,9 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 @media (max-width: 767px) {
   .section--services { padding: clamp(2.5rem, 8vw, 3.5rem) 0; }
 
+  /* carousel-outer: visible so touch-scroll events reach inner carousel on all mobile browsers */
+  .section--services .services__carousel-outer { overflow: visible; }
+
   /* Carousel contained within section__inner — no bleed */
   .section--services .services__carousel {
     overflow-x: scroll;
@@ -827,21 +830,17 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   }
   .section--services .services__carousel::-webkit-scrollbar { display: none; }
 
-  /* Track: disable JS transform only */
+  /* Track: disable JS transform; gap: 0 eliminates inter-card gap artifact during swipe */
   .section--services .services__slides {
     transform: none !important;
     transition: none;
+    gap: 0;
   }
 
   /* One card at a time — full carousel width */
   .section--services .services__slide {
     flex: 0 0 100%;
     scroll-snap-align: start;
-  }
-
-  /* Card 4: right gutter mirrors left; ensures scroll extent allows snap to gutter-left */
-  .section--services .services__slide:last-child {
-    margin-right: var(--gutter);
   }
 
   /* Image: 4:3 on mobile */
