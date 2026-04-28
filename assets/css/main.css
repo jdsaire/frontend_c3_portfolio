@@ -369,6 +369,13 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   background-color: #1E1E1E;
   z-index: 0;
 }
+.work-card__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: filter var(--duration-ui) var(--ease-standard);
+}
 
 .work-card__default {
   position: absolute;
@@ -546,6 +553,8 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   .work-card:focus-within .work-card__timeline { opacity: 1; transform: translateX(0); }
   .work-card:hover .work-card__cta,
   .work-card:focus-within .work-card__cta { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .work-card:hover .work-card__bg-img,
+  .work-card:focus-within .work-card__bg-img { filter: blur(6px); }
 }
 
 .work-card.is-active .work-card__default { opacity: 0; pointer-events: none; }
@@ -554,6 +563,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 .work-card.is-active .work-card__timeline { opacity: 1; transform: translateX(0); }
 .work-card.is-active .work-card__cta { opacity: 1; transform: translateY(0); pointer-events: auto; }
 .work-card.is-active .work-card__close { opacity: 1; transform: translateX(0); pointer-events: auto; }
+.work-card.is-active .work-card__bg-img { filter: blur(6px); }
 
 @media (max-width: 767px) {
   .work__track {
@@ -646,24 +656,18 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 .services__media  { order: 1; }
 .services__content { order: 2; }
 
-/* Image slot — 16:9 all breakpoints · dotted white border */
+/* Image slot */
 .services__image-slot {
   aspect-ratio: 3 / 2;
   width: 100%;
   overflow: hidden;
   background: #0A0A0A;
-  border: 1px dotted rgba(255,255,255,0.75);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-.services__image-placeholder {
-  font-size: 0.75rem;
-  font-weight: var(--fw-regular);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-text-dim);
-  flex-shrink: 0;
+.services__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* Pillar label — purple kicker */
