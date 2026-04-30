@@ -58,7 +58,8 @@ const COPY = {
     /* Capabilities */
     capabilities_eyebrow:  'Core capabilities',
     capabilities_headline: 'One partner. Every role.',
-    capabilities_lede:     'Explore the certified roles this practice brings to every engagement.',
+    capabilities_lede:             'Explore the certified roles this practice brings to every engagement.',
+    capabilities_certified_label:  'Certified by:',
     /* About */
     about_eyebrow:         'Guiding principles',
     about_card1_principle: 'Adoption is the work.',
@@ -163,7 +164,8 @@ const COPY = {
     /* Capabilities */
     capabilities_eyebrow:  'Core capabilities',
     capabilities_headline: 'One partner. Every role.',
-    capabilities_lede:     'Explore the certified roles this practice brings to every engagement.',
+    capabilities_lede:             'Explore the certified roles this practice brings to every engagement.',
+    capabilities_certified_label:  'Respaldado por:',
     /* About */
     about_eyebrow:         'PRINCIPIOS RECTORES',
     about_card1_principle: 'Nadie adopta lo que no entiende.',
@@ -709,8 +711,8 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
   let openNode    = null;
 
   function getCanvasHeight() {
-    if (W <= 480) return 520;
-    if (W <= 767) return 540;
+    if (W <= 480) return 480;
+    if (W <= 767) return 500;
     return 600;
   }
 
@@ -728,8 +730,8 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     cx = W / 2;
     cy = H / 2;
 
-    const branchR = R * 0.26;
-    const childR  = R * 0.22;
+    const branchR = R * 0.21;   // was 0.26 — reduced to prevent node clipping at all breakpoints
+    const childR  = R * 0.16;   // was 0.22
     const fanSpan = 42;
 
     nodes = [];
@@ -925,13 +927,13 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
 
     BRANCHES.forEach(b => {
       const hasActive = nodes.some(n => n.branchId === b.id && (openNode === n || hoveredNode === n));
-      drawConnector(cx, cy, b._bx, b._by, b.color, hasActive ? 0.55 : 0.20, hasActive ? 1.8 : 1.0);
+      drawConnector(cx, cy, b._bx, b._by, b.color, hasActive ? 0.80 : 0.50, hasActive ? 2.8 : 1.8);
     });
 
     nodes.forEach(nd => {
       const floatY = Math.sin(t * nd.floatSpeed + nd.phase) * nd.floatAmp;
       const isAct  = hoveredNode === nd || openNode === nd;
-      drawConnector(nd.bx, nd.by, nd.x, nd.y + floatY, nd.branchColor, isAct ? 0.65 : 0.22, isAct ? 1.8 : 0.9);
+      drawConnector(nd.bx, nd.by, nd.x, nd.y + floatY, nd.branchColor, isAct ? 0.85 : 0.50, isAct ? 2.8 : 1.6);
     });
 
     BRANCHES.forEach(b => drawBranchLabel(b));
@@ -998,6 +1000,8 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     openNode = null;
   }
   capBackdrop.addEventListener('click', closeSheet);
+  document.getElementById('capInfoCardClose').addEventListener('click', closeInfoCard);
+  document.getElementById('capBottomSheetClose').addEventListener('click', closeSheet);
 
   // ── Interaction ──
   function getPos(e) {

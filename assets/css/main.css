@@ -1365,6 +1365,9 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 
 .cap-text-block { display: block; }
 
+/* Separator — mobile-only label; hidden on desktop */
+.capabilities__separator { display: none; }
+
 /* 2×2 badge grid */
 .capabilities__img-grid {
   display: grid;
@@ -1372,6 +1375,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   grid-template-rows: 1fr 1fr;
   gap: 0.75rem;
   flex-grow: 1;
+  margin-top: 1rem; /* match lede→headline rhythm */
 }
 
 .capabilities__img-slot {
@@ -1449,6 +1453,17 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   color: var(--color-text-muted);
 }
 
+/* Info card close button */
+.cap-info-card__close {
+  position: absolute;
+  top: 10px; right: 12px;
+  background: transparent; border: none; cursor: pointer;
+  color: rgba(255,255,255,0.50); font-size: 1rem; line-height: 1;
+  padding: 2px 4px;
+  transition: color var(--duration-ui) var(--ease-standard);
+}
+.cap-info-card__close:hover { color: var(--color-brand-white); }
+
 /* Bottom sheet (mobile) */
 .cap-bottom-sheet {
   display: none;
@@ -1462,11 +1477,26 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   transition: transform 0.32s var(--ease-standard);
 }
 .cap-bottom-sheet.visible { transform: translateY(0); }
+.cap-bottom-sheet__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 20px;
+}
 .cap-bottom-sheet__handle {
   width: 36px; height: 3px;
   background: rgba(255,255,255,0.20);
-  margin: 0 auto 20px;
+  margin: 0;
 }
+.cap-bottom-sheet__close {
+  position: absolute; right: 0; top: -6px;
+  background: transparent; border: none; cursor: pointer;
+  color: rgba(255,255,255,0.50); font-size: 1.25rem; line-height: 1;
+  padding: 4px 8px;
+  transition: color var(--duration-ui) var(--ease-standard);
+}
+.cap-bottom-sheet__close:hover { color: var(--color-brand-white); }
 .cap-bottom-sheet__title {
   font-family: var(--font-primary);
   font-size: 15px;
@@ -1514,13 +1544,27 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 
   .capabilities__right {
     order: 2;
-    min-height: 100svh;
-    margin-bottom: clamp(2rem, 5vw, 3rem);
+    height: auto;     /* removed min-height: 100svh — canvas sizes naturally */
+    margin-bottom: 0;
+  }
+
+  /* Separator — "Certified by:" between map and badge row */
+  .capabilities__separator {
+    order: 3;
+    display: block;
+    font-size: clamp(1rem, 1.3vw, 1.125rem);
+    font-weight: var(--fw-light);
+    line-height: 1.65;
+    color: var(--color-text-muted);
+    padding: clamp(1.5rem, 3vw, 2rem) 0 clamp(1rem, 2vw, 1.5rem);
   }
 
   .capabilities__img-grid {
-    order: 3;
+    order: 4;
     flex-grow: 0;
+    margin-top: 0; /* separator handles spacing */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
   }
 
   .cap-bottom-sheet { display: block; }

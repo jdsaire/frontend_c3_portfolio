@@ -589,6 +589,9 @@
           </div>
         </div>
 
+        <!-- Separator — visible on mobile only (between mental map and badge row) -->
+        <p class="capabilities__separator" data-i18n="capabilities_certified_label">Certified by:</p>
+
       </div>
 
       <!-- RIGHT COLUMN: Capability mental map canvas -->
@@ -596,6 +599,7 @@
         <canvas class="cap-map__canvas" id="capMapCanvas"></canvas>
         <div class="cap-info-card" id="capInfoCard">
           <div class="cap-info-card__accent-bar"></div>
+          <button class="cap-info-card__close" id="capInfoCardClose" type="button" aria-label="Close node info">&#215;</button>
           <div class="cap-info-card__body">
             <div class="cap-info-card__title" id="capInfoTitle"></div>
             <div class="cap-info-card__desc"  id="capInfoDesc"></div>
@@ -609,7 +613,10 @@
   <!-- Mobile bottom sheet + backdrop (capabilities map) -->
   <div class="cap-backdrop" id="capBackdrop"></div>
   <div class="cap-bottom-sheet" id="capBottomSheet">
-    <div class="cap-bottom-sheet__handle"></div>
+    <div class="cap-bottom-sheet__header">
+      <div class="cap-bottom-sheet__handle"></div>
+      <button class="cap-bottom-sheet__close" id="capBottomSheetClose" type="button" aria-label="Close">&#215;</button>
+    </div>
     <div class="cap-bottom-sheet__title" id="capSheetTitle"></div>
     <div class="cap-bottom-sheet__desc"  id="capSheetDesc"></div>
   </div>
