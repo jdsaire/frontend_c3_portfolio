@@ -1064,6 +1064,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 /* ABOUT — MOBILE ≤767px: carousel with bleed peek */
 @media (max-width: 767px) {
   .about-cards-track {
+    display: flex;
     flex-direction: row;
     align-items: stretch;
     overflow-x: scroll;
