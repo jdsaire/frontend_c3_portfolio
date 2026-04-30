@@ -768,7 +768,7 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
 
     const branchR = R * 0.21;   // was 0.26 — reduced to prevent node clipping at all breakpoints
     const childR  = R * 0.16;   // was 0.22
-    const fanSpan = 42;
+    const fanSpan = 80;   // was 42 — widened to prevent intra-branch node overlap at all breakpoints
 
     nodes = [];
 
