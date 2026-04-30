@@ -56,8 +56,8 @@ const COPY = {
     services_s4_title: 'Disruption pills for ambitious leaders',
     services_s4_body:  'Bridging the gap between technical and executive audiences, we co-create content using a decade of product design and filmmaking expertise. Partner with us to share the insights that your audience deserves — in podcast or TikTok.',
     /* Capabilities */
-    capabilities_eyebrow:  'Core capabilities',
-    capabilities_headline: 'One partner. Every role.',
+    capabilities_eyebrow:  'CORE CAPABILITIES',
+    capabilities_headline: 'Nine roles. One partner.',
     capabilities_lede:             'Explore the roles we bring to every project.',
     capabilities_certified_label:  'Certified by:',
     capabilities_node_pd_label:    'Product Designer',
@@ -69,7 +69,7 @@ const COPY = {
     capabilities_node_cx_label:    'CX Lead',
     capabilities_node_cx_desc:     'Customer journey maps are decorative without an owner for each friction point. We map end-to-end experiences and assign accountability — so improvements have a name attached, not a committee.',
     capabilities_node_tt_label:    'Tech Trainer',
-    capabilities_node_tt_desc:     'Tool adoption stalls the moment the rollout team leaves. We design and facilitate upskilling programs that move internal teams from passive recipients to active owners across one sprint cycle.',
+    capabilities_node_tt_desc:     'Tool adoption stalls the moment the rollout team leaves. We design and facilitate upskilling programs that move internal teams from passive recipients to active owners of new processes.',
     capabilities_node_gh_label:    'Growth Hacker',
     capabilities_node_gh_desc:     'Acquisition only matters if the product retains. We identify high-leverage conversion levers through rapid experimentation — driving innovation by measuring what users do, not what they report.',
     capabilities_node_pm_label:    'Project Manager',
@@ -180,22 +180,22 @@ const COPY = {
     services_s4_title: 'Cápsulas de disrupción para líderes',
     services_s4_body:  'Dominamos el lenguaje ejecutivo y técnico, coreando en base a nuestra década en diseño digital y producción audiovisual. Estaremos encantados compartir nuestro enfoque con su audiencia — desde podcasts hasta Tiktok.',
     /* Capabilities */
-    capabilities_eyebrow:          'Competencias clave',
+    capabilities_eyebrow:          'NUESTRAS COMPETENCIAS',
     capabilities_headline:         'Nueve perfiles. Una conversación.',
-    capabilities_lede:             'Explora los roles que llevamos a cada proyecto.',
+    capabilities_lede:             'Explore los roles que llevamos a cada proyecto.',
     capabilities_certified_label:  'Respaldado por:',
-    capabilities_node_pd_label:    'Diseñador de Producto',
+    capabilities_node_pd_label:    'Product Designer',
     capabilities_node_pd_desc:     'Un diseño que nadie prueba es solo una hipótesis cara. Construimos cada interfaz sobre insights de conducta — y los validamos antes de escribir la primera línea de código.',
     capabilities_node_fd_label:    'Desarrollador Front-end',
     capabilities_node_fd_desc:     'El diseño muere cuando nadie puede construirlo. Cerramos esa brecha — escribiendo código HTML/CSS/JS y C# acelerado por IA, superando pruebas con usuarios reales.',
     capabilities_node_ux_label:    'Ingeniero UX/UI',
     capabilities_node_ux_desc:     'La brecha entre Figma y producción es donde los productos digitales pierden su esencia. La superamos — dominando los sistemas de diseño y el código que lo implementa, píxel a píxel.',
-    capabilities_node_cx_label:    'CX Lead',
+    capabilities_node_cx_label:    'Líder CX',
     capabilities_node_cx_desc:     'El problema rara vez está donde el cliente se queja. Identificamos las fricciones reales a lo largo del journey completo — y ejecutamos las mejoras con precisión quirúrgica.',
     capabilities_node_tt_label:    'Instructor Tech',
     capabilities_node_tt_desc:     'La adopción de herramientas se detiene cuando la implementación termina. Diseñamos y facilitamos programas de entrenamiento que mueven a los equipos internos a liderar sus nuevos procesos.',
     capabilities_node_gh_label:    'Growth Hacker',
-    capabilities_node_gh_desc:     'La adquisición importa si el producto retiene consumidores. Identificamos palancas de conversión de alto impacto mediante experimentación rápida — midiendo lo que los usuarios hacen, no lo que reportan.',
+    capabilities_node_gh_desc:     'La adquisición de clientes importa si el producto los retiene. Identificamos palancas de conversión de alto impacto mediante experimentación rápida — midiendo lo que los usuarios hacen, no lo que reportan.',
     capabilities_node_pm_label:    'Project Manager',
     capabilities_node_pm_desc:     'Los programas fallan en la coordinación entre paquetes de trabajo. Gobernamos portafolios de proyecto con visión sistémica: cada brecha tiene dueño antes de convertirse en retraso.',
     capabilities_node_sm_label:    'Scrum Master',
@@ -714,18 +714,18 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
       id: 'build', label: 'BUILD', angle: 90,
       color: '#A100FF', glow: 'rgba(161,0,255,0.45)',
       nodes: [
-        { id: 'pd',  label: 'Product\nDesigner',    desc: 'Every interface decision is a bet on user behavior. We design with behavioral assumptions baked into every interaction — tested against real users, not design committee preference.' },
-        { id: 'fd',  label: 'Front-end\nDeveloper', desc: 'Design dies in handoff when no one can build it. We close that gap — writing production-grade Vanilla HTML/CSS/JS and C#, accelerated by AI workflows that ship, perform, and survive the first real user.' },
-        { id: 'ux',  label: 'UX/UI\nEngineer',      desc: 'The handoff gap between Figma and production is where digital products lose their soul. We close it — owning both the design system and the code that implements it, frame by frame.' },
+        { id: 'pd',  label: 'Product\nDesigner',    labelES: 'Product\nDesigner',        desc: 'Every interface decision is a bet on user behavior. We design with behavioral assumptions baked into every interaction — tested against real users, not design committee preference.' },
+        { id: 'fd',  label: 'Front-end\nDeveloper', labelES: 'Desarrollador\nFront-end', desc: 'Design dies in handoff when no one can build it. We close that gap — writing production-grade Vanilla HTML/CSS/JS and C#, accelerated by AI workflows that ship, perform, and survive the first real user.' },
+        { id: 'ux',  label: 'UX/UI\nEngineer',      labelES: 'Ingeniero\nUX/UI',          desc: 'The handoff gap between Figma and production is where digital products lose their soul. We close it — owning both the design system and the code that implements it, frame by frame.' },
       ]
     },
     {
       id: 'scale', label: 'SCALE', angle: 210,
       color: '#C2A3FF', glow: 'rgba(194,163,255,0.45)',
       nodes: [
-        { id: 'cx',  label: 'CX\nLead',          desc: 'Customer journey maps are decorative without an owner for each friction point. We map end-to-end experiences and assign accountability — so improvements have a name attached, not a committee.' },
-        { id: 'tt',  label: 'Tech\nTrainer',      desc: 'Tool adoption stalls the moment the rollout team leaves. We design and facilitate upskilling programs that move internal teams from passive recipients to active owners across one sprint cycle.' },
-        { id: 'gh',  label: 'Growth\nHacker',     desc: 'Acquisition only matters if the product retains. We identify high-leverage conversion levers through rapid experimentation — driving innovation by measuring what users do, not what they report.' },
+        { id: 'cx',  label: 'CX\nLead',          labelES: 'Líder\nCX',          desc: 'Customer journey maps are decorative without an owner for each friction point. We map end-to-end experiences and assign accountability — so improvements have a name attached, not a committee.' },
+        { id: 'tt',  label: 'Tech\nTrainer',      labelES: 'Instructor\nTech',   desc: 'Tool adoption stalls the moment the rollout team leaves. We design and facilitate upskilling programs that move internal teams from passive recipients to active owners of new processes.' },
+        { id: 'gh',  label: 'Growth\nHacker',     labelES: 'Growth\nHacker',     desc: 'Acquisition only matters if the product retains. We identify high-leverage conversion levers through rapid experimentation — driving innovation by measuring what users do, not what they report.' },
       ]
     },
     {
@@ -867,7 +867,9 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     }
 
     // label
-    const lines  = nd.label.split('\n');
+    const nodeLang  = document.documentElement.dataset.lang || 'EN';
+    const nodeLabel = (nodeLang === 'ES' && nd.labelES) ? nd.labelES : nd.label;
+    const lines  = nodeLabel.split('\n');
     const fSize  = W < 480 ? 10 : 11;
     ctx.font     = `600 ${fSize}px 'Graphik', Arial, sans-serif`;
     ctx.textAlign    = 'center';
@@ -995,8 +997,10 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
   const capInfoDesc  = document.getElementById('capInfoDesc');
 
   function openInfoCard(nd) {
-    capInfoTitle.textContent = nd.label.replace('\n', ' ');
-    capInfoDesc.textContent  = nd.desc;
+    const lang = document.documentElement.dataset.lang || 'EN';
+    const dict = COPY[lang];
+    capInfoTitle.textContent = dict[`capabilities_node_${nd.id}_label`] || nd.label.replace('\n', ' ');
+    capInfoDesc.textContent  = dict[`capabilities_node_${nd.id}_desc`]  || nd.desc;
 
     const margin = 12;
     const cardW  = 288;
@@ -1025,8 +1029,10 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
   const capBackdrop    = document.getElementById('capBackdrop');
 
   function openSheet(nd) {
-    capSheetTitle.textContent = nd.label.replace('\n', ' ');
-    capSheetDesc.textContent  = nd.desc;
+    const lang = document.documentElement.dataset.lang || 'EN';
+    const dict = COPY[lang];
+    capSheetTitle.textContent = dict[`capabilities_node_${nd.id}_label`] || nd.label.replace('\n', ' ');
+    capSheetDesc.textContent  = dict[`capabilities_node_${nd.id}_desc`]  || nd.desc;
     capBottomSheet.classList.add('visible');
     capBackdrop.classList.add('visible');
   }
