@@ -554,6 +554,68 @@
   </section>
 
   <!-- ============================================================
+       CAPABILITIES — v1 · EN/ES bilingual
+       Anchor: #capabilities
+       Copy locked: EN only (ES placeholder = EN; locked ES copy in next iteration)
+       ============================================================ -->
+  <section class="section section--capabilities" id="capabilities" aria-labelledby="capabilities-heading">
+    <div class="section__inner section__inner--capabilities">
+
+      <!-- LEFT COLUMN -->
+      <div class="capabilities__col-left">
+
+        <div class="cap-text-block">
+          <div class="section__eyebrow">
+            <span class="section__eyebrow-bar" aria-hidden="true"></span>
+            <p class="section__eyebrow-text" data-i18n="capabilities_eyebrow">Core capabilities</p>
+          </div>
+          <h2 class="section__headline" id="capabilities-heading" data-i18n="capabilities_headline">One partner.<br>Every role.</h2>
+          <p class="section__lede" data-i18n="capabilities_lede">Explore the certified roles this practice brings to every engagement.</p>
+        </div>
+
+        <!-- 2×2 badge grid — McKinsey Forward · Google AI · Google UX · Google PM -->
+        <div class="capabilities__img-grid">
+          <div class="capabilities__img-slot">
+            <img src="assets/img/capabilities/forward.png"   alt="McKinsey Forward certification badge" class="capabilities__badge-img">
+          </div>
+          <div class="capabilities__img-slot">
+            <img src="assets/img/capabilities/google-ai.png" alt="Google AI certification badge" class="capabilities__badge-img">
+          </div>
+          <div class="capabilities__img-slot">
+            <img src="assets/img/capabilities/google-ux.png" alt="Google UX Design certification badge" class="capabilities__badge-img">
+          </div>
+          <div class="capabilities__img-slot">
+            <img src="assets/img/capabilities/google-pm.png" alt="Google Project Management certification badge" class="capabilities__badge-img">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Capability mental map canvas -->
+      <div class="capabilities__right" id="capMapWrapper">
+        <canvas class="cap-map__canvas" id="capMapCanvas"></canvas>
+        <div class="cap-info-card" id="capInfoCard">
+          <div class="cap-info-card__accent-bar"></div>
+          <div class="cap-info-card__body">
+            <div class="cap-info-card__title" id="capInfoTitle"></div>
+            <div class="cap-info-card__desc"  id="capInfoDesc"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Mobile bottom sheet + backdrop (capabilities map) -->
+  <div class="cap-backdrop" id="capBackdrop"></div>
+  <div class="cap-bottom-sheet" id="capBottomSheet">
+    <div class="cap-bottom-sheet__handle"></div>
+    <div class="cap-bottom-sheet__title" id="capSheetTitle"></div>
+    <div class="cap-bottom-sheet__desc"  id="capSheetDesc"></div>
+  </div>
+
+
+  <!-- ============================================================
        ABOUT — v5 · EN/ES bilingual
        Anchor: #about
        Copy locked: about-en.json + about-es.json

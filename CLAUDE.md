@@ -94,7 +94,7 @@
 | **Hero** | ✓ Done | v9 bilingual, animated background, stat count-up, responsive grid |
 | **About/Mindset** | Pending | Section content TBD; copy locked (title = "Mentalidad" ES / "Mindset" EN) |
 | **Services** | Pending | Card grid or list; copy from jdp-copywriting-en + jdp-copywriting-es skills |
-| **Capabilities/Competencies** | Pending | Icon grid or tabs; copy from skills |
+| **Capabilities/Competencies** | ✓ Done | Mental map canvas + 2×2 badge grid; EN copy locked; ES placeholder = EN (next iteration) |
 | **Work/Projects** | Pending | Case study cards or carousel; copy from skills |
 | **Contact** | Pending | Form or email CTA; copy from skills |
 | **Footer** | Pending | Links, legal, social; copy from skills |

@@ -55,6 +55,10 @@ const COPY = {
     services_s4_label: 'MEDIA & CONTENT',
     services_s4_title: 'Disruption pills for ambitious leaders',
     services_s4_body:  'Bridging the gap between technical and executive audiences, we co-create content using a decade of product design and filmmaking expertise. Partner with us to share the insights that your audience deserves — in podcast or TikTok.',
+    /* Capabilities */
+    capabilities_eyebrow:  'Core capabilities',
+    capabilities_headline: 'One partner. Every role.',
+    capabilities_lede:     'Explore the certified roles this practice brings to every engagement.',
     /* About */
     about_eyebrow:         'Guiding principles',
     about_card1_principle: 'Adoption is the work.',
@@ -156,6 +160,10 @@ const COPY = {
     services_s4_label: 'MEDIOS Y CONTENIDO',
     services_s4_title: 'Cápsulas de disrupción para líderes',
     services_s4_body:  'Dominamos el lenguaje ejecutivo y técnico, coreando en base a nuestra década en diseño digital y producción audiovisual. Estaremos encantados compartir nuestro enfoque con su audiencia — desde podcasts hasta Tiktok.',
+    /* Capabilities */
+    capabilities_eyebrow:  'Core capabilities',
+    capabilities_headline: 'One partner. Every role.',
+    capabilities_lede:     'Explore the certified roles this practice brings to every engagement.',
     /* About */
     about_eyebrow:         'PRINCIPIOS RECTORES',
     about_card1_principle: 'Nadie adopta lo que no entiende.',
@@ -632,4 +640,419 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
   });
 
   goTo(0);
+})();
+
+/* ============================================================
+   CAPABILITIES — Mental Map Canvas
+   Scoped IIFE to avoid polluting global scope.
+   IDs prefixed with "cap" to avoid conflicts.
+   Logo loaded from file path (assets/img/capabilities/logo_map_edit.svg).
+   ============================================================ */
+(function () {
+  'use strict';
+
+  // Guard — element may not exist on the page
+  const capWrapper = document.getElementById('capMapWrapper');
+  const capCanvas  = document.getElementById('capMapCanvas');
+  if (!capWrapper || !capCanvas) return;
+
+  // ── Brand colors (Accenture purple spectrum) ──
+  const BRAND = {
+    purple:        '#A100FF',
+    purpleDark:    '#7500C0',
+    purpleDarkest: '#460073',
+    purpleLight:   '#C2A3FF',
+  };
+
+  // ── Logo ──
+  const logoImg  = new Image();
+  let   logoReady = false;
+  logoImg.onload = () => { logoReady = true; };
+  logoImg.src = 'assets/img/capabilities/logo_map_edit.svg';
+
+  // ── Data ──
+  const BRANCHES = [
+    {
+      id: 'build', label: 'BUILD', angle: 90,
+      color: '#A100FF', glow: 'rgba(161,0,255,0.45)',
+      nodes: [
+        { id: 'pd',  label: 'Product\nDesigner',    desc: 'Every interface decision is a bet on user behavior. We design with behavioral assumptions baked into every interaction — tested against real users, not design committee preference.' },
+        { id: 'fd',  label: 'Front-end\nDeveloper', desc: 'Design dies in handoff when no one can build it. We close that gap — writing production-grade Vanilla HTML/CSS/JS and C#, accelerated by AI workflows that ship, perform, and survive the first real user.' },
+        { id: 'ux',  label: 'UX/UI\nEngineer',      desc: 'The handoff gap between Figma and production is where digital products lose their soul. We close it — owning both the design system and the code that implements it, frame by frame.' },
+      ]
+    },
+    {
+      id: 'scale', label: 'SCALE', angle: 210,
+      color: '#C2A3FF', glow: 'rgba(194,163,255,0.45)',
+      nodes: [
+        { id: 'cx',  label: 'CX\nLead',          desc: 'Customer journey maps are decorative without an owner for each friction point. We map end-to-end experiences and assign accountability — so improvements have a name attached, not a committee.' },
+        { id: 'tt',  label: 'Tech\nTrainer',      desc: 'Tool adoption stalls the moment the rollout team leaves. We design and facilitate upskilling programs that move internal teams from passive recipients to active owners across one sprint cycle.' },
+        { id: 'gh',  label: 'Growth\nHacker',     desc: 'Acquisition only matters if the product retains. We identify high-leverage conversion levers through rapid experimentation — driving innovation by measuring what users do, not what they report.' },
+      ]
+    },
+    {
+      id: 'control', label: 'CONTROL', angle: 330,
+      color: '#7500C0', glow: 'rgba(117,0,192,0.55)',
+      nodes: [
+        { id: 'pm',  label: 'Project\nManager',   desc: 'Complex programs lose money in the gaps between workstreams — not in the work itself. We govern multi-project and multi-phase portfolios with the systemic view that separates structure from noise.' },
+        { id: 'sm',  label: 'Scrum\nMaster',      desc: 'Agile ceremonies without accountability are expensive theater. We run sprint cadences where every ceremony has a decision attached — and the board reflects reality, not wishful planning.' },
+        { id: 'prd', label: 'Product\nManager',   desc: 'Roadmaps fail when no one can trace a feature to a business outcome. We own the product backlog with prioritization grounded in user evidence and business strategy — not committee consensus.' },
+      ]
+    }
+  ];
+
+  // ── Canvas setup ──
+  const ctx = capCanvas.getContext('2d');
+  let W, H, R, cx, cy;
+  let nodes       = [];
+  let hoveredNode = null;
+  let openNode    = null;
+
+  function getCanvasHeight() {
+    if (W <= 480) return 520;
+    if (W <= 767) return 540;
+    return 600;
+  }
+
+  function toRad(deg) { return deg * Math.PI / 180; }
+
+  function computeLayout() {
+    W  = capCanvas.offsetWidth;
+    H  = getCanvasHeight();
+    capCanvas.width  = W * devicePixelRatio;
+    capCanvas.height = H * devicePixelRatio;
+    capCanvas.style.height = H + 'px';
+    ctx.scale(devicePixelRatio, devicePixelRatio);
+
+    R  = Math.min(W, H);
+    cx = W / 2;
+    cy = H / 2;
+
+    const branchR = R * 0.26;
+    const childR  = R * 0.22;
+    const fanSpan = 42;
+
+    nodes = [];
+
+    BRANCHES.forEach(branch => {
+      const bAngle = toRad(branch.angle);
+      const bx = cx + Math.cos(bAngle) * branchR;
+      const by = cy - Math.sin(bAngle) * branchR;
+      const n    = branch.nodes.length;
+      const step = n > 1 ? (2 * fanSpan) / (n - 1) : 0;
+      const startAngle = branch.angle - fanSpan;
+
+      branch.nodes.forEach((nd, i) => {
+        const angle = toRad(startAngle + i * step);
+        const nx = bx + Math.cos(angle) * childR;
+        const ny = by - Math.sin(angle) * childR;
+        nodes.push({
+          ...nd,
+          branchId:    branch.id,
+          branchColor: branch.color,
+          branchGlow:  branch.glow,
+          bx, by,
+          x: nx, y: ny,
+          phase:      Math.random() * Math.PI * 2,
+          floatAmp:   2.5 + Math.random() * 2,
+          floatSpeed: 0.6 + Math.random() * 0.5,
+        });
+      });
+
+      branch._bx = bx;
+      branch._by = by;
+    });
+  }
+
+  // ── Drawing helpers ──
+  function hexAlpha(hex, a) {
+    const r = parseInt(hex.slice(1,3), 16);
+    const g = parseInt(hex.slice(3,5), 16);
+    const b = parseInt(hex.slice(5,7), 16);
+    return `rgba(${r},${g},${b},${a})`;
+  }
+
+  function drawConnector(x1, y1, x2, y2, color, alpha, lw) {
+    const mx = (x1 + x2) / 2;
+    const my = (y1 + y2) / 2 - 10;
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.quadraticCurveTo(mx, my, x2, y2);
+    ctx.strokeStyle = hexAlpha(color, alpha);
+    ctx.lineWidth   = lw;
+    ctx.stroke();
+  }
+
+  function drawNode(nd, t) {
+    const floatY = Math.sin(t * nd.floatSpeed + nd.phase) * nd.floatAmp;
+    const isHov  = hoveredNode === nd;
+    const isOpen = openNode   === nd;
+    const x = nd.x;
+    const y = nd.y + floatY;
+    nd._ry = y;
+
+    const scale  = isHov || isOpen ? 1.16 : 1.0;
+    const baseR  = W < 480 ? 38 : 44;
+    const r      = baseR * scale;
+
+    // glow halo
+    const gAlpha = isHov || isOpen ? 0.50 : 0.14;
+    const grd    = ctx.createRadialGradient(x, y, r * 0.2, x, y, r * 2.2);
+    grd.addColorStop(0, hexAlpha(nd.branchColor, gAlpha));
+    grd.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.beginPath();
+    ctx.arc(x, y, r * 2.2, 0, Math.PI * 2);
+    ctx.fillStyle = grd;
+    ctx.fill();
+
+    // node fill
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    const fill = ctx.createRadialGradient(x - r * 0.2, y - r * 0.2, r * 0.1, x, y, r);
+    fill.addColorStop(0, hexAlpha(nd.branchColor, isHov || isOpen ? 0.22 : 0.08));
+    fill.addColorStop(1, hexAlpha(nd.branchColor, isHov || isOpen ? 0.06 : 0.02));
+    ctx.fillStyle   = fill;
+    ctx.fill();
+    ctx.strokeStyle = hexAlpha(nd.branchColor, isHov || isOpen ? 0.95 : 0.50);
+    ctx.lineWidth   = isHov || isOpen ? 1.8 : 1.2;
+    ctx.stroke();
+
+    // active dashed ring
+    if (isOpen) {
+      ctx.beginPath();
+      ctx.arc(x, y, r + 6, 0, Math.PI * 2);
+      ctx.strokeStyle = hexAlpha(nd.branchColor, 0.35);
+      ctx.lineWidth   = 1;
+      ctx.setLineDash([3, 5]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    // label
+    const lines  = nd.label.split('\n');
+    const fSize  = W < 480 ? 10 : 11;
+    ctx.font     = `600 ${fSize}px 'Graphik', Arial, sans-serif`;
+    ctx.textAlign    = 'center';
+    ctx.textBaseline = 'middle';
+    const lAlpha = isHov || isOpen ? 1 : 0.80;
+    const lH     = fSize * 1.42;
+    const totalH = (lines.length - 1) * lH;
+    lines.forEach((ln, i) => {
+      ctx.fillStyle = `rgba(255,255,255,${lAlpha})`;
+      ctx.fillText(ln, x, y - totalH / 2 + i * lH);
+    });
+  }
+
+  function drawBranchLabel(branch) {
+    const bx    = branch._bx;
+    const by    = branch._by;
+    const fSize = W < 480 ? 13 : 16;
+
+    ctx.font         = `600 ${fSize}px 'Graphik', Arial, sans-serif`;
+    ctx.textAlign    = 'center';
+    ctx.textBaseline = 'middle';
+
+    const tw = ctx.measureText(branch.label).width + 28;
+    const th = fSize * 1.2 + 14;
+    const px = bx - tw / 2;
+    const py = by - th / 2;
+
+    ctx.beginPath();
+    ctx.rect(px, py, tw, th);
+    ctx.fillStyle   = hexAlpha(branch.color, 0.10);
+    ctx.fill();
+    ctx.strokeStyle = hexAlpha(branch.color, 0.45);
+    ctx.lineWidth   = 1;
+    ctx.stroke();
+
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillText(branch.label, bx, by);
+  }
+
+  function drawCenter(t) {
+    const pulse = 1 + Math.sin(t * 0.8) * 0.015;
+    const r     = (W < 480 ? 52 : 64) * pulse;
+
+    for (let i = 3; i >= 1; i--) {
+      ctx.beginPath();
+      ctx.arc(cx, cy, r + i * 12, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(161,0,255,${0.04 * i})`;
+      ctx.lineWidth   = 1;
+      ctx.stroke();
+    }
+
+    const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, r * 1.15);
+    grd.addColorStop(0, 'rgba(161,0,255,0.10)');
+    grd.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.beginPath();
+    ctx.arc(cx, cy, r * 1.15, 0, Math.PI * 2);
+    ctx.fillStyle = grd;
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(161,0,255,0.50)';
+    ctx.lineWidth   = 1.4;
+    ctx.stroke();
+
+    if (logoReady) {
+      const logoAspect = 90 / 36; // native SVG viewBox 90×36
+      const logoH = Math.min(r * 2.5 / logoAspect, r * 0.88);
+      const logoW = logoH * logoAspect;
+      ctx.drawImage(logoImg, cx - logoW / 2, cy - logoH / 2, logoW, logoH);
+    } else {
+      ctx.textAlign    = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.font         = `900 20px 'Graphik', Arial, sans-serif`;
+      ctx.fillStyle    = '#A100FF';
+      ctx.fillText('JD', cx - 16, cy);
+      ctx.font         = `300 20px 'Graphik', Arial, sans-serif`;
+      ctx.fillStyle    = '#ffffff';
+      ctx.fillText('igital', cx + 20, cy);
+    }
+  }
+
+  // ── Render loop ──
+  function render(ts) {
+    const t = ts / 1000;
+    ctx.clearRect(0, 0, W, H);
+
+    const vgrd = ctx.createRadialGradient(cx, cy, 0, cx, cy, R * 0.75);
+    vgrd.addColorStop(0, 'rgba(0,0,0,0)');
+    vgrd.addColorStop(1, 'rgba(0,0,0,0.65)');
+    ctx.fillStyle = vgrd;
+    ctx.fillRect(0, 0, W, H);
+
+    BRANCHES.forEach(b => {
+      const hasActive = nodes.some(n => n.branchId === b.id && (openNode === n || hoveredNode === n));
+      drawConnector(cx, cy, b._bx, b._by, b.color, hasActive ? 0.55 : 0.20, hasActive ? 1.8 : 1.0);
+    });
+
+    nodes.forEach(nd => {
+      const floatY = Math.sin(t * nd.floatSpeed + nd.phase) * nd.floatAmp;
+      const isAct  = hoveredNode === nd || openNode === nd;
+      drawConnector(nd.bx, nd.by, nd.x, nd.y + floatY, nd.branchColor, isAct ? 0.65 : 0.22, isAct ? 1.8 : 0.9);
+    });
+
+    BRANCHES.forEach(b => drawBranchLabel(b));
+    nodes.forEach(nd => drawNode(nd, t));
+    drawCenter(t);
+
+    requestAnimationFrame(render);
+  }
+
+  // ── Hit detection ──
+  function hitTest(mx, my) {
+    const hitR = W < 480 ? 46 : 52;
+    for (const nd of nodes) {
+      const ry = nd._ry ?? nd.y;
+      if (Math.hypot(mx - nd.x, my - ry) < hitR) return nd;
+    }
+    return null;
+  }
+
+  // ── Info card (desktop) ──
+  const capInfoCard  = document.getElementById('capInfoCard');
+  const capInfoTitle = document.getElementById('capInfoTitle');
+  const capInfoDesc  = document.getElementById('capInfoDesc');
+
+  function openInfoCard(nd) {
+    capInfoTitle.textContent = nd.label.replace('\n', ' ');
+    capInfoDesc.textContent  = nd.desc;
+
+    const margin = 12;
+    const cardW  = 288;
+    const cardH  = 170;
+    let left     = nd.x + 30;
+    let top      = (nd._ry ?? nd.y) - 44;
+
+    if (left + cardW + margin > W) left = nd.x - cardW - 30;
+    if (top < margin) top = margin;
+    if (top + cardH > H - margin) top = H - cardH - margin;
+
+    capInfoCard.style.left = left + 'px';
+    capInfoCard.style.top  = top  + 'px';
+    capInfoCard.classList.add('visible');
+  }
+
+  function closeInfoCard() {
+    capInfoCard.classList.remove('visible');
+    openNode = null;
+  }
+
+  // ── Bottom sheet (mobile) ──
+  const capBottomSheet = document.getElementById('capBottomSheet');
+  const capSheetTitle  = document.getElementById('capSheetTitle');
+  const capSheetDesc   = document.getElementById('capSheetDesc');
+  const capBackdrop    = document.getElementById('capBackdrop');
+
+  function openSheet(nd) {
+    capSheetTitle.textContent = nd.label.replace('\n', ' ');
+    capSheetDesc.textContent  = nd.desc;
+    capBottomSheet.classList.add('visible');
+    capBackdrop.classList.add('visible');
+  }
+  function closeSheet() {
+    capBottomSheet.classList.remove('visible');
+    capBackdrop.classList.remove('visible');
+    openNode = null;
+  }
+  capBackdrop.addEventListener('click', closeSheet);
+
+  // ── Interaction ──
+  function getPos(e) {
+    const rect = capCanvas.getBoundingClientRect();
+    return {
+      x: (e.touches ? e.touches[0].clientX : e.clientX) - rect.left,
+      y: (e.touches ? e.touches[0].clientY : e.clientY) - rect.top,
+    };
+  }
+
+  capCanvas.addEventListener('mousemove', e => {
+    const { x, y } = getPos(e);
+    hoveredNode = hitTest(x, y);
+    capCanvas.style.cursor = hoveredNode ? 'pointer' : 'default';
+  });
+
+  capCanvas.addEventListener('mouseleave', () => {
+    hoveredNode = null;
+    capCanvas.style.cursor = 'default';
+  });
+
+  capCanvas.addEventListener('click', e => {
+    const { x, y } = getPos(e);
+    const hit = hitTest(x, y);
+    if (!hit)             { closeInfoCard(); return; }
+    if (openNode === hit) { closeInfoCard(); return; }
+    openNode = hit;
+    openInfoCard(hit);
+  });
+
+  capCanvas.addEventListener('touchend', e => {
+    e.preventDefault();
+    const rect = capCanvas.getBoundingClientRect();
+    const tx   = e.changedTouches[0].clientX - rect.left;
+    const ty   = e.changedTouches[0].clientY - rect.top;
+    const hit  = hitTest(tx, ty);
+    if (!hit) return;
+    if (openNode === hit) { closeSheet(); return; }
+    openNode = hit;
+    openSheet(hit);
+  }, { passive: false });
+
+  document.addEventListener('click', e => {
+    if (!capInfoCard.contains(e.target) && e.target !== capCanvas) closeInfoCard();
+  });
+
+  // ── Resize ──
+  const ro = new ResizeObserver(() => {
+    closeInfoCard();
+    closeSheet();
+    computeLayout();
+  });
+  ro.observe(capWrapper);
+
+  // ── Init ──
+  computeLayout();
+  requestAnimationFrame(render);
 })();
