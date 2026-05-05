@@ -79,7 +79,7 @@ const COPY = {
     capabilities_node_prd_label:   'Product Manager',
     capabilities_node_prd_desc:    'Roadmaps fail when no one can trace a feature to a business outcome. We own the product backlog with prioritization grounded in user evidence and business strategy — not committee consensus.',
     /* About */
-    about_eyebrow:         'THE STANDARD',
+    about_eyebrow:         'STANDARDS',
     about_heading:         'Our non-negotiables.',
     about_lede:            'Principles that decide whether we\'re a fit.',
     about_card1_principle: 'Zero Improvisation.',
@@ -205,7 +205,7 @@ const COPY = {
     capabilities_node_prd_label:   'Product Manager',
     capabilities_node_prd_desc:    'Los roadmaps fracasan cuando nadie puede trazar una funcionalidad a una meta clave. Manejamos el backlog con priorización fundamentada en beneficios tangibles para nuestros clientes.',
     /* About */
-    about_eyebrow:         'EL ESTÁNDAR',
+    about_eyebrow:         'ESTÁNDARES',
     about_heading:         'Nuestros no negociables.',
     about_lede:            'Tres principios que definen si hay fit real.',
     about_card1_principle: 'Cero Improvisación.',
@@ -498,6 +498,30 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     });
   });
 })();
+
+/* ============================================================
+   ABOUT — Card tap-to-toggle (mobile touch)
+   Tap inactive card → show body; tap same card → revert to heading
+   Tap outside any card → deactivate all
+   ============================================================ */
+(function () {
+  var cards = document.querySelectorAll('.about-card');
+  if (!cards.length) return;
+
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      var wasActive = card.classList.contains('is-active');
+      cards.forEach(function (c) { c.classList.remove('is-active'); });
+      if (!wasActive) card.classList.add('is-active');
+    });
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.about-card')) {
+      cards.forEach(function (c) { c.classList.remove('is-active'); });
+    }
+  });
+}());
 
 /* ============================================================
    CONTACT — Form validation + Formspree submit
