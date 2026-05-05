@@ -957,7 +957,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   aspect-ratio: 4 / 3;
   overflow: hidden;
   flex-shrink: 0;
-  cursor: default;
+  cursor: pointer;
 }
 
 .about-card::before {
@@ -1017,6 +1017,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   color: var(--color-brand-white);
   line-height: 1.15;
   letter-spacing: -0.02em;
+  white-space: pre-line;
   transition: opacity 400ms var(--ease-standard), transform 400ms var(--ease-standard);
 }
 .about-card__body {
@@ -1026,7 +1027,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   align-items: flex-start;
   justify-content: flex-start;
   padding: clamp(2rem, 4vw, 3rem);
-  font-size: clamp(1rem, 1.15vw, 1.1rem);
+  font-size: clamp(1.25rem, 1.44vw, 1.375rem);
   font-weight: var(--fw-regular);
   line-height: 1.45;
   text-align: left;
@@ -1078,7 +1079,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
     scroll-snap-align: unset;
     aspect-ratio: 4 / 3;
   }
-  .about-card__body { font-size: clamp(1rem, 1.15vw, 1.1rem); }
+  .about-card__body { font-size: clamp(1.25rem, 1.44vw, 1.375rem); }
   .about__dots { display: none; }
 }
 
@@ -1106,7 +1107,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
     aspect-ratio: 4 / 3;
   }
   .about-card__principle { font-size: clamp(1.375rem, 5vw, 1.75rem); }
-  .about-card__body { font-size: 1rem; }
+  .about-card__body { font-size: 1.25rem; }
   .about__dots { display: flex; }
 }
 
