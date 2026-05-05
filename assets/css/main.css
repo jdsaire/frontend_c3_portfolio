@@ -1239,6 +1239,14 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   display: none;
 }
 .contact__field.has-error .contact__hint { display: block; }
+/* Always-visible hints — Name, Email, Message */
+.contact__hint--always { display: block; color: var(--color-text-muted); }
+.contact__field.has-error .contact__hint--always { color: #FF4444; }
+.contact__submit-error {
+  font-size: 0.75rem;
+  color: #FF4444;
+  padding-top: 0.25rem;
+}
 .contact__field.has-error .contact__input,
 .contact__field.has-error .contact__select,
 .contact__field.has-error .contact__textarea { border-color: #FF4444; }
@@ -1302,7 +1310,12 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
     display: block;
     margin-bottom: 0;
   }
-  .contact__form-wrapper { display: block; }
+  .contact__form-wrapper {
+    display: block;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  #contact { overflow-x: hidden; }
   .contact__form-row { grid-template-columns: 1fr; gap: 1rem; }
   .contact__submit-row { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
   .contact__disclaimer { max-width: 100%; }

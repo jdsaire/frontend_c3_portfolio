@@ -109,9 +109,12 @@ const COPY = {
     contact_msg_label:             'Message',
     contact_msg_placeholder:       'Tell me about the context — a role, a project, a course, an idea. The more specific, the better.',
     contact_err_name:              'Full name is required.',
-    contact_err_email:             'A valid email is required.',
+    contact_err_name_invalid:      'Valid name is required.',
+    contact_hint_name:             'Letters only — no digits or symbols.',
+    contact_err_email:             'Register a valid email.',
     contact_err_type:              'Please select an engagement type.',
     contact_err_msg:               'A message is required.',
+    contact_err_submit:            'Something went wrong. Please try again.',
     contact_disclaimer:            'Response within 24 business hours.',
     contact_submit:                'Send message',
     contact_success_headline:      'Message sent.',
@@ -236,9 +239,12 @@ const COPY = {
     contact_msg_label:             'Mensaje',
     contact_msg_placeholder:       'Describa el contexto — el rol, el proyecto o la iniciativa. Mientras más detalle, mejor la respuesta.',
     contact_err_name:              'El nombre es requerido.',
-    contact_err_email:             'Ingrese un correo válido.',
+    contact_err_name_invalid:      'Ingrese nombre válido.',
+    contact_hint_name:             'Solo letras — sin números ni símbolos.',
+    contact_err_email:             'Ingrese correo válido.',
     contact_err_type:              'Seleccione el tipo de consulta.',
     contact_err_msg:               'El mensaje es requerido.',
+    contact_err_submit:            'Algo salió mal. Por favor, intente de nuevo.',
     contact_disclaimer:            'Respondemos en 24 horas.',
     contact_submit:                'Enviar mensaje',
     contact_success_headline:      'Mensaje enviado.',
@@ -286,6 +292,18 @@ function swapLang(lang) {
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
     const key = el.dataset.i18nPlaceholder;
     if (dict[key] !== undefined) el.placeholder = dict[key];
+  });
+
+  /* hint swap — only when field is not in error state */
+  document.querySelectorAll('[data-i18n-hint]').forEach(el => {
+    const key = el.dataset.i18nHint;
+    const field = el.closest('.contact__field');
+    if (dict[key] !== undefined && field && !field.classList.contains('has-error')) {
+      el.textContent = dict[key];
+    } else if (field && field.classList.contains('has-error')) {
+      const errKey = el.dataset.i18n;
+      if (errKey && dict[errKey] !== undefined) el.textContent = dict[errKey];
+    }
   });
 }
 
@@ -526,7 +544,7 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
 }());
 
 /* ============================================================
-   CONTACT — Form validation + Formspree submit
+   CONTACT — Form validation + Web3Forms submit
    ============================================================ */
 (function () {
   'use strict';
@@ -534,6 +552,7 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
   const contactForm      = document.getElementById('contactForm');
   const contactSuccess   = document.getElementById('formSuccess');
   const engagementSelect = document.getElementById('engagementType');
+  const submitError      = document.getElementById('contactSubmitError');
 
   if (engagementSelect) {
     engagementSelect.addEventListener('change', function () {
@@ -549,12 +568,43 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
       { id: 'field-message', input: 'message',        test: function (v) { return v.trim().length >= 10; } }
     ];
 
+    function getLang() {
+      return document.documentElement.dataset.lang || 'EN';
+    }
+
     function validateContactField(field) {
       const wrapper = document.getElementById(field.id);
       const input   = document.getElementById(field.input);
       if (!wrapper || !input) return true;
       const valid = field.test(input.value);
       wrapper.classList.toggle('has-error', !valid);
+
+      /* Update hint text for always-visible hints */
+      const hint = wrapper.querySelector('.contact__hint--always');
+      if (hint) {
+        const lang = getLang();
+        if (valid) {
+          /* Restore default hint text */
+          const hintKey = hint.dataset.i18nHint;
+          if (hintKey && COPY[lang] && COPY[lang][hintKey]) {
+            hint.textContent = COPY[lang][hintKey];
+          } else {
+            const errKey = hint.dataset.i18n;
+            if (errKey && COPY[lang] && COPY[lang][errKey]) hint.textContent = COPY[lang][errKey];
+          }
+        } else {
+          /* Show appropriate error text */
+          if (field.input === 'fullName') {
+            const trimmed = input.value.trim();
+            const errKey = trimmed.length === 0 ? 'contact_err_name' : 'contact_err_name_invalid';
+            if (COPY[lang] && COPY[lang][errKey]) hint.textContent = COPY[lang][errKey];
+          } else {
+            const errKey = hint.dataset.i18n;
+            if (errKey && COPY[lang] && COPY[lang][errKey]) hint.textContent = COPY[lang][errKey];
+          }
+        }
+      }
+
       return valid;
     }
 
@@ -566,23 +616,27 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
         if (firstError) firstError.focus();
         return;
       }
+      if (submitError) submitError.style.display = 'none';
       try {
         const data     = new FormData(contactForm);
         const response = await fetch(contactForm.action, {
-          method: 'POST',
-          body:   data,
+          method:  'POST',
+          body:    data,
           headers: { 'Accept': 'application/json' }
         });
-        if (response.ok) {
+        const result = await response.json();
+        if (result.success) {
           contactForm.classList.add('is-submitted');
           if (contactSuccess) {
             contactSuccess.classList.add('is-visible');
             contactSuccess.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         } else {
-          console.warn('Formspree returned non-OK status:', response.status);
+          if (submitError) submitError.style.display = 'block';
+          console.warn('Web3Forms error:', result.message);
         }
       } catch (err) {
+        if (submitError) submitError.style.display = 'block';
         console.error('Form submission error:', err);
       }
     });
@@ -592,12 +646,24 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
       successResetBtn.addEventListener('click', function () {
         contactForm.classList.remove('is-submitted');
         if (contactSuccess) contactSuccess.classList.remove('is-visible');
+        if (submitError) submitError.style.display = 'none';
         contactForm.reset();
         contactFields.forEach(function (field) {
           var wrapper = document.getElementById(field.id);
           if (wrapper) wrapper.classList.remove('has-error');
         });
         if (engagementSelect) engagementSelect.classList.add('is-placeholder');
+        /* Restore always-visible hint texts */
+        var lang = getLang();
+        contactForm.querySelectorAll('.contact__hint--always').forEach(function (hint) {
+          var hintKey = hint.dataset.i18nHint;
+          if (hintKey && COPY[lang] && COPY[lang][hintKey]) {
+            hint.textContent = COPY[lang][hintKey];
+          } else {
+            var errKey = hint.dataset.i18n;
+            if (errKey && COPY[lang] && COPY[lang][errKey]) hint.textContent = COPY[lang][errKey];
+          }
+        });
       });
     }
   }

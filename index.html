@@ -734,9 +734,13 @@
           </div>
 
           <form class="contact__form" id="contactForm"
-                action="https://formspree.io/f/YOUR_FORM_ID"
+                action="https://api.web3forms.com/submit"
                 method="POST" novalidate
                 aria-label="Strategic briefing form">
+
+            <input type="hidden" name="access_key" value="8d674d44-4ff0-47e2-9dda-5aba3caac89c">
+            <input type="hidden" name="subject" value="New enquiry via JDigital">
+            <input type="hidden" name="from_name" value="JDigital Contact Form">
 
             <!-- Engagement type -->
             <div class="contact__field" id="field-type">
@@ -762,14 +766,14 @@
                 <input class="contact__input" type="text" id="fullName" name="fullName"
                        placeholder="Ana Torres" data-i18n-placeholder="contact_name_placeholder"
                        autocomplete="name" required />
-                <span class="contact__hint" aria-live="polite" data-i18n="contact_err_name">Full name is required.</span>
+                <span class="contact__hint contact__hint--always" aria-live="polite" data-i18n="contact_err_name" data-i18n-hint="contact_hint_name">Letters only — no digits or symbols.</span>
               </div>
               <div class="contact__field" id="field-email">
                 <label class="contact__label" for="email" data-i18n="contact_email_label">Email</label>
                 <input class="contact__input" type="email" id="email" name="email"
                        placeholder="ana@company.com" data-i18n-placeholder="contact_email_placeholder"
                        autocomplete="email" required />
-                <span class="contact__hint" aria-live="polite" data-i18n="contact_err_email">A valid email is required.</span>
+                <span class="contact__hint contact__hint--always" aria-live="polite" data-i18n="contact_err_email">Register a valid email.</span>
               </div>
             </div>
 
@@ -801,7 +805,7 @@
                         placeholder="Tell me about the context — a role, a project, a course, an idea. The more specific, the better."
                         data-i18n-placeholder="contact_msg_placeholder"
                         required aria-required="true"></textarea>
-              <span class="contact__hint" aria-live="polite" data-i18n="contact_err_msg">A message is required.</span>
+              <span class="contact__hint contact__hint--always" aria-live="polite" data-i18n="contact_err_msg">A message is required.</span>
             </div>
 
             <!-- Submit row -->
@@ -814,6 +818,9 @@
                 </span>
               </button>
             </div>
+            <p class="contact__submit-error" id="contactSubmitError"
+               aria-live="polite" data-i18n="contact_err_submit"
+               style="display:none">Something went wrong. Please try again.</p>
 
           </form>
         </div>
