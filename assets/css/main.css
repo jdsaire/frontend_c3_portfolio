@@ -1440,9 +1440,6 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   margin-top: 1rem; /* match lede→headline rhythm */
 }
 
-/* Hide duplicate ticker slots on desktop — 2×2 grid unaffected */
-.capabilities__img-grid .capabilities__img-slot:nth-child(n+5) { display: none; }
-
 .capabilities__img-slot {
   background: #0A0A0A;
   border: 1px solid rgba(255,255,255,0.08);
@@ -1593,11 +1590,6 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 }
 
 /* CAPABILITIES — MOBILE ≤767px */
-@keyframes cap-ticker-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
 @media (max-width: 767px) {
   .section__inner--capabilities {
     grid-template-columns: 1fr;
@@ -1629,59 +1621,18 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
     padding: clamp(0.375rem, 0.75vw, 0.5rem) 0 clamp(0.5rem, 1vw, 0.75rem);
   }
 
-  /* Ticker wrapper — clips overflow, applies fade mask on both edges */
-  .capabilities__ticker {
-    order: 4;
-    overflow: hidden;
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      #000 14%,
-      #000 86%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      #000 14%,
-      #000 86%,
-      transparent 100%
-    );
-  }
-
-  /* Ticker track — flex row, animated scroll */
-  .capabilities__img-grid {
-    display: flex;
-    flex-direction: row;
-    gap: 1.5rem;                    /* doubled from desktop 0.75rem */
-    grid-template-columns: unset;
-    grid-template-rows: unset;
-    flex-grow: 0;
-    margin-top: 0;
-    animation: cap-ticker-scroll 28s linear infinite;
-    will-change: transform;
-  }
-
-  /* Show duplicate slots on mobile */
-  .capabilities__img-grid .capabilities__img-slot:nth-child(n+5) {
-    display: flex;
-  }
-
-  /* Badge slot — fixed width (~doubled vs cramped 4-col grid) */
-  .capabilities__img-grid .capabilities__img-slot {
-    flex: 0 0 auto;
-    width: clamp(140px, 44vw, 176px);
-    aspect-ratio: 1 / 1;
-  }
-
   .capabilities__badge-img {
-    padding: 0.75rem;
+    padding: 0.375rem;
+  }
+
+  .capabilities__img-grid {
+    order: 4;
+    flex-grow: 0;
+    margin-top: 0; /* separator handles spacing */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
   }
 
   .cap-bottom-sheet { display: block; }
   .cap-info-card { display: none !important; }
-}
-
-@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
-  .capabilities__img-grid { animation: none; }
 }
