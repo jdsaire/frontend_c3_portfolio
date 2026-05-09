@@ -743,71 +743,135 @@
                 method="POST" novalidate
                 aria-label="Strategic briefing form">
 
-            <!-- Engagement type -->
-            <div class="contact__field" id="field-type">
-              <label class="contact__label" for="engagementType" data-i18n="contact_dropdown_label">What's your next digital ambition?</label>
-              <div class="contact__select-wrapper">
-                <select class="contact__select is-placeholder" id="engagementType" name="engagementType"
-                        required aria-required="true">
-                  <option value="" disabled selected hidden data-i18n="contact_dropdown_placeholder">Select one</option>
-                  <option value="strategic-partnership"     data-i18n="contact_opt1">Strategic partnership — hiring, project, or co-creation</option>
-                  <option value="education-opportunity"     data-i18n="contact_opt2">Education — university teaching or corporate training</option>
-                  <option value="public-speaking-workshops" data-i18n="contact_opt3">Keynote or workshop — conference, panel, or open session</option>
-                  <option value="content-media-sponsorship" data-i18n="contact_opt4">Media and content — interviews, podcasts, or publications</option>
-                  <option value="other"                     data-i18n="contact_opt5">Other</option>
-                </select>
+            <!-- Intent selector -->
+            <fieldset class="contact__intent">
+              <legend class="contact__intent-label" data-i18n="contact_intent_label"></legend>
+              <div class="contact__intent-cards">
+                <label class="contact__intent-card">
+                  <input type="radio" name="intent" value="collaboration" class="contact__intent-input">
+                  <span class="contact__intent-card-content">
+                    <span class="contact__intent-card-title" data-i18n="contact_intent_collab_title"></span>
+                    <span class="contact__intent-card-desc"  data-i18n="contact_intent_collab_desc"></span>
+                  </span>
+                </label>
+                <label class="contact__intent-card">
+                  <input type="radio" name="intent" value="brief" class="contact__intent-input">
+                  <span class="contact__intent-card-content">
+                    <span class="contact__intent-card-title" data-i18n="contact_intent_brief_title"></span>
+                    <span class="contact__intent-card-desc"  data-i18n="contact_intent_brief_desc"></span>
+                  </span>
+                </label>
               </div>
-              <span class="contact__hint" aria-live="polite" data-i18n="contact_err_type">Please select an engagement type.</span>
-            </div>
+            </fieldset>
 
-            <!-- Name + Email -->
-            <div class="contact__form-row">
-              <div class="contact__field" id="field-name">
-                <label class="contact__label" for="fullName" data-i18n="contact_name_label">Full name</label>
-                <input class="contact__input" type="text" id="fullName" name="fullName"
-                       placeholder="Ana Torres" data-i18n-placeholder="contact_name_placeholder"
-                       autocomplete="name" required />
-                <span class="contact__hint" aria-live="polite" data-i18n="contact_err_name">Full name is required.</span>
-              </div>
-              <div class="contact__field" id="field-email">
-                <label class="contact__label" for="email" data-i18n="contact_email_label">Email</label>
-                <input class="contact__input" type="email" id="email" name="email"
-                       placeholder="ana@company.com" data-i18n-placeholder="contact_email_placeholder"
-                       autocomplete="email" required />
-                <span class="contact__hint" aria-live="polite" data-i18n="contact_err_email">A valid email is required.</span>
-              </div>
-            </div>
+            <!-- Path 1: Collaboration fields (v4 markup preserved) -->
+            <div class="contact__fields contact__fields--collab">
 
-            <!-- WhatsApp (optional) -->
-            <div class="contact__form-row is-hidden">
-              <div class="contact__field" id="field-whatsapp">
-                <label class="contact__label" for="wa-number" data-i18n="contact_wa_label">WhatsApp (optional)</label>
-                <div class="contact__wa-wrapper">
-                  <select class="contact__select contact__wa-code" id="wa-country" name="waCountry" aria-label="Country code">
-                    <option value="+51">PE · +51</option>
-                    <option value="+1">US · +1</option>
-                    <option value="+44">UK · +44</option>
-                    <option value="+55">BR · +55</option>
-                    <option value="+57">CO · +57</option>
-                    <option value="+56">CL · +56</option>
-                    <option value="+52">MX · +52</option>
+              <!-- Engagement type -->
+              <div class="contact__field" id="field-type">
+                <label class="contact__label" for="engagementType" data-i18n="contact_dropdown_label">What's your next digital ambition?</label>
+                <div class="contact__select-wrapper">
+                  <select class="contact__select is-placeholder" id="engagementType" name="engagementType"
+                          required aria-required="true">
+                    <option value="" disabled selected hidden data-i18n="contact_dropdown_placeholder">Select one</option>
+                    <option value="strategic-partnership"     data-i18n="contact_opt1">Strategic partnership — hiring, project, or co-creation</option>
+                    <option value="education-opportunity"     data-i18n="contact_opt2">Education — university teaching or corporate training</option>
+                    <option value="public-speaking-workshops" data-i18n="contact_opt3">Keynote or workshop — conference, panel, or open session</option>
+                    <option value="content-media-sponsorship" data-i18n="contact_opt4">Media and content — interviews, podcasts, or publications</option>
+                    <option value="other"                     data-i18n="contact_opt5">Other</option>
                   </select>
-                  <input class="contact__input contact__wa-number" type="tel" id="wa-number" name="waNumber"
-                         placeholder="+51 999 000 000" data-i18n-placeholder="contact_wa_placeholder"
-                         autocomplete="tel" />
+                </div>
+                <span class="contact__hint" aria-live="polite" data-i18n="contact_err_type">Please select an engagement type.</span>
+              </div>
+
+              <!-- Name + Email -->
+              <div class="contact__form-row">
+                <div class="contact__field" id="field-name">
+                  <label class="contact__label" for="fullName" data-i18n="contact_name_label">Full name</label>
+                  <input class="contact__input" type="text" id="fullName" name="fullName"
+                         placeholder="Ana Torres" data-i18n-placeholder="contact_name_placeholder"
+                         autocomplete="name" required />
+                  <span class="contact__hint" aria-live="polite" data-i18n="contact_err_name">Full name is required.</span>
+                </div>
+                <div class="contact__field" id="field-email">
+                  <label class="contact__label" for="email" data-i18n="contact_email_label">Email</label>
+                  <input class="contact__input" type="email" id="email" name="email"
+                         placeholder="ana@company.com" data-i18n-placeholder="contact_email_placeholder"
+                         autocomplete="email" required />
+                  <span class="contact__hint" aria-live="polite" data-i18n="contact_err_email">A valid email is required.</span>
                 </div>
               </div>
+
+              <!-- Message -->
+              <div class="contact__field" id="field-message">
+                <label class="contact__label" for="message" data-i18n="contact_msg_label">Message</label>
+                <textarea class="contact__textarea" id="message" name="message"
+                          placeholder="Tell me about the context — a role, a project, a course, an idea. The more specific, the better."
+                          data-i18n-placeholder="contact_msg_placeholder"
+                          required aria-required="true"></textarea>
+                <span class="contact__hint" aria-live="polite" data-i18n="contact_err_msg">A message is required.</span>
+              </div>
+
             </div>
 
-            <!-- Message -->
-            <div class="contact__field" id="field-message">
-              <label class="contact__label" for="message" data-i18n="contact_msg_label">Message</label>
-              <textarea class="contact__textarea" id="message" name="message"
-                        placeholder="Tell me about the context — a role, a project, a course, an idea. The more specific, the better."
-                        data-i18n-placeholder="contact_msg_placeholder"
-                        required aria-required="true"></textarea>
-              <span class="contact__hint" aria-live="polite" data-i18n="contact_err_msg">A message is required.</span>
+            <!-- Path 2: Brief request fields (hidden by default; P4 toggles visibility) -->
+            <div class="contact__fields contact__fields--brief is-hidden">
+
+              <!-- Case selector -->
+              <div class="contact__field">
+                <label class="contact__label" for="contact-brief-case" data-i18n="contact_case_label"></label>
+                <div class="contact__select-wrapper">
+                  <select class="contact__select is-placeholder" id="contact-brief-case" name="case"
+                          required aria-required="true">
+                    <option value="" disabled selected hidden></option>
+                    <option value="limafly"  data-i18n="contact_case_limafly"></option>
+                    <option value="agile"    data-i18n="contact_case_agile"></option>
+                    <option value="tuua"     data-i18n="contact_case_tuua"></option>
+                    <option value="jdigital" data-i18n="contact_case_jdigital"></option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Name + Work email -->
+              <div class="contact__form-row">
+                <div class="contact__field">
+                  <label class="contact__label" for="contact-brief-name" data-i18n="contact_name_label"></label>
+                  <input class="contact__input" type="text" id="contact-brief-name" name="name"
+                         autocomplete="name" required />
+                </div>
+                <div class="contact__field">
+                  <label class="contact__label" for="contact-brief-email" data-i18n="contact_email_label"></label>
+                  <input class="contact__input" type="email" id="contact-brief-email" name="email"
+                         autocomplete="email" required />
+                </div>
+              </div>
+
+              <!-- Company + Role -->
+              <div class="contact__form-row">
+                <div class="contact__field">
+                  <label class="contact__label" for="contact-brief-company" data-i18n="contact_company_label"></label>
+                  <input class="contact__input" type="text" id="contact-brief-company" name="company"
+                         autocomplete="organization" required />
+                </div>
+                <div class="contact__field">
+                  <label class="contact__label" for="contact-brief-role" data-i18n="contact_role_label"></label>
+                  <input class="contact__input" type="text" id="contact-brief-role" name="role"
+                         autocomplete="organization-title" required />
+                </div>
+              </div>
+
+              <!-- Context -->
+              <div class="contact__field">
+                <label class="contact__label" for="contact-brief-context" data-i18n="contact_context_label"></label>
+                <textarea class="contact__textarea" id="contact-brief-context" name="context"
+                          data-i18n-placeholder="contact_context_placeholder"
+                          required aria-required="true"></textarea>
+              </div>
+
             </div>
+
+            <!-- Hidden routing input (P4 populates with selected intent) -->
+            <input type="hidden" name="intent_path" value="">
 
             <!-- Submit row -->
             <div class="contact__submit-row">
