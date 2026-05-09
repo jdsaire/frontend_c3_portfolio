@@ -1289,6 +1289,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   line-height: 1.5;
   max-width: 18rem;
 }
+.contact__submit-row .cta { margin-bottom: 0; }
 .contact__success {
   display: none;
   position: absolute;
