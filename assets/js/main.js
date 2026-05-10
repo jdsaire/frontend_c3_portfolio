@@ -311,6 +311,7 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
       const wrapper = document.getElementById(field.id);
       const input   = document.getElementById(field.input);
       if (!wrapper || !input) return true;
+      if (input.disabled) return true;
       const valid = field.test(input.value);
       wrapper.classList.toggle('has-error', !valid);
       return valid;
@@ -360,6 +361,164 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
       });
     }
   }
+})();
+
+/* ============================================================
+   CONTACT v5 — Dual-intent behavior layer (P4)
+   Wires intent toggle, conditional validation, URL hash pre-fill,
+   and submit routing. Layered ALONGSIDE the v4 submit handler via
+   a capture-phase listener; v4 fetch + success flow are unchanged.
+   ============================================================ */
+(function () {
+  'use strict';
+
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
+  const intentRadios    = form.querySelectorAll('input[name="intent"]');
+  const collabFieldsEl  = form.querySelector('.contact__fields--collab');
+  const briefFieldsEl   = form.querySelector('.contact__fields--brief');
+  const disclaimerEl    = form.querySelector('.contact__disclaimer');
+  const submitLabelEl   = form.querySelector('button[type="submit"] .cta__label');
+  const intentPathInput = form.querySelector('input[name="intent_path"]');
+  const caseSelect      = form.querySelector('#contact-brief-case');
+
+  if (!collabFieldsEl || !briefFieldsEl || !disclaimerEl || !submitLabelEl || !intentPathInput) return;
+
+  /* Capture the v4 collab submit-label key from the markup (do not invent). */
+  const COLLAB_SUBMIT_KEY     = submitLabelEl.dataset.i18n || 'contact_submit';
+  const COLLAB_DISCLAIMER_KEY = 'contact_disclaimer';
+  const BRIEF_DISCLAIMER_KEY  = 'contact_brief_disclaimer';
+  const BRIEF_SUBMIT_KEY      = 'contact_brief_submit';
+
+  const VALID_CASE_IDS = ['limafly', 'agile', 'tuua', 'jdigital'];
+
+  /* Brief-path field configs (P4 owns its own validator; the v4 validator
+     handles collab path and skips disabled inputs via the guard added in
+     the v4 IIFE above). */
+  const briefFields = [
+    { id: 'contact-brief-case',    test: function (v) { return v !== ''; } },
+    { id: 'contact-brief-name',    test: function (v) { return v.trim().length >= 2; } },
+    { id: 'contact-brief-email',   test: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); } },
+    { id: 'contact-brief-company', test: function (v) { return v.trim().length >= 1; } },
+    { id: 'contact-brief-role',    test: function (v) { return v.trim().length >= 1; } },
+    { id: 'contact-brief-context', test: function (v) { return v.trim().length >= 5; } }
+  ];
+
+  function setFieldsetDisabled(fieldsetEl, disabled) {
+    fieldsetEl.querySelectorAll('input, select, textarea').forEach(function (el) {
+      el.disabled = disabled;
+    });
+  }
+
+  function currentLang() {
+    return document.documentElement.dataset.lang || 'EN';
+  }
+
+  function setActivePath(path) {
+    form.classList.remove('contact__form--collab', 'contact__form--brief');
+
+    if (path === 'brief') {
+      form.classList.add('contact__form--brief');
+      setFieldsetDisabled(collabFieldsEl, true);
+      setFieldsetDisabled(briefFieldsEl, false);
+      disclaimerEl.setAttribute('data-i18n', BRIEF_DISCLAIMER_KEY);
+      submitLabelEl.setAttribute('data-i18n', BRIEF_SUBMIT_KEY);
+    } else if (path === 'collaboration') {
+      form.classList.add('contact__form--collab');
+      setFieldsetDisabled(briefFieldsEl, true);
+      setFieldsetDisabled(collabFieldsEl, false);
+      disclaimerEl.setAttribute('data-i18n', COLLAB_DISCLAIMER_KEY);
+      submitLabelEl.setAttribute('data-i18n', COLLAB_SUBMIT_KEY);
+    }
+
+    /* Re-render i18n so swapped data-i18n keys take effect in active language. */
+    if (typeof window.swapLang === 'function') {
+      window.swapLang(currentLang());
+    }
+  }
+
+  function validateBriefFields() {
+    let firstInvalid = null;
+    let allValid = true;
+    briefFields.forEach(function (f) {
+      const el = document.getElementById(f.id);
+      if (!el || el.disabled) return;
+      const valid = f.test(el.value);
+      if (!valid) {
+        allValid = false;
+        if (!firstInvalid) firstInvalid = el;
+      }
+    });
+    if (firstInvalid) firstInvalid.focus();
+    return allValid;
+  }
+
+  function getActivePath() {
+    const checked = form.querySelector('input[name="intent"]:checked');
+    return checked ? checked.value : null;
+  }
+
+  function parseHashAndPrefill() {
+    const raw = window.location.hash;
+    if (!raw || !raw.startsWith('#contact')) return;
+    const queryStr = raw.split('?')[1];
+    if (!queryStr) return;
+    const params = new URLSearchParams(queryStr);
+    const caseId = params.get('case');
+    if (!caseId || VALID_CASE_IDS.indexOf(caseId) === -1) return;
+
+    const briefRadio = form.querySelector('input[name="intent"][value="brief"]');
+    if (!briefRadio) return;
+    briefRadio.checked = true;
+    setActivePath('brief');
+    if (caseSelect) {
+      caseSelect.value = caseId;
+      caseSelect.classList.remove('is-placeholder');
+    }
+  }
+
+  /* Initial state: both fieldsets disabled, no path active. The
+     :not(--collab):not(--brief) CSS rule hides both wrappers. */
+  setFieldsetDisabled(collabFieldsEl, true);
+  setFieldsetDisabled(briefFieldsEl, true);
+
+  /* Bind intent radio change → activate path. */
+  intentRadios.forEach(function (r) {
+    r.addEventListener('change', function (e) {
+      if (e.target.checked) setActivePath(e.target.value);
+    });
+  });
+
+  /* Capture-phase submit listener: gates validation + sets intent_path
+     BEFORE the v4 bubble-phase handler runs. */
+  form.addEventListener('submit', function (e) {
+    const path = getActivePath();
+    if (!path) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      const firstRadio = form.querySelector('input[name="intent"]');
+      if (firstRadio) firstRadio.focus();
+      return;
+    }
+
+    if (path === 'brief') {
+      if (!validateBriefFields()) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        return;
+      }
+    }
+
+    intentPathInput.value = path;
+    /* Allow bubble-phase v4 handler to run (preventDefault → fetch → success).
+       The disabled-input guard in validateContactField ensures inactive-path
+       collab fields auto-pass when brief is the active path. */
+  }, { capture: true });
+
+  /* Hash pre-fill runs after initial swapLang('EN') so disclaimer/submit
+     i18n re-render lands on the brief copy if the hash auto-selects brief. */
+  document.addEventListener('DOMContentLoaded', parseHashAndPrefill);
 })();
 
 /* ============================================================
