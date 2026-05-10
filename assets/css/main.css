@@ -1430,6 +1430,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   /* CONTACT v5 — P5 */
   .contact__intent-cards { grid-template-columns: 1fr; gap: 0.75rem; }
   .contact__intent-card  { min-height: 56px; }
+  .contact__fields--brief .contact__textarea { min-height: 6rem; }
 }
 
 /* ============================================================ FOOTER ============================================================ */
