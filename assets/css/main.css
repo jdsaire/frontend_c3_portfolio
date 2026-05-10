@@ -1330,6 +1330,11 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 .contact__form--collab .contact__fields--brief  { display: none; }
 .contact__form--collab .contact__fields--collab { display: block; }
 
+/* CONTACT v5 — neither path selected: hide both fieldsets (P4) */
+.contact__form:not(.contact__form--collab):not(.contact__form--brief) .contact__fields {
+  display: none;
+}
+
 /* Intent selector */
 .contact__intent {
   border: 0;
