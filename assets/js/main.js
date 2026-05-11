@@ -1,333 +1,49 @@
 /* ============================================================
-   i18n COPY DICTIONARY
-   All bilingual copy keyed to data-i18n attributes.
-   EN is source of record; ES is locked per principal selection.
-   ============================================================ */
-const COPY = {
-  EN: {
-    nav_work:         'Work',
-    nav_services:     'Services',
-    nav_capabilities: 'Capabilities',
-    nav_about:        'Standards',
-    nav_cta:          'Contact',
-    hero_badge:       'Building in Lima, Peru',
-    hero_h1_line1:    'Your digital',
-    hero_h1_line2:    'ambitions',
-    hero_h1_line3:    'live here',
-    hero_tag1:        'BUILD',
-    hero_tag2:        'SCALE',
-    hero_tag3:        'CONTROL',
-    hero_eyebrow:     'PROVEN IMPACT',
-    hero_stat1:       'A decade across three disciplines',
-    hero_stat2:       'Students and users shaped by the work',
-    hero_stat3:       'Projects shipped across 5 industries',
-    hero_stat4:       'Faster builds with AI in the loop',
-    hero_cta:         'See the work',
-    hero_cta_aria:    'See the work — case studies',
-    work_eyebrow:     'WORK',
-    work_heading:     'Success stories.',
-    work_lede:        'Scroll through the work that made it onto the shortlist.',
-    work_cta:         'Request Brief',
-    work_card1_label:   'Build',
-    work_card1_heading: 'Built a revenue-first app for 40M+ passengers',
-    work_card1_body:    'Lima Airport\'s new terminal needed a mobile experience to unlock non-aeronautical revenue. We prototyped LimaFly in high fidelity — a full passenger journey for 40M+ annual arrivals and departures.',
-    work_card2_label:   'Scale',
-    work_card2_heading: 'Aligned airport staff with premium Agile workshops',
-    work_card2_body:    'Lima Airport\'s cultural shift to Agile needed real traction, fast. We ran three hybrid workshops — 70 employees across all divisions walked away ready to apply it in their teams.',
-    work_card3_label:   'Control',
-    work_card3_heading: 'Reset playbook of critical airport program',
-    work_card3_body:    'Designing an unprecedented aeronautical fee meant making high-stakes calls without a playbook. We codified lessons from the TUUA Transfer to shape Lima Airport\'s next major programs.',
-    work_card4_label:   'Build · In progress',
-    work_card4_heading: 'Building JDigital v1 with modern Microsoft frontend',
-    work_card4_body:    'This site is the first version of a full-stack boutique practice. Midway through a Microsoft front-end specialization, every technique gets pressure-tested here before it ships to partners.',
-    work_card4_status:  'Shipping across Q2 2026',
-    /* Services */
-    services_eyebrow:  'SERVICES',
-    services_h2:       'How we engage.',
-    services_lede:     'Four ways to start — the right one depends on you.',
-    services_cta:      'Explore a collaboration',
-    services_s1_label: 'STRATEGIC PARTNERSHIP',
-    services_s1_title: 'The holistic mind your team needs',
-    services_s1_body:  'Some products need more than advice — they need someone in the room making calls. JDigital operates on a maximum of two strategic engagements per quarter, which means the ones that make it get undivided architecture, roadmap, and delivery focus.',
-    services_s2_label: 'EDUCATION OPPORTUNITY',
-    services_s2_title: 'Six years building programs that stuck',
-    services_s2_body:  'Organizations invest heavily in training, but rarely in learning experiences designed to actually change how people work. We design and deliver programs across the full modern tech spectrum, from university-level curricula to corporate upskilling programs',
-    services_s3_label: 'PUBLIC SPEAKING',
-    services_s3_title: 'Talks that move the room and the sprint',
-    services_s3_body:  'Most conference slots end the same way: applause, a photo, and no next step. We bring practitioner-grade perspectives to industry keynotes, panels, and innovation forums — real stories from live digital product builds.',
-    services_s4_label: 'MEDIA & CONTENT',
-    services_s4_title: 'Disruption pills for ambitious leaders',
-    services_s4_body:  'Bridging the gap between technical and executive audiences, we co-create content using a decade of product design and filmmaking expertise. Partner with us to share the insights that your audience deserves — in podcast or TikTok.',
-    /* Capabilities */
-    capabilities_eyebrow:  'CAPABILITIES',
-    capabilities_headline: 'Nine in one.',
-    capabilities_lede:             'Explore the roles we bring to every project.',
-    capabilities_certified_label:  'Certified by:',
-    capabilities_node_pd_label:    'Product Designer',
-    capabilities_node_pd_desc:     'Every interface decision is a bet on user behavior. We design with behavioral assumptions baked into every interaction — tested against real users, not design committee preference.',
-    capabilities_node_fd_label:    'Front-end Developer',
-    capabilities_node_fd_desc:     'Design dies in handoff when no one can build it. We close that gap — writing production-grade Vanilla HTML/CSS/JS and C#, accelerated by AI workflows that ship, perform, and survive the first real user.',
-    capabilities_node_ux_label:    'UX/UI Engineer',
-    capabilities_node_ux_desc:     'The handoff gap between Figma and production is where digital products lose their soul. We close it — owning both the design system and the code that implements it, frame by frame.',
-    capabilities_node_cx_label:    'CX Lead',
-    capabilities_node_cx_desc:     'Customer journey maps are decorative without an owner for each friction point. We map end-to-end experiences and assign accountability — so improvements have a name attached, not a committee.',
-    capabilities_node_tt_label:    'Tech Trainer',
-    capabilities_node_tt_desc:     'Tool adoption stalls the moment the rollout team leaves. We design and facilitate upskilling programs that move internal teams from passive recipients to active owners of new processes.',
-    capabilities_node_gh_label:    'Growth Hacker',
-    capabilities_node_gh_desc:     'Acquisition only matters if the product retains. We identify high-leverage conversion levers through rapid experimentation — driving innovation by measuring what users do, not what they report.',
-    capabilities_node_pm_label:    'Project Manager',
-    capabilities_node_pm_desc:     'Complex programs lose money in the gaps between workstreams — not in the work itself. We govern multi-project and multi-phase portfolios with the systemic view that separates structure from noise.',
-    capabilities_node_sm_label:    'Scrum Master',
-    capabilities_node_sm_desc:     'Agile ceremonies without accountability are expensive theater. We run sprint cadences where every ceremony has a decision attached — and the board reflects reality, not wishful planning.',
-    capabilities_node_prd_label:   'Product Manager',
-    capabilities_node_prd_desc:    'Roadmaps fail when no one can trace a feature to a business outcome. We own the product backlog with prioritization grounded in user evidence and business strategy — not committee consensus.',
-    /* About */
-    about_eyebrow:         'STANDARDS',
-    about_heading:         'Our non-negotiables.',
-    about_lede:            'Principles that decide whether we\'re a fit.',
-    about_card1_principle: 'Zero\nImprovisation.',
-    about_card1_body:      'Before any work starts, the first conversation pins down what success actually looks like — what should be true at each defined checkpoint. Structured methods like Scrum make progress visible and results harder to dispute.',
-    about_card2_principle: 'Zero\nNoise.',
-    about_card2_body:      'JDigital works best where honest input is expected, not managed — and where cultural fit is real, not performed. Engagements that hold are led by leaders who already understand this.',
-    about_card3_principle: 'Zero\nOverpromising.',
-    about_card3_body:      'This practice runs on Claude Pro and Gemini Pro as key tools — named here, not buried in fine print, because transparency about how the work gets done is part of the standard. What gets built reflects what the best available tools can actually do right now.',
-    /* Contact */
-    contact_eyebrow:               'LET\'S CONNECT',
-    contact_headline:              'Open the conversation.',
-    contact_lede:                  'Direct to Juan Diego — zero frictions.',
-    contact_avail_strong:          'Q3 2026 · limited slots.',
-    contact_avail_body:            'Two executive engagements per quarter.',
-    contact_linkedin:              'Connect on LinkedIn',
-    contact_dropdown_label:        'What\'s your next digital ambition?',
-    contact_dropdown_placeholder:  'Select one',
-    contact_opt1:                  'Partnership — hiring, project, or co-creation',
-    contact_opt2:                  'Education — teaching or training',
-    contact_opt3:                  'Speaking — keynote, panel, or workshop',
-    contact_opt4:                  'Media — interview, podcast, or feature',
-    contact_opt5:                  'Something else',
-    contact_name_label:            'Full name',
-    contact_name_placeholder:      'Ana Torres',
-    contact_email_label:           'Email',
-    contact_email_placeholder:     'ana@company.com',
-    contact_msg_label:             'Tell us the context',
-    contact_msg_placeholder:       'Tell us the context — a role, a project, a course, an idea. The more specific, the better.',
-    contact_err_name:              'Full name is required.',
-    contact_err_email:             'A valid email is required.',
-    contact_err_type:              'Please select an engagement type.',
-    contact_err_msg:               'A message is required.',
-    contact_disclaimer:            'We reply within two business days — usually faster.',
-    contact_submit:                'Send message',
-    contact_success_headline:      'Message received.',
-    contact_success_body:          'We\'ll reply within two business days.',
-    contact_success_new:           'New message',
-    contact_wa_label:              'WhatsApp (optional)',
-    contact_wa_placeholder:        '+51 999 000 000',
-    contact_form_bridge:           'Or fill out form:',
-    contact_intent_label:          'How can we help?',
-    contact_intent_collab_title:   'Start a collaboration',
-    contact_intent_collab_desc:    'Hiring, projects, teaching, or media.',
-    contact_intent_brief_title:    'Request a case brief',
-    contact_intent_brief_desc:     'Detailed write-up of a past engagement.',
-    contact_case_label:            'Which case study?',
-    contact_case_limafly:          'LimaFly App — UX/UI',
-    contact_case_agile:            'Lima Airport Agile — Workshop',
-    contact_case_tuua:             'TUUA Transfer — Projects & Programs',
-    contact_case_jdigital:         'JDigital v1 — Frontend',
-    contact_company_label:         'Company',
-    contact_role_label:            'Role',
-    contact_context_label:         'Where did we meet, or who referred you?',
-    contact_context_placeholder:   'Lima Tech Summit 2026, or referred by María García at BCP.',
-    contact_brief_disclaimer:      'Briefs are shared on a referral basis. We review requests within two business days.',
-    contact_brief_submit:          'Request brief',
-    contact_brief_success_headline: 'Request received.',
-    contact_brief_success_body:    'We\'ll review and reply within two business days.',
-    /* Footer */
-    footer_tagline_pre:    'Let\'s build ',
-    footer_tagline_purple: 'together',
-    footer_about:          'About Us',
-    footer_contact_link:   'Contact Us',
-    footer_sitemap:        'Sitemap',
-    footer_privacy:        'Privacy Statement',
-    footer_terms:          'Terms & Conditions',
-    footer_accessibility:  'Accessibility Statement',
-    footer_copyright:      '© 2026 JDigital. All Rights Reserved.',
-  },
-  ES: {
-    nav_work:         'Portafolio',
-    nav_services:     'Servicios',
-    nav_capabilities: 'Competencias',
-    nav_about:        'Estándares',
-    nav_cta:          'Contacto',
-    hero_badge:       'Innovando desde Lima, Perú',
-    hero_h1_line1:    'Ambiciones',
-    hero_h1_line2:    'digitales',
-    hero_h1_line3:    'sin límites',
-    hero_tag1:        'BUILD',
-    hero_tag2:        'SCALE',
-    hero_tag3:        'CONTROL',
-    hero_eyebrow:     'IMPACTO DEMOSTRADO',
-    hero_stat1:       'Una década en tres disciplinas',
-    hero_stat2:       'Estudiantes y usuarios impactados',
-    hero_stat3:       'Productos entregados en 5 industrias',
-    hero_stat4:       'Builds más rápidos con IA integrada',
-    hero_cta:         'Explorar',
-    hero_cta_aria:    'Explorar proyectos — casos de estudio',
-    work_eyebrow:     'PORTAFOLIO',
-    work_heading:     'Proyectos destacados.',
-    work_lede:        'Explore el trabajo que dejó huella.',
-    work_cta:         'Acceder al Brief',
-    work_card1_label:   'Crea',
-    work_card1_heading: 'Desarrollamos app para monetizar 40M+ pasajeros',
-    work_card1_body:    'El nuevo terminal de Lima Airport necesitaba una experiencia móvil que generara ingresos fuera de la aeronáutica. Construimos LimaFly App en alta fidelidad — el journey completo para 40M+ viajeros al año.',
-    work_card2_label:   'Crece',
-    work_card2_heading: 'Alineamos mentalidad ágil con talleres premium',
-    work_card2_body:    'Lima Airport necesitaba que su gente adoptara Agile — no solo lo entendiera. Facilitamos tres workshops híbridos con 70 colaboradores de todas las divisiones: salieron listos para aplicarlo en sus equipos.',
-    work_card3_label:   'Controla',
-    work_card3_heading: 'Replanteamos gestión del programa más crítico',
-    work_card3_body:    'Diseñar el cobro de una nueva tasa aeronáutica sin precedente mundial exigió decidir sin manual. Ejecutamos el post-mortem del TUUA Transfer y codificamos las lecciones para programas de Lima Airport.',
-    work_card4_label:   'Crea · En progreso',
-    work_card4_heading: 'Construyendo JDigital v1 con Microsoft frontend',
-    work_card4_body:    'JDigital no es solo un portafolio — es el primer producto de nuestra agencia. Lo construimos con el último stack front-end de Microsoft, probando aquí cada decisión técnica antes de escalar.',
-    work_card4_status:  'Culminando en Q2 2026',
-    /* Services */
-    services_eyebrow:  'SERVICIOS',
-    services_h2:       'Cómo trabajamos juntos.',
-    services_lede:     'Cuatro modelos — el indicado depende de su caso.',
-    services_cta:      'Explorar una colaboración',
-    services_s1_label: 'ALIANZA ESTRATÉGICA',
-    services_s1_title: 'Mentalidad holística para tu equipo',
-    services_s1_body:  'Contar con acceso al stack técnico más moderno es mandatorio — nosotros añadimos liderazgo estratégico y conexión auténtica. Trabajamos con un máximo de compromisos por trimestre: los partners elegidos reciben nuestro servicio premium de inicio a fin.',
-    services_s2_label: 'EDUCACIÓN Y CAPACITACIÓN',
-    services_s2_title: 'Seis años creando cursos memorables',
-    services_s2_body:  'Las organizaciones siguen invirtiendo en capacitaciones genéricas, pero pocas en experiencias diseñadas para cambiar cómo trabaja su personal clave. Diseñamos y facilitamos programas vanguardistas de Tech upskilling para universidades y corporaciones',
-    services_s3_label: 'CONFERENCIAS Y TALLERES',
-    services_s3_title: 'Moviendo el auditorio y el sprint',
-    services_s3_body:  'La mayoría de conferencias terminan igual: aplausos, fotos y ningún compromiso de acción. Transferimos los aprendizajes centrales de nuestros proyectos de desarrollo en keynotes, paneles y foros de innovación',
-    services_s4_label: 'MEDIOS Y CONTENIDO',
-    services_s4_title: 'Cápsulas de disrupción para líderes',
-    services_s4_body:  'Dominamos el lenguaje ejecutivo y técnico, coreando en base a nuestra década en diseño digital y producción audiovisual. Estaremos encantados compartir nuestro enfoque con su audiencia — desde podcasts hasta Tiktok.',
-    /* Capabilities */
-    capabilities_eyebrow:          'COMPETENCIAS',
-    capabilities_headline:         'Nueve en uno.',
-    capabilities_lede:             'Explore los roles que llevamos a cada proyecto.',
-    capabilities_certified_label:  'Respaldado por:',
-    capabilities_node_pd_label:    'Product Designer',
-    capabilities_node_pd_desc:     'Un diseño que nadie prueba es solo una hipótesis cara. Construimos cada interfaz sobre insights de conducta — y los validamos antes de escribir la primera línea de código.',
-    capabilities_node_fd_label:    'Desarrollador Front-end',
-    capabilities_node_fd_desc:     'El diseño muere cuando nadie puede construirlo. Cerramos esa brecha — escribiendo código HTML/CSS/JS y C# acelerado por IA, superando pruebas con usuarios reales.',
-    capabilities_node_ux_label:    'Ingeniero UX/UI',
-    capabilities_node_ux_desc:     'La brecha entre Figma y producción es donde los productos digitales pierden su esencia. La superamos — dominando los sistemas de diseño y el código que lo implementa, píxel a píxel.',
-    capabilities_node_cx_label:    'Líder CX',
-    capabilities_node_cx_desc:     'El problema rara vez está donde el cliente se queja. Identificamos las fricciones reales a lo largo del journey completo — y ejecutamos las mejoras con precisión quirúrgica.',
-    capabilities_node_tt_label:    'Instructor Tech',
-    capabilities_node_tt_desc:     'La adopción de herramientas se detiene cuando la implementación termina. Diseñamos y facilitamos programas de entrenamiento que mueven a los equipos internos a liderar sus nuevos procesos.',
-    capabilities_node_gh_label:    'Growth Hacker',
-    capabilities_node_gh_desc:     'La adquisición de clientes importa si el producto los retiene. Identificamos palancas de conversión de alto impacto mediante experimentación rápida — midiendo lo que los usuarios hacen, no lo que reportan.',
-    capabilities_node_pm_label:    'Project Manager',
-    capabilities_node_pm_desc:     'Los programas fallan en la coordinación entre paquetes de trabajo. Gobernamos portafolios de proyecto con visión sistémica: cada brecha tiene dueño antes de convertirse en retraso.',
-    capabilities_node_sm_label:    'Scrum Master',
-    capabilities_node_sm_desc:     'Una retrospectiva sin acción es un gasto sin retorno. Llevamos sprints donde cada ceremonia cierra con una decisión y los indicadores reflejan lo que realmente pasó.',
-    capabilities_node_prd_label:   'Product Manager',
-    capabilities_node_prd_desc:    'Los roadmaps fracasan cuando nadie puede trazar una funcionalidad a una meta clave. Manejamos el backlog con priorización fundamentada en beneficios tangibles para nuestros clientes.',
-    /* About */
-    about_eyebrow:         'ESTÁNDARES',
-    about_heading:         'Nuestros no negociables.',
-    about_lede:            'Tres principios que definen si hay fit real.',
-    about_card1_principle: 'Cero\nImprovisación.',
-    about_card1_body:      'Antes de empezar, establecemos indicadores de éxito para cada hito de entrega. Métodos estructurados como Scrum no son opcionales — son la forma en que el avance se hace visible y los resultados se sostienen.',
-    about_card2_principle: 'Cero\nRuido.',
-    about_card2_body:      'JDigital funciona donde el feedback y el fit cultural son auténticos — no forzados. Las colaboraciones que perduran son lideradas por ejecutivos que aceptan este estándar común.',
-    about_card3_principle: 'Cero\nSobrepromesas.',
-    about_card3_body:      'Trabajamos con los ecosistemas IA de Claude Pro y Gemini Pro — porque la transparencia sobre cómo se trabaja es parte de nuestro estándar. Los productos que construimos reflejan lo que las mejores herramientas disponibles pueden hacer hoy.',
-    /* Contact */
-    contact_eyebrow:               'CONTACTO',
-    contact_headline:              'Inicie la conversación.',
-    contact_lede:                  'Hable con Juan Diego — cero fricciones.',
-    contact_avail_strong:          'Q3 2026 · cupos limitados.',
-    contact_avail_body:            'Dos proyectos ejecutivos por trimestre.',
-    contact_linkedin:              'Conectar en LinkedIn',
-    contact_dropdown_label:        '¿Cuál es su próxima ambición digital?',
-    contact_dropdown_placeholder:  'Seleccione una opción',
-    contact_opt1:                  'Alianza — hiring, proyecto o co-creación',
-    contact_opt2:                  'Educación — docencia o training',
-    contact_opt3:                  'Speaking — keynote, panel o workshop',
-    contact_opt4:                  'Medios — entrevista, podcast o publicación',
-    contact_opt5:                  'Otro',
-    contact_name_label:            'Nombre completo',
-    contact_name_placeholder:      'Ana Torres',
-    contact_email_label:           'Correo electrónico',
-    contact_email_placeholder:     'ana@empresa.com',
-    contact_msg_label:             'Cuéntenos el contexto',
-    contact_msg_placeholder:       'Describa el contexto — el rol, el proyecto o la iniciativa. Mientras más detalle, mejor.',
-    contact_err_name:              'El nombre es requerido.',
-    contact_err_email:             'Ingrese un correo válido.',
-    contact_err_type:              'Seleccione el tipo de consulta.',
-    contact_err_msg:               'El mensaje es requerido.',
-    contact_disclaimer:            'Respondemos en dos días hábiles — usualmente antes.',
-    contact_submit:                'Enviar mensaje',
-    contact_success_headline:      'Mensaje recibido.',
-    contact_success_body:          'Responderemos en dos días hábiles.',
-    contact_success_new:           'Nuevo mensaje',
-    contact_wa_label:              'WhatsApp (opcional)',
-    contact_wa_placeholder:        '+51 999 000 000',
-    contact_form_bridge:           'O complete formulario:',
-    contact_intent_label:          '¿En qué podemos ayudarle?',
-    contact_intent_collab_title:   'Iniciar una colaboración',
-    contact_intent_collab_desc:    'Hiring, proyectos, docencia o medios.',
-    contact_intent_brief_title:    'Solicitar brief de portfolio',
-    contact_intent_brief_desc:     'Presentación ejecutiva de proyecto terminado.',
-    contact_case_label:            '¿Cuál caso de estudio?',
-    contact_case_limafly:          'LimaFly App — UX/UI',
-    contact_case_agile:            'Lima Airport Agile — Taller',
-    contact_case_tuua:             'TUUA Transfer — Proyectos y Programas',
-    contact_case_jdigital:         'JDigital v1 — Frontend',
-    contact_company_label:         'Organización',
-    contact_role_label:            'Cargo',
-    contact_context_label:         '¿Dónde nos conocimos, o quién le refirió?',
-    contact_context_placeholder:   'Lima Tech Summit 2026, o referido por María García - BCP.',
-    contact_brief_disclaimer:      'Los briefs se comparten a referidos. Respondemos cada solicitud en dos días hábiles.',
-    contact_brief_submit:          'Solicitar el brief',
-    contact_brief_success_headline: 'Solicitud recibida.',
-    contact_brief_success_body:    'Revisaremos y responderemos en dos días hábiles.',
-    /* Footer */
-    footer_tagline_pre:    'Aceleremos ',
-    footer_tagline_purple: 'juntos',
-    footer_about:          'Sobre mí',
-    footer_contact_link:   'Contacto',
-    footer_sitemap:        'Mapa del sitio',
-    footer_privacy:        'Aviso de privacidad',
-    footer_terms:          'Términos y condiciones',
-    footer_accessibility:  'Declaración de accesibilidad',
-    footer_copyright:      '© 2026 JDigital. Todos los derechos reservados.',
-  }
-};
-
-/* ============================================================
    i18n ENGINE — swapLang(lang)
-   Finds all [data-i18n] nodes and updates textContent.
-   Updates html[lang], aria-labels, and page title.
+   Dictionaries are loaded asynchronously from assets/i18n/{lang}.json
+   on first use of each language; subsequent calls hit the cache.
+   swapLang(lang)'s public signature is unchanged — callers
+   fire-and-forget. The HTML's default English markup is the
+   render fallback during the brief async fetch window.
    ============================================================ */
+const i18nDicts   = { EN: null, ES: null };
+const i18nLoading = { EN: null, ES: null };
+let   i18nCurrent = 'EN';
+
+function loadDict(lang) {
+  if (i18nDicts[lang])   return Promise.resolve(i18nDicts[lang]);
+  if (i18nLoading[lang]) return i18nLoading[lang];
+  const file = lang === 'ES' ? 'es.json' : 'en.json';
+  i18nLoading[lang] = fetch('assets/i18n/' + file)
+    .then(r => r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)))
+    .then(dict => { i18nDicts[lang] = dict; return dict; })
+    .catch(err => { console.warn('i18n fetch failed for ' + lang + ':', err); return null; });
+  return i18nLoading[lang];
+}
+
 function swapLang(lang) {
-  const dict = COPY[lang];
-  if (!dict) return;
-  document.documentElement.setAttribute('lang', lang === 'ES' ? 'es' : 'en');
-  document.documentElement.setAttribute('data-lang', lang);
+  i18nCurrent = lang;
+  loadDict(lang).then(dict => {
+    if (!dict || i18nCurrent !== lang) return;
+    document.documentElement.setAttribute('lang', lang === 'ES' ? 'es' : 'en');
+    document.documentElement.setAttribute('data-lang', lang);
 
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.dataset.i18n;
-    if (dict[key] !== undefined) el.textContent = dict[key];
-  });
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (dict[key] !== undefined) el.textContent = dict[key];
+    });
 
-  /* aria-label swap for CTA anchor */
-  document.querySelectorAll('[data-i18n-aria]').forEach(el => {
-    const key = el.dataset.i18nAria;
-    if (dict[key] !== undefined) el.setAttribute('aria-label', dict[key]);
-  });
+    /* aria-label swap for CTA anchor */
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      const key = el.dataset.i18nAria;
+      if (dict[key] !== undefined) el.setAttribute('aria-label', dict[key]);
+    });
 
-  /* placeholder swap for form inputs/textarea */
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    const key = el.dataset.i18nPlaceholder;
-    if (dict[key] !== undefined) el.placeholder = dict[key];
+    /* placeholder swap for form inputs/textarea */
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.dataset.i18nPlaceholder;
+      if (dict[key] !== undefined) el.placeholder = dict[key];
+    });
   });
 }
 
@@ -595,6 +311,7 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
       const wrapper = document.getElementById(field.id);
       const input   = document.getElementById(field.input);
       if (!wrapper || !input) return true;
+      if (input.disabled) return true;
       const valid = field.test(input.value);
       wrapper.classList.toggle('has-error', !valid);
       return valid;
@@ -644,6 +361,164 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
       });
     }
   }
+})();
+
+/* ============================================================
+   CONTACT v5 — Dual-intent behavior layer (P4)
+   Wires intent toggle, conditional validation, URL hash pre-fill,
+   and submit routing. Layered ALONGSIDE the v4 submit handler via
+   a capture-phase listener; v4 fetch + success flow are unchanged.
+   ============================================================ */
+(function () {
+  'use strict';
+
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
+  const intentRadios    = form.querySelectorAll('input[name="intent"]');
+  const collabFieldsEl  = form.querySelector('.contact__fields--collab');
+  const briefFieldsEl   = form.querySelector('.contact__fields--brief');
+  const disclaimerEl    = form.querySelector('.contact__disclaimer');
+  const submitLabelEl   = form.querySelector('button[type="submit"] .cta__label');
+  const intentPathInput = form.querySelector('input[name="intent_path"]');
+  const caseSelect      = form.querySelector('#contact-brief-case');
+
+  if (!collabFieldsEl || !briefFieldsEl || !disclaimerEl || !submitLabelEl || !intentPathInput) return;
+
+  /* Capture the v4 collab submit-label key from the markup (do not invent). */
+  const COLLAB_SUBMIT_KEY     = submitLabelEl.dataset.i18n || 'contact_submit';
+  const COLLAB_DISCLAIMER_KEY = 'contact_disclaimer';
+  const BRIEF_DISCLAIMER_KEY  = 'contact_brief_disclaimer';
+  const BRIEF_SUBMIT_KEY      = 'contact_brief_submit';
+
+  const VALID_CASE_IDS = ['limafly', 'agile', 'tuua', 'jdigital'];
+
+  /* Brief-path field configs (P4 owns its own validator; the v4 validator
+     handles collab path and skips disabled inputs via the guard added in
+     the v4 IIFE above). */
+  const briefFields = [
+    { id: 'contact-brief-case',    test: function (v) { return v !== ''; } },
+    { id: 'contact-brief-name',    test: function (v) { return v.trim().length >= 2; } },
+    { id: 'contact-brief-email',   test: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); } },
+    { id: 'contact-brief-company', test: function (v) { return v.trim().length >= 1; } },
+    { id: 'contact-brief-role',    test: function (v) { return v.trim().length >= 1; } },
+    { id: 'contact-brief-context', test: function (v) { return v.trim().length >= 5; } }
+  ];
+
+  function setFieldsetDisabled(fieldsetEl, disabled) {
+    fieldsetEl.querySelectorAll('input, select, textarea').forEach(function (el) {
+      el.disabled = disabled;
+    });
+  }
+
+  function currentLang() {
+    return document.documentElement.dataset.lang || 'EN';
+  }
+
+  function setActivePath(path) {
+    form.classList.remove('contact__form--collab', 'contact__form--brief');
+
+    if (path === 'brief') {
+      form.classList.add('contact__form--brief');
+      setFieldsetDisabled(collabFieldsEl, true);
+      setFieldsetDisabled(briefFieldsEl, false);
+      disclaimerEl.setAttribute('data-i18n', BRIEF_DISCLAIMER_KEY);
+      submitLabelEl.setAttribute('data-i18n', BRIEF_SUBMIT_KEY);
+    } else if (path === 'collaboration') {
+      form.classList.add('contact__form--collab');
+      setFieldsetDisabled(briefFieldsEl, true);
+      setFieldsetDisabled(collabFieldsEl, false);
+      disclaimerEl.setAttribute('data-i18n', COLLAB_DISCLAIMER_KEY);
+      submitLabelEl.setAttribute('data-i18n', COLLAB_SUBMIT_KEY);
+    }
+
+    /* Re-render i18n so swapped data-i18n keys take effect in active language. */
+    if (typeof window.swapLang === 'function') {
+      window.swapLang(currentLang());
+    }
+  }
+
+  function validateBriefFields() {
+    let firstInvalid = null;
+    let allValid = true;
+    briefFields.forEach(function (f) {
+      const el = document.getElementById(f.id);
+      if (!el || el.disabled) return;
+      const valid = f.test(el.value);
+      if (!valid) {
+        allValid = false;
+        if (!firstInvalid) firstInvalid = el;
+      }
+    });
+    if (firstInvalid) firstInvalid.focus();
+    return allValid;
+  }
+
+  function getActivePath() {
+    const checked = form.querySelector('input[name="intent"]:checked');
+    return checked ? checked.value : null;
+  }
+
+  function parseHashAndPrefill() {
+    const raw = window.location.hash;
+    if (!raw || !raw.startsWith('#contact')) return;
+    const queryStr = raw.split('?')[1];
+    if (!queryStr) return;
+    const params = new URLSearchParams(queryStr);
+    const caseId = params.get('case');
+    if (!caseId || VALID_CASE_IDS.indexOf(caseId) === -1) return;
+
+    const briefRadio = form.querySelector('input[name="intent"][value="brief"]');
+    if (!briefRadio) return;
+    briefRadio.checked = true;
+    setActivePath('brief');
+    if (caseSelect) {
+      caseSelect.value = caseId;
+      caseSelect.classList.remove('is-placeholder');
+    }
+  }
+
+  /* Initial state: both fieldsets disabled, no path active. The
+     :not(--collab):not(--brief) CSS rule hides both wrappers. */
+  setFieldsetDisabled(collabFieldsEl, true);
+  setFieldsetDisabled(briefFieldsEl, true);
+
+  /* Bind intent radio change → activate path. */
+  intentRadios.forEach(function (r) {
+    r.addEventListener('change', function (e) {
+      if (e.target.checked) setActivePath(e.target.value);
+    });
+  });
+
+  /* Capture-phase submit listener: gates validation + sets intent_path
+     BEFORE the v4 bubble-phase handler runs. */
+  form.addEventListener('submit', function (e) {
+    const path = getActivePath();
+    if (!path) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      const firstRadio = form.querySelector('input[name="intent"]');
+      if (firstRadio) firstRadio.focus();
+      return;
+    }
+
+    if (path === 'brief') {
+      if (!validateBriefFields()) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        return;
+      }
+    }
+
+    intentPathInput.value = path;
+    /* Allow bubble-phase v4 handler to run (preventDefault → fetch → success).
+       The disabled-input guard in validateContactField ensures inactive-path
+       collab fields auto-pass when brief is the active path. */
+  }, { capture: true });
+
+  /* Hash pre-fill runs after initial swapLang('EN') so disclaimer/submit
+     i18n re-render lands on the brief copy if the hash auto-selects brief. */
+  document.addEventListener('DOMContentLoaded', parseHashAndPrefill);
 })();
 
 /* ============================================================
@@ -1052,7 +927,7 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
 
   function openInfoCard(nd) {
     const lang = document.documentElement.dataset.lang || 'EN';
-    const dict = COPY[lang];
+    const dict = i18nDicts[lang] || {};
     capInfoTitle.textContent = dict[`capabilities_node_${nd.id}_label`] || nd.label.replace('\n', ' ');
     capInfoDesc.textContent  = dict[`capabilities_node_${nd.id}_desc`]  || nd.desc;
 
@@ -1084,7 +959,7 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
 
   function openSheet(nd) {
     const lang = document.documentElement.dataset.lang || 'EN';
-    const dict = COPY[lang];
+    const dict = i18nDicts[lang] || {};
     capSheetTitle.textContent = dict[`capabilities_node_${nd.id}_label`] || nd.label.replace('\n', ' ');
     capSheetDesc.textContent  = dict[`capabilities_node_${nd.id}_desc`]  || nd.desc;
     capBottomSheet.classList.add('visible');
