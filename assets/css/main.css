@@ -1265,6 +1265,22 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   max-width: 18rem;
 }
 .contact__submit-row .cta { margin-bottom: 0; }
+/* ── Contact v6 — conditional submit-row reveal ──────────── */
+.contact__submit-row {
+  transition: opacity 200ms var(--ease-standard),
+              transform 200ms var(--ease-standard),
+              visibility 0ms 0ms;
+}
+.contact__form:not(.contact__form--collab):not(.contact__form--brief)
+  .contact__submit-row {
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 200ms var(--ease-standard),
+              transform 200ms var(--ease-standard),
+              visibility 0ms 200ms;
+}
 .contact__success {
   display: none;
   position: absolute;
