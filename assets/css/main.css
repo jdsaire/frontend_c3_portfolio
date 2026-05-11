@@ -1321,12 +1321,88 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   color: var(--color-text-muted);
   max-width: 28rem;
 }
-/* ── Contact v6 — editorial centering (≥768 px) ──────────── */
-@media (min-width: 768px) {
-  #contact .section__eyebrow   { align-items: center; }
-  #contact .section__headline  { text-align: center; }
-  #contact .section__lede      { text-align: center; margin: 1rem auto 0; }
+
+/* CONTACT v5 — Dual-intent scaffold (P3) */
+
+/* Form-root state-class contract — P4 toggles these on .contact__form */
+.contact__form--brief  .contact__fields--collab { display: none; }
+.contact__form--brief  .contact__fields--brief  { display: block; }
+.contact__form--collab .contact__fields--brief  { display: none; }
+.contact__form--collab .contact__fields--collab { display: block; }
+
+/* CONTACT v5 — neither path selected: hide both fieldsets (P4) */
+.contact__form:not(.contact__form--collab):not(.contact__form--brief) .contact__fields {
+  display: none;
 }
+
+/* Intent selector */
+.contact__intent {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.contact__intent-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding: 0;
+}
+.contact__intent-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.contact__intent-card {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  padding: 1rem 1.25rem;
+  background: #111111;
+  border: 1px solid #2A2A2A;
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.contact__intent-card:hover {
+  background: #1A1A1A;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+.contact__intent-input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.contact__intent-card:has(.contact__intent-input:checked) {
+  border-color: #A100FF;
+  background: #1A1A1A;
+}
+.contact__intent-card:has(.contact__intent-input:focus-visible) {
+  outline: 2px solid #A100FF;
+  outline-offset: 2px;
+}
+.contact__intent-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.contact__intent-card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+.contact__intent-card-desc {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
 /* CONTACT — SINGLE COLUMN ≤1023px (bridge visible) */
 @media (max-width: 1023px) {
   .contact__form-bridge { display: block; margin-bottom: 0; }
