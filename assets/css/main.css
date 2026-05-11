@@ -1403,6 +1403,12 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   line-height: 1.5;
 }
 
+/* ── Contact v6 — editorial centering (≥768 px) ──────────── */
+@media (min-width: 768px) {
+  #contact .section__eyebrow   { align-items: center; }
+  #contact .section__headline  { text-align: center; }
+  #contact .section__lede      { text-align: center; margin: 1rem auto 0; }
+}
 /* CONTACT — SINGLE COLUMN ≤1023px (bridge visible) */
 @media (max-width: 1023px) {
   .contact__form-bridge { display: block; margin-bottom: 0; }
