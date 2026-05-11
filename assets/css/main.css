@@ -1152,33 +1152,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 }
 
 /* ============================================================ CONTACT ============================================================ */
-.contact__availability {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.875rem;
-  padding: 1.25rem;
-  border-left: 2px solid var(--color-brand-purple);
-  background: #0A0A0A;
-  margin: 1.5rem 0 2.25rem;
-  max-width: 28rem;
-}
-.contact__availability-dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  background: var(--color-brand-purple);
-  flex-shrink: 0;
-  margin-top: 0.45rem;
-  animation: pulse 2.8s var(--ease-standard) infinite;
-}
-.contact__availability-text {
-  font-size: 0.875rem;
-  line-height: 1.55;
-  color: var(--color-text-muted);
-}
-.contact__availability-text strong {
-  color: var(--color-brand-white);
-  font-weight: var(--fw-semibold);
-}
+
 /* WhatsApp field */
 .contact__wa-wrapper { display: flex; }
 .contact__wa-code {
@@ -1409,19 +1383,11 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   #contact .section__headline  { text-align: center; }
   #contact .section__lede      { text-align: center; margin: 1rem auto 0; }
 }
-/* CONTACT — SINGLE COLUMN ≤1023px (bridge visible) */
-@media (max-width: 1023px) {
-  .contact__form-bridge { display: block; margin-bottom: 0; }
-}
 /* CONTACT — TABLET 768px–1023px */
 @media (min-width: 768px) and (max-width: 1023px) {
   .contact__grid { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 
-.contact__form-bridge {
-  display: none;
-  color: var(--color-text-muted);
-}
 
 /* CONTACT — MOBILE ≤767px */
 @media (max-width: 767px) {
