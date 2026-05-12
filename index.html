@@ -808,7 +808,7 @@
                   <div class="contact__select-wrapper">
                     <select class="contact__select is-placeholder" id="contact-brief-case" name="case"
                             required aria-required="true">
-                      <option value="" disabled selected hidden></option>
+                      <option value="" disabled selected hidden data-i18n="contact_dropdown_placeholder">Select one</option>
                       <option value="limafly"  data-i18n="contact_case_limafly"></option>
                       <option value="agile"    data-i18n="contact_case_agile"></option>
                       <option value="tuua"     data-i18n="contact_case_tuua"></option>
@@ -823,11 +823,13 @@
                 <div class="contact__field">
                   <label class="contact__label" for="contact-brief-name" data-i18n="contact_name_label"></label>
                   <input class="contact__input" type="text" id="contact-brief-name" name="name"
+                         placeholder="Ana Torres" data-i18n-placeholder="contact_name_placeholder"
                          autocomplete="name" required />
                 </div>
                 <div class="contact__field">
                   <label class="contact__label" for="contact-brief-email" data-i18n="contact_email_label"></label>
                   <input class="contact__input" type="email" id="contact-brief-email" name="email"
+                         placeholder="ana@company.com" data-i18n-placeholder="contact_email_placeholder"
                          autocomplete="email" required />
                 </div>
               </div>
@@ -837,11 +839,13 @@
                 <div class="contact__field">
                   <label class="contact__label" for="contact-brief-company" data-i18n="contact_company_label"></label>
                   <input class="contact__input" type="text" id="contact-brief-company" name="company"
+                         placeholder="Google" data-i18n-placeholder="contact_company_placeholder"
                          autocomplete="organization" required />
                 </div>
                 <div class="contact__field">
                   <label class="contact__label" for="contact-brief-role" data-i18n="contact_role_label"></label>
                   <input class="contact__input" type="text" id="contact-brief-role" name="role"
+                         placeholder="Head of Digital" data-i18n-placeholder="contact_role_placeholder"
                          autocomplete="organization-title" required />
                 </div>
               </div>
