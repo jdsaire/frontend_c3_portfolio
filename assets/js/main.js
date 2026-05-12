@@ -420,6 +420,15 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     { id: 'contact-brief-context', wrapperId: 'brief-field-context', test: function (v) { return v.trim().length >= 5; } }
   ];
 
+  briefFields.forEach(function (f) {
+    const el      = document.getElementById(f.id);
+    const wrapper = document.getElementById(f.wrapperId);
+    if (!el || !wrapper) return;
+    const clear = function () { wrapper.classList.remove('has-error'); };
+    el.addEventListener('input', clear);
+    el.addEventListener('change', clear);
+  });
+
   function setFieldsetDisabled(fieldsetEl, disabled) {
     fieldsetEl.querySelectorAll('input, select, textarea').forEach(function (el) {
       el.disabled = disabled;
