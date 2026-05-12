@@ -1384,17 +1384,16 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   gap: 0.35rem;
 }
 .contact__intent-card-title {
-  font-size: clamp(1rem, 1.15vw, 1.1rem);
+  font-size: clamp(1.25rem, 1.75vw, 1.625rem);
   font-weight: var(--fw-bold);
   line-height: 1.25;
   letter-spacing: -0.015em;
   color: var(--color-brand-white);
 }
 .contact__intent-card-desc {
-  font-size: 0.8rem;
-  font-weight: var(--fw-regular);
+  font-size: clamp(1rem, 1.15vw, 1.1rem);
   line-height: 1.65;
-  color: var(--color-text-muted);
+  color: var(--color-brand-white);
 }
 
 /* ── Contact v6 — editorial centering (≥768 px) ──────────── */
