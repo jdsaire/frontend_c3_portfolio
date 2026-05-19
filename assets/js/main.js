@@ -53,7 +53,15 @@ function swapLang(lang) {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function () { swapLang('ES'); });
+document.addEventListener('DOMContentLoaded', function () {
+  const initialLang = 'ES';
+  swapLang(initialLang);
+  if (langLabel) langLabel.textContent = initialLang;
+  langPanel.querySelectorAll('.nav__lang-option').forEach(b => {
+    b.classList.toggle('nav__lang-option--active', b.dataset.lang === initialLang);
+    b.setAttribute('aria-selected', String(b.dataset.lang === initialLang));
+  });
+});
 
 /* ============================================================
    NAV scroll hide/show
