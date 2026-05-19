@@ -1897,4 +1897,16 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
   .img-alt-host:focus-within::after {
     opacity: 1;
   }
+  /* Portrait: span must fill the absolute media container */
+  .micro-about .img-alt-host {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  /* Services: span must fill the image slot */
+  .services__image-slot .img-alt-host {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 }
