@@ -144,5 +144,9 @@
   "footer_privacy": "Aviso de privacidad",
   "footer_terms": "Términos y condiciones",
   "footer_accessibility": "Declaración de accesibilidad",
-  "footer_copyright": "© 2026 JDigital. Todos los derechos reservados."
+  "footer_copyright": "© 2026 JDigital. Todos los derechos reservados.",
+
+  "micro_about_image_alt":   "Juan Diego Saire, fundador de JDigital, en Lima.",
+  "micro_about_heading":     "JDigital no es una consultora; es mi marca personal, el estándar que lleva mi nombre.",
+  "micro_about_attribution": "Juan Diego Saire — Fundador, JDigital"
 }
