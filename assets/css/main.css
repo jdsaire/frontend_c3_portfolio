@@ -1869,3 +1869,32 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
     margin-top: 1.5rem;
   }
 }
+
+/* ── A11y image tooltip — desktop hover caption (≥1024px only) ─ */
+@media (min-width: 1024px) {
+  .img-alt-host {
+    position: relative;
+    display: inline-block;
+  }
+  .img-alt-host::after {
+    content: attr(alt);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.75);
+    color: #ffffff;
+    font-family: var(--font-primary, sans-serif);
+    font-size: 0.75rem;
+    font-weight: var(--fw-light, 300);
+    letter-spacing: 0.01em;
+    padding: 0.375rem 0.75rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .img-alt-host:hover::after,
+  .img-alt-host:focus-within::after {
+    opacity: 1;
+  }
+}

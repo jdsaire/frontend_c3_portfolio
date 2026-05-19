@@ -146,7 +146,16 @@
   "footer_accessibility": "Accessibility Statement",
   "footer_copyright": "© 2026 JDigital. All Rights Reserved.",
 
-  "micro_about_image_alt":   "Juan Diego Saire, founder of JDigital, in Lima.",
+  "nav_logo_alt":                     "JDigital logo — personal brand headquarters of Juan Diego Saire (Lima, 2026).",
+  "micro_about_image_alt":            "Juan Diego Saire, JDigital founder and digital product management strategist based in Lima Peru",
+  "services_img_strategic_alt":       "JDigital strategic partnership illustration representing collaborative digital product management in Lima Peru",
+  "services_img_education_alt":       "JDigital education and opportunity illustration highlighting interactive and personalized learning experiences in digital",
+  "services_img_speaking_alt":        "JDigital public speaking illustration showcasing keynote opportunities as thought leader",
+  "services_img_media_alt":           "JDigital media and content creation illustration for collaboration opportunities in media co-creation",
+  "capabilities_badge_forward_alt":   "McKinsey Forward program certification badge earned by Juan Diego Saire for modern work skills excellence",
+  "capabilities_badge_google_ai_alt": "Google AI Essentials certification badge recognizing Juan Diego Saire digital product management competency",
+  "capabilities_badge_google_ux_alt": "Google UX Design certification badge validating Juan Diego Saire UX strategy and front-end expertise",
+  "capabilities_badge_google_pm_alt": "Google Project Management certification badge confirming Juan Diego Saire digital product management credentials",
   "micro_about_heading":     "JDigital is not an agency; it is my personal brand, my statement of execution.",
   "micro_about_attribution": "Juan Diego Saire — Founder, JDigital"
 }
