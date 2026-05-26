@@ -1916,15 +1916,14 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
    document root). Brand-token migration handled in PR2.
    ============================================================ */
 
-/* Gemini :root additions — existing tokens (brand-purple,
-   font-primary, fw-*, ease-standard, duration-ui) are reused.
-   Only new tokens are declared here. */
+/* Gemini :root additions — existing tokens (brand-purple, purple-hover,
+   font-primary, fw-*, ease-standard, duration-ui) are reused from global :root.
+   Only genuinely new tokens are declared here. */
 :root {
-  --color-purple-hover:  #8C00D9;
   --color-border-hover:  rgba(255, 255, 255, 0.22);
   --color-error:         #FF4444;
-  --color-modal-bg:      #FFFFFF;
-  --color-modal-text:    #000000;
+  --color-modal-bg:      var(--color-brand-white);
+  --color-modal-text:    var(--color-brand-black);
   --color-modal-muted:   rgba(0, 0, 0, 0.6);
   --color-modal-overlay: rgba(10, 10, 10, 0.85);
 }
@@ -2247,10 +2246,9 @@ body.modal-open {
   width: 100%;
   max-width: 440px;
   padding: 3.5rem 2.5rem 3rem;
-  border-radius: 1rem;
+  border-radius: 0;
   position: relative;
   text-align: center;
-  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
 
   transform: translateY(30px) scale(0.96);
   transition: transform 300ms var(--ease-standard);
@@ -2263,8 +2261,8 @@ body.modal-open {
   width: 100%;
   height: 4px;
   background: var(--color-brand-purple);
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 #successModal2.modal-overlay.is-active .modal-window {
   transform: translateY(0) scale(1);
@@ -2281,7 +2279,7 @@ body.modal-open {
   background: rgba(0,0,0,0.04);
   border: none;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: 0;
   transition: background-color var(--duration-ui) var(--ease-standard);
 }
 #successModal2 .modal-close-btn:hover {
