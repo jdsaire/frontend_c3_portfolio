@@ -1958,7 +1958,7 @@ body.modal-open {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-brand-white);
-  margin-bottom: 0.75rem;
+  margin-bottom: clamp(1.5rem, 2.5vw, 2.5rem);
 }
 #contact2 .header-headline {
   font-size: clamp(2.2rem, 5vw, 3.5rem);
