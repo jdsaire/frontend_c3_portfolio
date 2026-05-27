@@ -1001,7 +1001,7 @@
             <div class="form-group" id="field-collab-type2">
               <label class="form-label" for="engagementType2">What's your next digital ambition? <span class="asterisk">*</span></label>
               <div class="select-wrapper">
-                <select class="form-select" id="engagementType2" name="engagementType" required>
+                <select class="form-select" id="engagementType2" name="engagementType" required aria-describedby="hint-engagementType2">
                   <option value="" disabled selected hidden>Select one</option>
                   <option value="strategic-partnership">Contract — hiring, project, or partnership</option>
                   <option value="education-opportunity">Education — teaching or training</option>
@@ -1010,26 +1010,26 @@
                   <option value="other">Something else</option>
                 </select>
               </div>
-              <span class="error-hint">Please select an engagement type.</span>
+              <span class="error-hint" id="hint-engagementType2" role="status" aria-live="polite">Please select an engagement type.</span>
             </div>
 
             <div class="form-row">
               <div class="form-group" id="field-collab-name2">
                 <label class="form-label" for="collabName2">Full name <span class="asterisk">*</span></label>
-                <input class="form-input" type="text" id="collabName2" name="fullName" placeholder="Ana Torres" required>
-                <span class="error-hint">Full name is required.</span>
+                <input class="form-input" type="text" id="collabName2" name="fullName" placeholder="Ana Torres" required aria-describedby="hint-collabName2">
+                <span class="error-hint" id="hint-collabName2" role="status" aria-live="polite">Full name is required.</span>
               </div>
               <div class="form-group" id="field-collab-email2">
                 <label class="form-label" for="collabEmail2">Email Address <span class="asterisk">*</span></label>
-                <input class="form-input" type="email" id="collabEmail2" name="email" placeholder="ana@company.com" required>
-                <span class="error-hint">A valid email address is required.</span>
+                <input class="form-input" type="email" id="collabEmail2" name="email" placeholder="ana@company.com" required aria-describedby="hint-collabEmail2">
+                <span class="error-hint" id="hint-collabEmail2" role="status" aria-live="polite">A valid email address is required.</span>
               </div>
             </div>
 
             <div class="form-group" id="field-collab-message2">
               <label class="form-label" for="collabMessage2">Tell us the context <span class="asterisk">*</span></label>
-              <textarea class="form-textarea" id="collabMessage2" name="message" placeholder="Describe the context — a role, a project, an idea. The more specific, the better." required></textarea>
-              <span class="error-hint">A message is required.</span>
+              <textarea class="form-textarea" id="collabMessage2" name="message" placeholder="Describe the context — a role, a project, an idea. The more specific, the better." required aria-describedby="hint-collabMessage2"></textarea>
+              <span class="error-hint" id="hint-collabMessage2" role="status" aria-live="polite">A message is required.</span>
             </div>
 
           </div>
@@ -1039,7 +1039,7 @@
             <div class="form-group" id="field-brief-case2">
               <label class="form-label" for="briefCase2">Which case study? <span class="asterisk">*</span></label>
               <div class="select-wrapper">
-                <select class="form-select" id="briefCase2" name="case" required>
+                <select class="form-select" id="briefCase2" name="case" required aria-describedby="hint-briefCase2">
                   <option value="" disabled selected hidden>Select one</option>
                   <option value="limafly">UX/UI Design — LimaFly App</option>
                   <option value="agile">Agile Workshop — Lima Airport</option>
@@ -1047,39 +1047,39 @@
                   <option value="jdigital">Frontend Development — JDigital</option>
                 </select>
               </div>
-              <span class="error-hint">Please select a case study.</span>
+              <span class="error-hint" id="hint-briefCase2" role="status" aria-live="polite">Please select a case study.</span>
             </div>
 
             <div class="form-row">
               <div class="form-group" id="field-brief-name2">
                 <label class="form-label" for="briefName2">Full name <span class="asterisk">*</span></label>
-                <input class="form-input" type="text" id="briefName2" name="fullName" placeholder="Ana Torres" required>
-                <span class="error-hint">Full name is required.</span>
+                <input class="form-input" type="text" id="briefName2" name="fullName" placeholder="Ana Torres" required aria-describedby="hint-briefName2">
+                <span class="error-hint" id="hint-briefName2" role="status" aria-live="polite">Full name is required.</span>
               </div>
               <div class="form-group" id="field-brief-email2">
                 <label class="form-label" for="briefEmail2">Email Address <span class="asterisk">*</span></label>
-                <input class="form-input" type="email" id="briefEmail2" name="email" placeholder="ana@company.com" required>
-                <span class="error-hint">A valid email address is required.</span>
+                <input class="form-input" type="email" id="briefEmail2" name="email" placeholder="ana@company.com" required aria-describedby="hint-briefEmail2">
+                <span class="error-hint" id="hint-briefEmail2" role="status" aria-live="polite">A valid email address is required.</span>
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group" id="field-brief-company2">
                 <label class="form-label" for="briefCompany2">Company <span class="asterisk">*</span></label>
-                <input class="form-input" type="text" id="briefCompany2" name="company" placeholder="Company Name" required>
-                <span class="error-hint">Company name is required.</span>
+                <input class="form-input" type="text" id="briefCompany2" name="company" placeholder="Company Name" required aria-describedby="hint-briefCompany2">
+                <span class="error-hint" id="hint-briefCompany2" role="status" aria-live="polite">Company name is required.</span>
               </div>
               <div class="form-group" id="field-brief-role2">
                 <label class="form-label" for="briefRole2">Role <span class="asterisk">*</span></label>
-                <input class="form-input" type="text" id="briefRole2" name="role" placeholder="Role Name" required>
-                <span class="error-hint">Role designation is required.</span>
+                <input class="form-input" type="text" id="briefRole2" name="role" placeholder="Role Name" required aria-describedby="hint-briefRole2">
+                <span class="error-hint" id="hint-briefRole2" role="status" aria-live="polite">Role designation is required.</span>
               </div>
             </div>
 
             <div class="form-group" id="field-brief-source2">
               <label class="form-label" for="briefSource2">How did you hear about JDigital? <span class="asterisk">*</span></label>
               <div class="select-wrapper">
-                <select class="form-select" id="briefSource2" name="source" required>
+                <select class="form-select" id="briefSource2" name="source" required aria-describedby="hint-briefSource2">
                   <option value="" disabled selected hidden>Select one</option>
                   <option value="linkedin">LinkedIn</option>
                   <option value="web-search">Web Search</option>
@@ -1089,7 +1089,7 @@
                   <option value="other">Other</option>
                 </select>
               </div>
-              <span class="error-hint">Please select how you heard about us.</span>
+              <span class="error-hint" id="hint-briefSource2" role="status" aria-live="polite">Please select how you heard about us.</span>
             </div>
 
           </div>
@@ -1115,7 +1115,7 @@
     </div>
   </section>
 
-  <div id="successModal2" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+  <div id="successModal2" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalHeadline2">
     <div class="modal-window">
       <button id="modalCloseBtn2" class="modal-close-btn" aria-label="Close modal">
         <svg viewBox="0 0 24 24" fill="none">
@@ -1127,7 +1127,7 @@
       <img src="assets/img/jdigital-logo-mini2.svg" alt="JD Icon" class="modal-logo" onerror="this.style.display='none'">
 
       <h3 class="modal-headline" id="modalHeadline2">Message received.</h3>
-      <p class="modal-body" id="modalBody2">We appreciate your submission. We’re reviewing your message. Check back your email in 48 hours for a response.</p>
+      <p class="modal-body" id="modalBody2" aria-live="polite" aria-atomic="true">We appreciate your submission. We’re reviewing your message. Check back your email in 48 hours for a response.</p>
     </div>
   </div>
 
