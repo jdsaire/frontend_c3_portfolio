@@ -759,9 +759,9 @@
 
       <header class="contact-header">
         <div class="header-bar" aria-hidden="true"></div>
-        <span class="header-eyebrow">LET'S CONNECT</span>
-        <h2 class="header-headline" id="contact-heading">Open the conversation.</h2>
-        <p class="header-lede">Direct to Juan Diego — zero frictions.</p>
+        <span class="header-eyebrow" data-i18n="contact_eyebrow">CONTACTO</span>
+        <h2 class="header-headline" id="contact-heading" data-i18n="contact_headline">Inicie la conversación.</h2>
+        <p class="header-lede" data-i18n="contact_lede">Hable con Juan Diego — cero fricciones.</p>
       </header>
 
       <div class="contact-form-box">
@@ -770,22 +770,22 @@
               method="POST" novalidate>
 
           <fieldset class="intent-group">
-            <legend class="intent-legend">How can we help?</legend>
+            <legend class="intent-legend" data-i18n="contact_intent_label">¿En qué podemos ayudarle?</legend>
 
             <div class="intent-cards">
               <label class="intent-card" id="card-collab">
                 <input type="radio" name="intent" value="collaboration" class="intent-input" required>
                 <span class="intent-card-content">
-                  <span class="intent-card-title">Start a collaboration</span>
-                  <span class="intent-card-desc">Hiring, teaching, keynote, or media.</span>
+                  <span class="intent-card-title" data-i18n="contact_intent_collab_title">Iniciar una colaboración</span>
+                  <span class="intent-card-desc" data-i18n="contact_intent_collab_desc">Hiring, proyectos, docencia o medios.</span>
                 </span>
               </label>
 
               <label class="intent-card" id="card-brief">
                 <input type="radio" name="intent" value="brief" class="intent-input">
                 <span class="intent-card-content">
-                  <span class="intent-card-title">Request a case brief</span>
-                  <span class="intent-card-desc">Detailed write-up of a past engagement.</span>
+                  <span class="intent-card-title" data-i18n="contact_intent_brief_title">Solicitar brief de portfolio</span>
+                  <span class="intent-card-desc" data-i18n="contact_intent_brief_desc">Presentación ejecutiva de proyecto terminado.</span>
                 </span>
               </label>
             </div>
@@ -794,37 +794,56 @@
           <div class="path-fields" id="path-collaboration">
 
             <div class="form-group" id="field-collab-type">
-              <label class="form-label" for="engagementType">What's your next digital ambition? <span class="asterisk">*</span></label>
+              <label class="form-label" for="engagementType">
+                <span data-i18n="contact_dropdown_label">¿Cuál es su próxima ambición digital?</span>
+                <span class="asterisk">*</span>
+              </label>
               <div class="select-wrapper">
                 <select class="form-select" id="engagementType" name="engagementType" required aria-describedby="hint-engagementType">
-                  <option value="" disabled selected hidden>Select one</option>
-                  <option value="strategic-partnership">Contract — hiring, project, or partnership</option>
-                  <option value="education-opportunity">Education — teaching or training</option>
-                  <option value="public-speaking">Speaking — keynote, panel, or workshop</option>
-                  <option value="content-media">Content — TikTok, podcast, or feature</option>
-                  <option value="other">Something else</option>
+                  <option value="" disabled selected hidden data-i18n="contact_dropdown_placeholder">Seleccione una opción</option>
+                  <option value="strategic-partnership" data-i18n="contact_opt1">Alianza — hiring, proyecto o co-creación</option>
+                  <option value="education-opportunity" data-i18n="contact_opt2">Educación — docencia o training</option>
+                  <option value="public-speaking" data-i18n="contact_opt3">Speaking — keynote, panel o workshop</option>
+                  <option value="content-media" data-i18n="contact_opt4">Medios — entrevista, podcast o publicación</option>
+                  <option value="other" data-i18n="contact_opt5">Otro</option>
                 </select>
               </div>
-              <span class="error-hint" id="hint-engagementType" role="status" aria-live="polite">Please select an engagement type.</span>
+              <span class="error-hint" id="hint-engagementType" role="status" aria-live="polite" data-i18n="contact_err_type">Seleccione el tipo de consulta.</span>
             </div>
 
             <div class="form-row">
               <div class="form-group" id="field-collab-name">
-                <label class="form-label" for="collabName">Full name <span class="asterisk">*</span></label>
-                <input class="form-input" type="text" id="collabName" name="fullName" placeholder="Ana Torres" required aria-describedby="hint-collabName">
-                <span class="error-hint" id="hint-collabName" role="status" aria-live="polite">Full name is required.</span>
+                <label class="form-label" for="collabName">
+                  <span data-i18n="contact_name_label">Nombre completo</span>
+                  <span class="asterisk">*</span>
+                </label>
+                <input class="form-input" type="text" id="collabName" name="fullName"
+                       placeholder="Ana Torres" required aria-describedby="hint-collabName"
+                       data-i18n-placeholder="contact_name_placeholder">
+                <span class="error-hint" id="hint-collabName" role="status" aria-live="polite" data-i18n="contact_err_name">El nombre es requerido.</span>
               </div>
               <div class="form-group" id="field-collab-email">
-                <label class="form-label" for="collabEmail">Email Address <span class="asterisk">*</span></label>
-                <input class="form-input" type="email" id="collabEmail" name="email" placeholder="ana@company.com" required aria-describedby="hint-collabEmail">
-                <span class="error-hint" id="hint-collabEmail" role="status" aria-live="polite">A valid email address is required.</span>
+                <label class="form-label" for="collabEmail">
+                  <span data-i18n="contact_email_label">Correo electrónico</span>
+                  <span class="asterisk">*</span>
+                </label>
+                <input class="form-input" type="email" id="collabEmail" name="email"
+                       placeholder="ana@empresa.com" required aria-describedby="hint-collabEmail"
+                       data-i18n-placeholder="contact_email_placeholder">
+                <span class="error-hint" id="hint-collabEmail" role="status" aria-live="polite" data-i18n="contact_err_email">Ingrese un correo válido.</span>
               </div>
             </div>
 
             <div class="form-group" id="field-collab-message">
-              <label class="form-label" for="collabMessage">Tell us the context <span class="asterisk">*</span></label>
-              <textarea class="form-textarea" id="collabMessage" name="message" placeholder="Describe the context — a role, a project, an idea. The more specific, the better." required aria-describedby="hint-collabMessage"></textarea>
-              <span class="error-hint" id="hint-collabMessage" role="status" aria-live="polite">A message is required.</span>
+              <label class="form-label" for="collabMessage">
+                <span data-i18n="contact_msg_label">Cuéntenos el contexto</span>
+                <span class="asterisk">*</span>
+              </label>
+              <textarea class="form-textarea" id="collabMessage" name="message"
+                        placeholder="Describa el contexto — el rol, el proyecto o la iniciativa. Mientras más detalle, mejor."
+                        required aria-describedby="hint-collabMessage"
+                        data-i18n-placeholder="contact_msg_placeholder"></textarea>
+              <span class="error-hint" id="hint-collabMessage" role="status" aria-live="polite" data-i18n="contact_err_msg">El mensaje es requerido.</span>
             </div>
 
           </div>
@@ -832,71 +851,97 @@
           <div class="path-fields" id="path-brief">
 
             <div class="form-group" id="field-brief-case">
-              <label class="form-label" for="briefCase">Which case study? <span class="asterisk">*</span></label>
+              <label class="form-label" for="briefCase">
+                <span data-i18n="contact_case_label">¿Cuál caso de estudio?</span>
+                <span class="asterisk">*</span>
+              </label>
               <div class="select-wrapper">
                 <select class="form-select" id="briefCase" name="case" required aria-describedby="hint-briefCase">
-                  <option value="" disabled selected hidden>Select one</option>
-                  <option value="limafly">UX/UI Design — LimaFly App</option>
-                  <option value="agile">Agile Workshop — Lima Airport</option>
-                  <option value="tuua">Program Management — TUUA Transfer</option>
-                  <option value="jdigital">Frontend Development — JDigital</option>
+                  <option value="" disabled selected hidden data-i18n="contact_dropdown_placeholder">Seleccione una opción</option>
+                  <option value="limafly" data-i18n="contact_case_limafly">LimaFly App — UX/UI</option>
+                  <option value="agile" data-i18n="contact_case_agile">Lima Airport Agile — Taller</option>
+                  <option value="tuua" data-i18n="contact_case_tuua">TUUA Transfer — Proyectos y Programas</option>
+                  <option value="jdigital" data-i18n="contact_case_jdigital">JDigital v1 — Frontend</option>
                 </select>
               </div>
-              <span class="error-hint" id="hint-briefCase" role="status" aria-live="polite">Please select a case study.</span>
+              <span class="error-hint" id="hint-briefCase" role="status" aria-live="polite" data-i18n="contact_brief_err_case">Seleccione un caso de estudio.</span>
             </div>
 
             <div class="form-row">
               <div class="form-group" id="field-brief-name">
-                <label class="form-label" for="briefName">Full name <span class="asterisk">*</span></label>
-                <input class="form-input" type="text" id="briefName" name="fullName" placeholder="Ana Torres" required aria-describedby="hint-briefName">
-                <span class="error-hint" id="hint-briefName" role="status" aria-live="polite">Full name is required.</span>
+                <label class="form-label" for="briefName">
+                  <span data-i18n="contact_name_label">Nombre completo</span>
+                  <span class="asterisk">*</span>
+                </label>
+                <input class="form-input" type="text" id="briefName" name="fullName"
+                       placeholder="Ana Torres" required aria-describedby="hint-briefName"
+                       data-i18n-placeholder="contact_name_placeholder">
+                <span class="error-hint" id="hint-briefName" role="status" aria-live="polite" data-i18n="contact_err_name">El nombre es requerido.</span>
               </div>
               <div class="form-group" id="field-brief-email">
-                <label class="form-label" for="briefEmail">Email Address <span class="asterisk">*</span></label>
-                <input class="form-input" type="email" id="briefEmail" name="email" placeholder="ana@company.com" required aria-describedby="hint-briefEmail">
-                <span class="error-hint" id="hint-briefEmail" role="status" aria-live="polite">A valid email address is required.</span>
+                <label class="form-label" for="briefEmail">
+                  <span data-i18n="contact_email_label">Correo electrónico</span>
+                  <span class="asterisk">*</span>
+                </label>
+                <input class="form-input" type="email" id="briefEmail" name="email"
+                       placeholder="ana@empresa.com" required aria-describedby="hint-briefEmail"
+                       data-i18n-placeholder="contact_email_placeholder">
+                <span class="error-hint" id="hint-briefEmail" role="status" aria-live="polite" data-i18n="contact_err_email">Ingrese un correo válido.</span>
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group" id="field-brief-company">
-                <label class="form-label" for="briefCompany">Company <span class="asterisk">*</span></label>
-                <input class="form-input" type="text" id="briefCompany" name="company" placeholder="Company Name" required aria-describedby="hint-briefCompany">
-                <span class="error-hint" id="hint-briefCompany" role="status" aria-live="polite">Company name is required.</span>
+                <label class="form-label" for="briefCompany">
+                  <span data-i18n="contact_company_label">Organización</span>
+                  <span class="asterisk">*</span>
+                </label>
+                <input class="form-input" type="text" id="briefCompany" name="company"
+                       placeholder="Google" required aria-describedby="hint-briefCompany"
+                       data-i18n-placeholder="contact_company_placeholder">
+                <span class="error-hint" id="hint-briefCompany" role="status" aria-live="polite" data-i18n="contact_brief_err_company">La organización es requerida.</span>
               </div>
               <div class="form-group" id="field-brief-role">
-                <label class="form-label" for="briefRole">Role <span class="asterisk">*</span></label>
-                <input class="form-input" type="text" id="briefRole" name="role" placeholder="Role Name" required aria-describedby="hint-briefRole">
-                <span class="error-hint" id="hint-briefRole" role="status" aria-live="polite">Role designation is required.</span>
+                <label class="form-label" for="briefRole">
+                  <span data-i18n="contact_role_label">Cargo</span>
+                  <span class="asterisk">*</span>
+                </label>
+                <input class="form-input" type="text" id="briefRole" name="role"
+                       placeholder="Gerente Digital" required aria-describedby="hint-briefRole"
+                       data-i18n-placeholder="contact_role_placeholder">
+                <span class="error-hint" id="hint-briefRole" role="status" aria-live="polite" data-i18n="contact_brief_err_role">El cargo es requerido.</span>
               </div>
             </div>
 
             <div class="form-group" id="field-brief-source">
-              <label class="form-label" for="briefSource">How did you hear about JDigital? <span class="asterisk">*</span></label>
+              <label class="form-label" for="briefSource">
+                <span data-i18n="contact_source_label">¿Cómo se enteró de JDigital?</span>
+                <span class="asterisk">*</span>
+              </label>
               <div class="select-wrapper">
                 <select class="form-select" id="briefSource" name="source" required aria-describedby="hint-briefSource">
-                  <option value="" disabled selected hidden>Select one</option>
-                  <option value="linkedin">LinkedIn</option>
-                  <option value="web-search">Web Search</option>
-                  <option value="referral">Referral</option>
-                  <option value="industry-event">Industry / Academic Event</option>
-                  <option value="academic-program">Company Presentation</option>
-                  <option value="other">Other</option>
+                  <option value="" disabled selected hidden data-i18n="contact_dropdown_placeholder">Seleccione una opción</option>
+                  <option value="linkedin" data-i18n="contact_source_opt_linkedin">LinkedIn</option>
+                  <option value="web-search" data-i18n="contact_source_opt_search">Búsqueda web</option>
+                  <option value="referral" data-i18n="contact_source_opt_referral">Referencia</option>
+                  <option value="industry-event" data-i18n="contact_source_opt_event">Evento académico o profesional</option>
+                  <option value="academic-program" data-i18n="contact_source_opt_presentation">Presentación corporativa</option>
+                  <option value="other" data-i18n="contact_source_opt_other">Otro</option>
                 </select>
               </div>
-              <span class="error-hint" id="hint-briefSource" role="status" aria-live="polite">Please select how you heard about us.</span>
+              <span class="error-hint" id="hint-briefSource" role="status" aria-live="polite" data-i18n="contact_source_err">Seleccione cómo nos conoció.</span>
             </div>
 
           </div>
 
           <div id="footerActions" style="display: none;">
-            <p class="mandatory-footnote"><span class="asterisk">*</span> Indicates a mandatory field</p>
+            <p class="mandatory-footnote"><span class="asterisk">*</span> <span data-i18n="contact_mandatory_footnote">Indica un campo obligatorio</span></p>
 
             <div class="submit-row" id="submitRow">
-              <p class="form-disclaimer">We reply within two business days — usually faster.</p>
+              <p class="form-disclaimer" data-i18n="contact_disclaimer">Respondemos en dos días hábiles — usualmente antes.</p>
 
               <button type="submit" class="submit-btn" aria-label="Submit">
-                <span class="submit-label" id="submitLabel">Send message</span>
+                <span class="submit-label" id="submitLabel">Enviar mensaje</span>
                 <span class="submit-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                 </span>
@@ -912,17 +957,18 @@
 
   <div id="successModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalHeadline">
     <div class="modal-window">
-      <button id="modalCloseBtn" class="modal-close-btn" aria-label="Close modal">
+      <button id="modalCloseBtn" class="modal-close-btn"
+              aria-label="Cerrar" data-i18n-aria="contact_modal_close_aria">
         <svg viewBox="0 0 24 24" fill="none">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
       </button>
 
-      <img src="assets/img/jdigital-logo-mini2.svg" alt="JD Icon" class="modal-logo" onerror="this.style.display='none'">
+      <img src="assets/img/jdigital-logo-mini2.svg" alt="JD Icon" class="modal-logo" onerror="this.style.display=’none’">
 
-      <h3 class="modal-headline" id="modalHeadline">Message received.</h3>
-      <p class="modal-body" id="modalBody" aria-live="polite" aria-atomic="true">We appreciate your submission. We’re reviewing your message. Check back your email in 48 hours for a response.</p>
+      <h3 class="modal-headline" id="modalHeadline" data-i18n="contact_success_headline">Mensaje recibido.</h3>
+      <p class="modal-body" id="modalBody" aria-live="polite" aria-atomic="true" data-i18n="contact_success_body">Responderemos en dos días hábiles.</p>
     </div>
   </div>
 
