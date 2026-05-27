@@ -1104,11 +1104,25 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     let currentActivePath = null;
     let lastFocusedElement = null;
 
-    // Helper: set disabled/enabled state for elements inside a container
+    // Helper: set disabled/enabled state for elements inside a container.
+    // Also strips/restores `required` so hidden-path fields don't leak
+    // validation onto the active path.
     const setFieldsDisabled = (container, disabled) => {
       const fields = container.querySelectorAll('input, select, textarea');
       fields.forEach(field => {
-        field.disabled = disabled;
+        if (disabled) {
+          if (field.hasAttribute('required')) {
+            field.dataset.wasRequired = 'true';
+            field.removeAttribute('required');
+          }
+          field.disabled = true;
+        } else {
+          field.disabled = false;
+          if (field.dataset.wasRequired === 'true') {
+            field.setAttribute('required', '');
+            delete field.dataset.wasRequired;
+          }
+        }
         const group = field.closest('.form-group');
         if (group) group.classList.remove('has-error');
       });
