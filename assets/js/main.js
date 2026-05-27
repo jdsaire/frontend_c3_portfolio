@@ -50,8 +50,6 @@ function swapLang(lang) {
       const key = el.dataset.i18nAlt;
       if (dict[key] !== undefined) el.alt = dict[key];
     });
-
-    document.dispatchEvent(new CustomEvent('i18n:changed', { detail: { lang, dict } }));
   });
 }
 
@@ -872,14 +870,14 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
       pathCollab.classList.remove('is-active');
       pathBrief.classList.remove('is-active');
 
-      const d = i18nDicts[i18nCurrent] || {};
       if (selectedPath === 'collaboration') {
         cardCollab.classList.add('is-selected');
         pathCollab.classList.add('is-active');
 
         setFieldsDisabled(pathCollab, false);
         setFieldsDisabled(pathBrief, true);
-        submitLabel.textContent = d['contact_submit'] || 'Send message';
+        // Sync text with EN dictionary string
+        submitLabel.textContent = 'Send message';
 
       } else if (selectedPath === 'brief') {
         cardBrief.classList.add('is-selected');
@@ -887,7 +885,8 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
 
         setFieldsDisabled(pathCollab, true);
         setFieldsDisabled(pathBrief, false);
-        submitLabel.textContent = d['contact_brief_submit'] || 'Request brief';
+        // Sync text with EN dictionary string
+        submitLabel.textContent = 'Request brief';
       }
 
       // Reveal the grouped footnote + submit row
@@ -970,24 +969,15 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
       }
     });
 
-    // Re-sync submit label when language changes while a path is active
-    document.addEventListener(‘i18n:changed’, ({ detail: { dict } }) => {
-      if (currentActivePath === ‘collaboration’) {
-        submitLabel.textContent = dict[‘contact_submit’] || ‘Send message’;
-      } else if (currentActivePath === ‘brief’) {
-        submitLabel.textContent = dict[‘contact_brief_submit’] || ‘Request brief’;
-      }
-    });
-
     // Modal Triggers & Dynamic UI Updates
     const openModal = () => {
-      const d = i18nDicts[i18nCurrent] || {};
-      if (currentActivePath === ‘collaboration’) {
-        modalHeadline.textContent = d[‘contact_success_headline’] || ‘Message received.’;
-        modalBody.textContent = d[‘contact_success_body’] || "We’ll reply within two business days.";
-      } else if (currentActivePath === ‘brief’) {
-        modalHeadline.textContent = d[‘contact_brief_success_headline’] || ‘Request received.’;
-        modalBody.textContent = d[‘contact_brief_success_body’] || "We’ll review and reply within two business days.";
+      // Inject Dynamic Content Based on the path chosen mapped to EN dictionary
+      if (currentActivePath === 'collaboration') {
+        modalHeadline.textContent = "Message received.";
+        modalBody.textContent = "We appreciate your submission. We’re reviewing your message. Check back your email in 48 hours for a response.";
+      } else if (currentActivePath === 'brief') {
+        modalHeadline.textContent = "Request submitted.";
+        modalBody.textContent = "We appreciate your submission. We’re reviewing your request. Check back your email in 48 hours for a response.";
       }
 
       lastFocusedElement = document.activeElement;
