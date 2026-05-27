@@ -819,23 +819,23 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
    ============================================================ */
 (function () {
   document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('contactForm2');
+    const form = document.getElementById('contactForm');
     if (!form) return; // safety: bail if Contact2 isn't on the page
 
     const intentRadios = form.querySelectorAll('input[name="intent"]');
-    const cardCollab = document.getElementById('card-collab2');
-    const cardBrief  = document.getElementById('card-brief2');
+    const cardCollab = document.getElementById('card-collab');
+    const cardBrief  = document.getElementById('card-brief');
 
-    const pathCollab = document.getElementById('path-collaboration2');
-    const pathBrief  = document.getElementById('path-brief2');
+    const pathCollab = document.getElementById('path-collaboration');
+    const pathBrief  = document.getElementById('path-brief');
 
-    const footerActions = document.getElementById('footerActions2');
-    const submitLabel   = document.getElementById('submitLabel2');
+    const footerActions = document.getElementById('footerActions');
+    const submitLabel   = document.getElementById('submitLabel');
 
-    const modalOverlay  = document.getElementById('successModal2');
-    const modalCloseBtn = document.getElementById('modalCloseBtn2');
-    const modalHeadline = document.getElementById('modalHeadline2');
-    const modalBody     = document.getElementById('modalBody2');
+    const modalOverlay  = document.getElementById('successModal');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const modalHeadline = document.getElementById('modalHeadline');
+    const modalBody     = document.getElementById('modalBody');
 
     let currentActivePath = null;
     let lastFocusedElement = null;

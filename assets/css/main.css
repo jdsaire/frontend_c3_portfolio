@@ -1627,7 +1627,7 @@ button.cta { background:none; border:none; font-family:var(--font-primary); }
 /* ============================================================
    ===== CONTACT V5 (Contact2) — parallel test =====
    Gemini build styles appended verbatim; selectors scoped to
-   #contact2 (or #successModal2 for the modal which lives at
+   #contact (or #successModal for the modal which lives at
    document root). Brand-token migration handled in PR2.
    ============================================================ */
 
@@ -1650,7 +1650,7 @@ body.modal-open {
 }
 
 /* ── Editorial Header (Centered Layout) ────────────────────── */
-#contact2 .contact-header {
+#contact .contact-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1661,13 +1661,13 @@ body.modal-open {
   margin-left: auto;
   margin-right: auto;
 }
-#contact2 .header-bar {
+#contact .header-bar {
   width: 2.5rem;
   height: 3px;
   background: var(--color-brand-purple);
   margin-bottom: 1rem;
 }
-#contact2 .header-eyebrow {
+#contact .header-eyebrow {
   font-size: 0.8rem;
   font-weight: var(--fw-semibold);
   letter-spacing: 0.12em;
@@ -1675,7 +1675,7 @@ body.modal-open {
   color: var(--color-brand-white);
   margin-bottom: clamp(1.5rem, 2.5vw, 2.5rem);
 }
-#contact2 .header-headline {
+#contact .header-headline {
   font-size: clamp(2.2rem, 5vw, 3.5rem);
   font-weight: var(--fw-bold);
   line-height: 1.1;
@@ -1683,7 +1683,7 @@ body.modal-open {
   color: var(--color-brand-white);
   margin-bottom: 1rem;
 }
-#contact2 .header-lede {
+#contact .header-lede {
   font-size: clamp(1rem, 1.5vw, 1.125rem);
   font-weight: var(--fw-light);
   line-height: 1.6;
@@ -1692,7 +1692,7 @@ body.modal-open {
 }
 
 /* ── Form Container Box ────────────────────────────────────── */
-#contact2 .contact-form-box {
+#contact .contact-form-box {
   width: 100%;
   max-width: 820px;
   border: 1px solid #1A1A1A;
@@ -1701,17 +1701,17 @@ body.modal-open {
   margin-left: auto;
   margin-right: auto;
 }
-#contact2 .contact-form {
+#contact .contact-form {
   display: flex;
   flex-direction: column;
 }
 
 /* ── Intent Radio Cards Layout ─────────────────────────────── */
-#contact2 .intent-group {
+#contact .intent-group {
   border: none;
   margin-bottom: 2rem;
 }
-#contact2 .intent-legend {
+#contact .intent-legend {
   font-size: 0.75rem;
   font-weight: var(--fw-semibold);
   letter-spacing: 0.1em;
@@ -1720,12 +1720,12 @@ body.modal-open {
   margin-bottom: 1.25rem;
   display: block;
 }
-#contact2 .intent-cards {
+#contact .intent-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
 }
-#contact2 .intent-card {
+#contact .intent-card {
   position: relative;
   display: block;
   cursor: pointer;
@@ -1735,44 +1735,44 @@ body.modal-open {
   transition: background var(--duration-ui) var(--ease-standard),
               border-color var(--duration-ui) var(--ease-standard);
 }
-#contact2 .intent-card:hover {
+#contact .intent-card:hover {
   background: #161616;
   border-color: var(--color-border-hover);
 }
-#contact2 .intent-input {
+#contact .intent-input {
   position: absolute;
   opacity: 0;
   inset: 0;
   cursor: pointer;
   z-index: 2;
 }
-#contact2 .intent-card.is-selected {
+#contact .intent-card.is-selected {
   border-color: var(--color-brand-purple);
   background: #141118;
 }
 /* Visible keyboard focus for the intent cards (hidden radio is opacity:0) */
-#contact2 .intent-card:has(.intent-input:focus-visible) {
+#contact .intent-card:has(.intent-input:focus-visible) {
   outline: 2px solid var(--color-brand-purple);
   outline-offset: 2px;
 }
-#contact2 .intent-card-content {
+#contact .intent-card-content {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-#contact2 .intent-card-title {
+#contact .intent-card-title {
   font-size: 1.1rem;
   font-weight: var(--fw-bold);
   color: var(--color-brand-white);
 }
-#contact2 .intent-card-desc {
+#contact .intent-card-desc {
   font-size: 0.875rem;
   color: var(--color-text-muted);
   line-height: 1.5;
 }
 
 /* ── Path-Specific Dynamic Containers ────────────────────────── */
-#contact2 .path-fields {
+#contact .path-fields {
   display: none;
   flex-direction: column;
   gap: 1.5rem;
@@ -1780,34 +1780,34 @@ body.modal-open {
   border-top: 1px solid #1A1A1A;
   margin-bottom: 1.5rem;
 }
-#contact2 .path-fields.is-active {
+#contact .path-fields.is-active {
   display: flex;
 }
 
 /* ── Form Fields & Elements ─────────────────────────────────── */
-#contact2 .form-row {
+#contact .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
 }
-#contact2 .form-group {
+#contact .form-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-#contact2 .form-label {
+#contact .form-label {
   font-size: 0.7rem;
   font-weight: var(--fw-semibold);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text-muted);
 }
-#contact2 .form-label .asterisk {
+#contact .form-label .asterisk {
   color: var(--color-brand-purple);
 }
-#contact2 .form-input,
-#contact2 .form-select,
-#contact2 .form-textarea {
+#contact .form-input,
+#contact .form-select,
+#contact .form-textarea {
   font-family: var(--font-primary);
   font-size: 0.95rem;
   color: var(--color-brand-white);
@@ -1819,26 +1819,26 @@ body.modal-open {
   transition: border-color var(--duration-ui) var(--ease-standard),
               background var(--duration-ui) var(--ease-standard);
 }
-#contact2 .form-input::placeholder,
-#contact2 .form-textarea::placeholder {
+#contact .form-input::placeholder,
+#contact .form-textarea::placeholder {
   color: rgba(255, 255, 255, 0.25);
 }
-#contact2 .form-input:hover,
-#contact2 .form-select:hover,
-#contact2 .form-textarea:hover {
+#contact .form-input:hover,
+#contact .form-select:hover,
+#contact .form-textarea:hover {
   background: #161616;
   border-color: var(--color-border-hover);
 }
-#contact2 .form-input:focus,
-#contact2 .form-select:focus,
-#contact2 .form-textarea:focus {
+#contact .form-input:focus,
+#contact .form-select:focus,
+#contact .form-textarea:focus {
   border-color: var(--color-brand-purple);
   background: #161616;
 }
-#contact2 .select-wrapper {
+#contact .select-wrapper {
   position: relative;
 }
-#contact2 .select-wrapper::after {
+#contact .select-wrapper::after {
   content: '';
   position: absolute;
   right: 1rem;
@@ -1850,43 +1850,43 @@ body.modal-open {
   border-top: 6px solid var(--color-text-muted);
   pointer-events: none;
 }
-#contact2 .form-select {
+#contact .form-select {
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
   padding-right: 2.5rem;
 }
-#contact2 .form-textarea {
+#contact .form-textarea {
   resize: vertical;
   min-height: 8rem;
   line-height: 1.6;
 }
-#contact2 .form-group.has-error .form-input,
-#contact2 .form-group.has-error .form-select,
-#contact2 .form-group.has-error .form-textarea {
+#contact .form-group.has-error .form-input,
+#contact .form-group.has-error .form-select,
+#contact .form-group.has-error .form-textarea {
   border-color: var(--color-error);
 }
-#contact2 .error-hint {
+#contact .error-hint {
   display: none;
   font-size: 0.72rem;
   color: var(--color-error);
   margin-top: 0.25rem;
 }
-#contact2 .form-group.has-error .error-hint {
+#contact .form-group.has-error .error-hint {
   display: block;
 }
 
 /* ── Footnote & Submit Area ─────────────────────────────────── */
-#contact2 .mandatory-footnote {
+#contact .mandatory-footnote {
   font-size: 0.8rem;
   color: var(--color-text-dim);
   margin-bottom: 1.5rem;
   text-align: left;
 }
-#contact2 .mandatory-footnote .asterisk {
+#contact .mandatory-footnote .asterisk {
   color: var(--color-brand-purple);
 }
-#contact2 .submit-row {
+#contact .submit-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1894,13 +1894,13 @@ body.modal-open {
   padding-top: 1.5rem;
   border-top: 1px solid #1A1A1A;
 }
-#contact2 .form-disclaimer {
+#contact .form-disclaimer {
   font-size: 0.75rem;
   color: var(--color-text-dim);
   line-height: 1.5;
   max-width: 24rem;
 }
-#contact2 .submit-btn {
+#contact .submit-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
@@ -1910,12 +1910,12 @@ body.modal-open {
   padding: 0;
   font-family: inherit;
 }
-#contact2 .submit-label {
+#contact .submit-label {
   font-size: 1rem;
   font-weight: var(--fw-bold);
   color: var(--color-brand-white);
 }
-#contact2 .submit-icon {
+#contact .submit-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1924,10 +1924,10 @@ body.modal-open {
   background: var(--color-brand-purple);
   transition: background var(--duration-ui) var(--ease-standard);
 }
-#contact2 .submit-btn:hover .submit-icon {
+#contact .submit-btn:hover .submit-icon {
   background: var(--color-purple-hover);
 }
-#contact2 .submit-icon svg {
+#contact .submit-icon svg {
   width: 1rem;
   height: 1rem;
   fill: none;
@@ -1939,7 +1939,7 @@ body.modal-open {
 
 /* ── Success Pop-Up Interaction (Modal Overlay) ─────────────── */
 /* Modal lives at document root — scoped by its ID. */
-#successModal2.modal-overlay {
+#successModal.modal-overlay {
   position: fixed;
   inset: 0;
   background-color: var(--color-modal-overlay);
@@ -1955,11 +1955,11 @@ body.modal-open {
   transition: opacity var(--duration-ui) var(--ease-standard),
               visibility var(--duration-ui) var(--ease-standard);
 }
-#successModal2.modal-overlay.is-active {
+#successModal.modal-overlay.is-active {
   opacity: 1;
   visibility: visible;
 }
-#successModal2 .modal-window {
+#successModal .modal-window {
   background-color: var(--color-modal-bg);
   color: var(--color-modal-text);
   font-family: var(--font-primary);
@@ -1973,7 +1973,7 @@ body.modal-open {
   transform: translateY(30px) scale(0.96);
   transition: transform 300ms var(--ease-standard);
 }
-#successModal2 .modal-window::before {
+#successModal .modal-window::before {
   content: '';
   position: absolute;
   top: 0;
@@ -1984,10 +1984,10 @@ body.modal-open {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-#successModal2.modal-overlay.is-active .modal-window {
+#successModal.modal-overlay.is-active .modal-window {
   transform: translateY(0) scale(1);
 }
-#successModal2 .modal-close-btn {
+#successModal .modal-close-btn {
   position: absolute;
   top: 1.25rem;
   right: 1.25rem;
@@ -2002,10 +2002,10 @@ body.modal-open {
   border-radius: 0;
   transition: background-color var(--duration-ui) var(--ease-standard);
 }
-#successModal2 .modal-close-btn:hover {
+#successModal .modal-close-btn:hover {
   background: rgba(0, 0, 0, 0.08);
 }
-#successModal2 .modal-close-btn svg {
+#successModal .modal-close-btn svg {
   width: 1rem;
   height: 1rem;
   stroke: var(--color-modal-text);
@@ -2013,20 +2013,20 @@ body.modal-open {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-#successModal2 .modal-logo {
+#successModal .modal-logo {
   display: block;
   margin: 0 auto 1.5rem;
   max-width: 100%;
   height: auto;
 }
-#successModal2 .modal-headline {
+#successModal .modal-headline {
   font-size: 1.75rem;
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
   margin-bottom: 0.75rem;
   color: var(--color-modal-text);
 }
-#successModal2 .modal-body {
+#successModal .modal-body {
   font-size: 1.05rem;
   line-height: 1.6;
   color: var(--color-modal-muted);
@@ -2035,39 +2035,39 @@ body.modal-open {
 
 /* ── Responsive Adaptation ──────────────────────────────────── */
 @media (max-width: 767px) {
-  #contact2 .intent-cards {
+  #contact .intent-cards {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  #contact2 .form-row {
+  #contact .form-row {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  #contact2 .submit-row {
+  #contact .submit-row {
     flex-direction: column-reverse;
     align-items: stretch;
     gap: 1.5rem;
   }
-  #contact2 .form-disclaimer {
+  #contact .form-disclaimer {
     max-width: 100%;
     text-align: left;
   }
-  #contact2 .submit-btn {
+  #contact .submit-btn {
     justify-content: flex-start;
     width: fit-content;
   }
 }
 /* Respect user motion preference: disable Contact2 transitions/animations */
 @media (prefers-reduced-motion: reduce) {
-  #contact2 .intent-card,
-  #contact2 .form-input,
-  #contact2 .form-select,
-  #contact2 .form-textarea,
-  #contact2 .submit-btn,
-  #contact2 .submit-icon,
-  #successModal2,
-  #successModal2 .modal-window,
-  #successModal2 .modal-close-btn {
+  #contact .intent-card,
+  #contact .form-input,
+  #contact .form-select,
+  #contact .form-textarea,
+  #contact .submit-btn,
+  #contact .submit-icon,
+  #successModal,
+  #successModal .modal-window,
+  #successModal .modal-close-btn {
     transition: none !important;
     animation: none !important;
   }
